@@ -106,9 +106,6 @@
                     <fieldset class="form-group floating-label-form-group">
                         <label for="edit_name">Category Name</label>
                         <input name="name" type="text" class="form-control" id="edit_name" placeholder="Category Name">
-                        <div class="name_error">
-                            
-                        </div>
                         <input type="hidden" name="id" id="edit_id">
                     </fieldset>
                     <br>
@@ -140,7 +137,7 @@
 
         @section('custom_js')
         <script>
-            // INDEX SHOW;
+            // INDEX DATA;
             let table = $(".datatable");
             table.DataTable({
                 dom: "Bfrtip",
@@ -184,6 +181,7 @@
             table[0].addEventListener("click", function (e){
                 e.preventDefault();
                 if (e.target.classList.contains("edit-btn")) {
+                    $('.invalid-massage').remove();
                     let editDataId = e.target.getAttribute("data-id");
                     $.ajax({
                         type: 'GET',
