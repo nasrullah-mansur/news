@@ -30,9 +30,9 @@
                                 <table class="table table-striped table-bordered datatable">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Name</th>
-                                                <th>slug</th>
+                                                <th>SL</th>
+                                                <th>Name (ML)</th>
+                                                <th>Name (SL)</th>
                                                 <th style="max-width: 220px;">Created At</th>
                                                 <th style="max-width: 140px; text-align: center;">Actions</th>
                                             </tr>
@@ -42,9 +42,9 @@
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Name</th>
-                                                <th>slug</th>
+                                                <th>SL</th>
+                                                <th>Name (ML)</th>
+                                                <th>Name (SL)</th>
                                                 <th style="max-width: 220px;">Created At</th>
                                                 <th style="max-width: 140px; text-align: center;">Actions</th>
                                             </tr>
@@ -67,15 +67,17 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <!-- <form action="{{ route('categories.store') }}" method="POST"> -->
                 <form>
                     <div class="modal-body">
                     <fieldset class="form-group floating-label-form-group">
-                        <label for="name">Category Name</label>
-                        <input name="name" type="text" class="form-control" id="name" placeholder="Category Name">
-                        <div class="name_error">
-                            
-                        </div>
+                        <label for="pl_name">Category Name (PL)</label>
+                        <input name="pl_name" type="text" class="form-control" id="pl_name" placeholder="Category Name (PL)">
+                        <div class="invalid-feedback"></div>
+                    </fieldset>
+                    <fieldset class="form-group floating-label-form-group">
+                        <label for="sl_name">Category Name (SL)</label>
+                        <input name="sl_name" type="text" class="form-control" id="sl_name" placeholder="Category Name (SL)">
+                        <div class="invalid-feedback"></div>
                     </fieldset>
                     <br>
                     </div>
@@ -100,15 +102,20 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <!-- <form action="{{ route('categories.store') }}" method="POST"> -->
                 <form>
                     <div class="modal-body">
                     <fieldset class="form-group floating-label-form-group">
-                        <label for="edit_name">Category Name</label>
-                        <input name="name" type="text" class="form-control" id="edit_name" placeholder="Category Name">
-                        <input type="hidden" name="id" id="edit_id">
+                        <label for="pl_name">Category Name (PL)</label>
+                        <input name="pl_name" type="text" class="form-control" id="pl_name" placeholder="Category Name (PL)">
+                        <div class="invalid-feedback"></div>
+                    </fieldset>
+                    <fieldset class="form-group floating-label-form-group">
+                        <label for="sl_name">Category Name (SL)</label>
+                        <input name="sl_name" type="text" class="form-control" id="sl_name" placeholder="Category Name (SL)">
+                        <div class="invalid-feedback"></div>
                     </fieldset>
                     <br>
+                    <input type="hidden" name="id" value="">
                     </div>
                     <div class="modal-footer">
                     <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
@@ -146,8 +153,8 @@
                 ajax: "{{ route('categories.get') }}",
                 columns: [
                     { data: "DT_RowIndex", searchable: false }, 
-                    { data: "name" }, 
-                    { data: "slug" }, 
+                    { data: "pl_name" }, 
+                    { data: "sl_name" }, 
                     { data: "created_at" }, 
                     { data: "action" }
                 ],
@@ -159,36 +166,66 @@
             // STORE DATA;
             $("#add_category_btn").on("click", function (e) {
                 e.preventDefault();
-                let formData = {
-                    name: $('#add_category input[name="name"]').val(),
+                let AddCategoryModal = $('#add_category');
+                let FormElements = {
+                    pl_name: AddCategoryModal.find('input[name="pl_name"]')[0],
+                    sl_name: AddCategoryModal.find('input[name="sl_name"]')[0],
+                }
+                let FormData = {
+                    pl_name: FormElements.pl_name.value,
+                    sl_name: FormElements.sl_name.value,
                 };
+                let DataErrors = {
+                    pl_name: FormElements.pl_name.nextElementSibling,
+                    sl_name: FormElements.sl_name.nextElementSibling,
+                }
                 $.ajax({
                     type: "POST",
                     url: "{{ route('categories.store') }}",
-                    data: formData,
+                    data: FormData,
                     success: function () {
+                        AddCategoryModal.find('form')[0].reset();
                         table.DataTable().ajax.reload();
-                        $("#add_category").modal("hide");
+                        AddCategoryModal.modal("hide");
                         toastr.success("Category successfully added!", "WELL DONE");
                     },
                     error: function (error) {
-                        $(`<span class="invalid-massage danger">${error.responseJSON.errors.name[0]}</span>`).insertAfter('#add_category input[name="name"]');
+                        if(error.responseJSON.errors.pl_name){
+                            DataErrors.pl_name.innerHTML = error.responseJSON.errors.pl_name[0];
+                        }
+                        if(error.responseJSON.errors.sl_name) {
+                            DataErrors.sl_name.innerHTML = error.responseJSON.errors.sl_name[0];
+                        }
+                        Object.keys(FormElements).forEach(key => {
+                            if(FormElements[key].nextElementSibling.innerHTML != '') {
+                                FormElements[key].classList.add('is-invalid');
+                            }
+                        });
                     },
                 });
             });
 
             // EDIT DATA;
+            let EditModal = $('#edit_category');
+            let EditFormElements = {
+                    pl_name: EditModal.find('input[name="pl_name"]')[0],
+                    sl_name: EditModal.find('input[name="sl_name"]')[0],
+                    id: EditModal.find('input[name="id"]')[0],
+                }
             table[0].addEventListener("click", function (e){
                 e.preventDefault();
                 if (e.target.classList.contains("edit-btn")) {
-                    $('.invalid-massage').remove();
+                    $('.invalid-feedback').text('');
+                    $('.is-invalid').removeClass('is-invalid');
                     let editDataId = e.target.getAttribute("data-id");
                     $.ajax({
                         type: 'GET',
                         url: `/admin/category/${editDataId}`,
                         success: function(data){
-                            document.getElementById('edit_name').value = data.name;
-                            document.getElementById('edit_id').value = data.id;
+                            console.log(EditFormElements);
+                            EditFormElements.pl_name.value = data.pl_name;
+                            EditFormElements.sl_name.value = data.sl_name;
+                            EditFormElements.id.value = data.id;
                         }
                     });
                 }
@@ -197,21 +234,38 @@
             // UPDATE;
             $('#update_category_btn').on('click', function(e) {
                 e.preventDefault();
-                let updateData = {
-                    name: $('#edit_category input[name="name"]').val(),
-                    id: $('#edit_category input[name="id"]').val(),
+                let UpdateFormData = {
+                    pl_name: EditFormElements.pl_name.value,
+                    sl_name: EditFormElements.sl_name.value,
+                    id: EditFormElements.id.value,
                 };
+                let UpdateDataErrors = {
+                    pl_name: EditFormElements.pl_name.nextElementSibling,
+                    sl_name: EditFormElements.sl_name.nextElementSibling,
+                }
+
                 $.ajax({
                     type: 'POST',
-                    url: `/admin/category/${updateData.id}/update`,
-                    data: updateData,
+                    url: `/admin/category/${UpdateFormData.id}/update`,
+                    data: UpdateFormData,
                     success: function() {
                         table.DataTable().ajax.reload();
-                        $("#edit_category").modal("hide");
+                        EditModal.find('form')[0].reset();
+                        EditModal.modal("hide");
                         toastr.success("Category successfully updated!", "WELL DONE");
                     },
                     error: function (error) {
-                        $(`<span class="invalid-massage danger">${error.responseJSON.errors.name[0]}</span>`).insertAfter('#edit_category input[name="name"]');
+                        if(error.responseJSON.errors.pl_name){
+                            UpdateDataErrors.pl_name.innerHTML = error.responseJSON.errors.pl_name[0];
+                        }
+                        if(error.responseJSON.errors.sl_name) {
+                            UpdateDataErrors.sl_name.innerHTML = error.responseJSON.errors.sl_name[0];
+                        }
+                        Object.keys(EditFormElements).forEach(key => {
+                            if(EditFormElements[key].nextElementSibling.innerHTML != '') {
+                                EditFormElements[key].classList.add('is-invalid');
+                            }
+                        });
                     },
                 });
             })
@@ -248,7 +302,6 @@
                                 type: "POST",
                                 url: `/admin/category/${delteteDataId}/delete`,
                                 success: function(){
-                                    console.log('ok')
                                     swal({
                                         icon: "success",
                                         title: "Deleted!",

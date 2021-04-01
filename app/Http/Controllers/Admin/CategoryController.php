@@ -30,12 +30,19 @@ class CategoryController extends Controller
                     <a class="btn btn-danger delete-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="delete-btn ft-trash-2"></i></a>';
                })
                ->editColumn('created_at', function ($category) {
-                return $category->created_at->format('d M Y');
-            })->make(true);
+                    return $category->created_at->format('d M Y');
+                })
+               ->editColumn('sl_name', function ($category) {
+                   if($category->sl_name == '') {
+                       return 'NULL';
+                   } else {
+                       return $category->sl_name;
+                   }
+                })
+                ->make(true);
     }
 
-    public function store(Request $request) {
-        app(CategoryRequest::class);
+    public function store(CategoryRequest $request) {
         $category = $this->categoryService->store($request);
         if ($category['success'] == true) {
             return $request;
