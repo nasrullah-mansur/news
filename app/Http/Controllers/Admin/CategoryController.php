@@ -22,24 +22,7 @@ class CategoryController extends Controller
     }
 
     public function getCategories() {
-        $categories = Category::orderBy('created_at', 'DESC')->get();
-        return datatables($categories)
-               ->addIndexColumn()
-               ->addColumn('action', function ($category){
-                    return '<a data-toggle="modal" data-target="#edit_category" class="btn btn-secondary edit-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="edit-btn ft-edit"></i></a> 
-                    <a class="btn btn-danger delete-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="delete-btn ft-trash-2"></i></a>';
-               })
-               ->editColumn('created_at', function ($category) {
-                    return $category->created_at->format('d M Y');
-                })
-               ->editColumn('sl_name', function ($category) {
-                   if($category->sl_name == '') {
-                       return 'NULL';
-                   } else {
-                       return $category->sl_name;
-                   }
-                })
-                ->make(true);
+        return $this->categoryService->GetAllData();
     }
 
     public function store(CategoryRequest $request) {

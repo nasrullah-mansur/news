@@ -36,14 +36,4 @@ class CategoryRequest extends FormRequest
             ];
         }
     }
-
-
-    // public function message()
-    // {
-    //     return [
-    //         'name.required' => __('The name field must be required'),
-    //         'active_status.required' => __('The Status field must be required')
-    //     ];
-
-    // }
 }
