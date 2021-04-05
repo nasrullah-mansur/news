@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Support\Facades\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Admin\Category;
 
 class CategoryRequest extends FormRequest
 {
@@ -25,15 +26,45 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->request->get('sl_name') == '') {
-            return [
-                'pl_name' => 'required|unique:categories',
-            ];
-        } else {
-            return [
-                'pl_name' => 'required|unique:categories',
-                'sl_name' => 'unique:categories'
-            ];
+        if($this->request->has('id')) {
+
+            $category = Category::where('id', $this->request->get('id'))->firstOrFail();
+
+            if($this->request->get('pl_name') == $category->pl_name) {
+
+                if($this->request->get('sl_name') == $category->sl_name) {
+                    return [
+                        'pl_name' => 'required',
+                        'sl_name' => 'nullable'
+                    ];
+                } else {
+                    return [
+                        'pl_name' => 'required',
+                        'sl_name' => 'unique:categories'
+                    ];
+                }
+            } else {
+                return [
+                    'pl_name' => 'required|unique:categories',
+                    'sl_name' => 'unique:categories'
+                ];
+            }
+
+
+        } else{
+
+            if($this->request->get('sl_name') == '') {
+                return [
+                    'pl_name' => 'required|unique:categories',
+                ];
+            } else {
+                return [
+                    'pl_name' => 'required|unique:categories',
+                    'sl_name' => 'unique:categories'
+                ];
+            }
+
+
         }
     }
 }

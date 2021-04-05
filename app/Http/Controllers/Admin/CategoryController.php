@@ -37,10 +37,8 @@ class CategoryController extends Controller
         return $category;
     }
 
-    public function update(Request $request, $id) {
-        $category = Category::where('id', $id)->firstOrFail();
-        app(CategoryRequest::class);
-        $category = $this->categoryService->update($request,  $category);
+    public function update(CategoryRequest $request) {
+        $category = $this->categoryService->update($request);
         if ($category['success'] == true) {
             return $request;
         }

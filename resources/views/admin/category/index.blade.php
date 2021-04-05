@@ -38,7 +38,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -105,17 +105,21 @@
         <form>
             <div class="modal-body">
             <fieldset class="form-group floating-label-form-group">
-                <label for="pl_name">Category Name (PL)</label>
-                <input name="pl_name" type="text" class="form-control" id="pl_name" placeholder="Category Name (PL)">
+                <label for="pl_name_update">Category Name (PL)</label>
+                <input name="pl_name" type="text" class="form-control" id="pl_name_update" placeholder="Category Name (PL)">
                 <div class="invalid-feedback"></div>
             </fieldset>
             <fieldset class="form-group floating-label-form-group">
-                <label for="sl_name">Category Name (SL)</label>
-                <input name="sl_name" type="text" class="form-control" id="sl_name" placeholder="Category Name (SL)">
+                <label for="sl_name_update">Category Name (SL)</label>
+                <input name="sl_name" type="text" class="form-control" id="sl_name_update" placeholder="Category Name (SL)">
                 <div class="invalid-feedback"></div>
             </fieldset>
             <br>
-            <input type="hidden" name="id" value="">
+            <fieldset class="form-group floating-label-form-group">
+                <input type="hidden" name="id" value="">
+                <div class="invalid-feedback"></div>
+            </fieldset>
+
             </div>
             <div class="modal-footer">
             <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
@@ -152,10 +156,10 @@
         serverSide: true,
         ajax: "{{ route('categories.get') }}",
         columns: [
-            { data: "DT_RowIndex", searchable: false }, 
-            { data: "pl_name" }, 
-            { data: "sl_name" }, 
-            { data: "created_at" }, 
+            { data: "DT_RowIndex", searchable: false },
+            { data: "pl_name" },
+            { data: "sl_name" },
+            { data: "created_at" },
             { data: "action" }
         ],
         createdRow: function (row) {
@@ -245,7 +249,7 @@
 
         $.ajax({
             type: 'POST',
-            url: `/admin/category/${UpdateFormData.id}/update`,
+            url: `{{ route('admin.category.update') }}`,
             data: UpdateFormData,
             success: function() {
                 table.DataTable().ajax.reload();
@@ -254,12 +258,14 @@
                 toastr.success("Category successfully updated!", "WELL DONE");
             },
             error: function (error) {
+                console.log(error);
                 if(error.responseJSON.errors.pl_name){
                     UpdateDataErrors.pl_name.innerHTML = error.responseJSON.errors.pl_name[0];
                 }
                 if(error.responseJSON.errors.sl_name) {
                     UpdateDataErrors.sl_name.innerHTML = error.responseJSON.errors.sl_name[0];
                 }
+
                 Object.keys(EditFormElements).forEach(key => {
                     if(EditFormElements[key].nextElementSibling.innerHTML != '') {
                         EditFormElements[key].classList.add('is-invalid');
@@ -311,7 +317,7 @@
                             table.DataTable().ajax.reload();
                         }
                     });
-                    
+
                     return;
                 } else {
                     swal({

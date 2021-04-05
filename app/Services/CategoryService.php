@@ -12,7 +12,7 @@ class CategoryService
         return datatables($categories)
             ->addIndexColumn()
             ->addColumn('action', function ($category){
-                return '<a data-toggle="modal" data-target="#edit_category" class="btn btn-secondary edit-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="edit-btn ft-edit"></i></a> 
+                return '<a data-toggle="modal" data-target="#edit_category" class="btn btn-secondary edit-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="edit-btn ft-edit"></i></a>
                 <a class="btn btn-danger delete-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="delete-btn ft-trash-2"></i></a>';
             })
             ->editColumn('created_at', function ($category) {
@@ -42,11 +42,12 @@ class CategoryService
             $data['data'] = $category;
             return $data;
         }
-        return $data;  
-    } 
-    
-    public function update($request,  $category)
+        return $data;
+    }
+
+    public function update($request)
     {
+        $category = Category::where('id', $request->id)->firstOrFail();
         $data = ['success' =>false, 'code' =>404, 'data' =>[], 'message' =>'something went wrong'];
         $cateData['pl_name'] = $request->pl_name;
         $cateData['pl_slug'] = Str::slug($request->pl_name , '-');
@@ -59,6 +60,6 @@ class CategoryService
             $data['data'] = $category;
             return $data;
         }
-        return $data;  
+        return $data;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-// Route::middleware(['auth'])->prefix('admin')->group(function (){});
+require __DIR__.'/auth.php';
+
 
 // ADMIN ROUTES;
 Route::prefix('admin')->group(function (){
@@ -29,5 +33,5 @@ Route::prefix('admin')->group(function (){
     Route::post('/category/store', [CategoryController::class, 'store'])->name('categories.store');
     Route::post('/category/{id}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
     Route::get('/category/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
-    Route::post('/category/{id}/update', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::post('/category/update', [CategoryController::class, 'update'])->name('admin.category.update');
 });
