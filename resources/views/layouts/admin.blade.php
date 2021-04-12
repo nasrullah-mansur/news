@@ -1,3 +1,83 @@
+@if (Route::is('login', 'password.request'))
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="PIXINVENT">
+  <title>Login Page - Stack Responsive Bootstrap 4 Admin Template</title>
+  <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
+  rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors.css') }}">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN STACK CSS-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/app.css') }}">
+  <!-- END STACK CSS-->
+  <!-- BEGIN Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/pages/login-register.css') }}">
+  <!-- END Page Level CSS-->
+  <!-- BEGIN Custom CSS-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/style.css') }}">
+  <!-- END Custom CSS-->
+</head>
+<body class="vertical-layout vertical-menu-modern 1-column   menu-expanded blank-page blank-page"
+data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-header row">
+      </div>
+      <div class="content-body">
+        @yield('content')
+    </div>
+</div>
+</div>
+
+</body>
+</html>
+
+@else
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
     <head>
@@ -29,7 +109,7 @@
         <!-- BEGIN Custom CSS-->
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/style.css') }}" />
         <!-- END Custom CSS-->
-        
+
     </head>
     <body class="vertical-layout vertical-menu 2-columns menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
         <!-- fixed-top-->
@@ -156,7 +236,10 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                   <a class="dropdown-item" href="#"><i class="ft-user"></i> My Profile</a>
-                                  <a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+                                  <form action="{{ route('logout') }}" method="POST">
+                                      @csrf
+                                      <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();"><i class="ft-power"></i> Logout</a>
+                                  </form>
                                 </div>
                             </li>
                         </ul>
@@ -168,21 +251,19 @@
         <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('dashboard', 'dashboard.*') ? 'open' : '' }}">
                         <a href="index.html"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">Dashboard</a></li>
+                            <li class="{{ Route::is('dashboard') ? 'active' : '' }}"><a class="menu-item" href="{{ route('dashboard') }}">Dashboard</a></li>
                             <li><a class="menu-item" href="#">Analytics</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('admin.news.*', 'admin.category.*') ? 'open' : '' }}">
                         <a href="index.html"><i class="ft-airplay"></i><span class="menu-title">News</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">All News</a></li>
-                            <li><a class="menu-item" href="#">Add News</a></li>
-                            <li><a class="menu-item" href="#">Category</a></li>
-                            <li><a class="menu-item" href="#">Title</a></li>
+                            <li class="{{ Route::is('admin.news.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.news.index') }}">News</a></li>
+                            <li class="{{ Route::is('admin.category.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.category.index') }}">Category</a></li>
                         </ul>
                     </li>
 
@@ -214,18 +295,17 @@
                         <a href="#"><i class="ft-feather"></i><span class="menu-title">Appearance</span></a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="#">Menu</a></li>
-                            <li><a class="menu-item" href="#">Social Media</a></li>
+                            <li><a class="menu-item" href="{{ route('admin.socials') }}">Social Media</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
                         <a href="#"><i class="ft-user"></i><span class="menu-title">Users</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">All users</a></li>
-                            <li><a class="menu-item" href="#">Add new user</a></li>
+                            <li><a class="menu-item" href="{{ route('users') }}">All users</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a href="#"><i class="ft-settings"></i><span class="menu-title">Sections</span></a>
                         <ul class="menu-content">
@@ -236,7 +316,7 @@
                             <li><a class="menu-item" href="#">Maintenance</a></li>
                         </ul>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a href="#"><i class="ft-sliders"></i><span class="menu-title">Setting</span></a>
                         <ul class="menu-content">
@@ -268,18 +348,20 @@
         <script src="{{ asset('admin/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('admin/vendors/js/extensions/toastr.min.js') }}" type="text/javascript"></script>
         <!-- END VENDOR JS-->
-        
+
         <!-- BEGIN STACK JS-->
         <script src="{{ asset('admin/js/core/app-menu.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('admin/js/core/app.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('admin/js/scripts/customizer.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('admin/js/ajax_setup.js') }}" type="text/javascript"></script>
-        <!-- END STACK JS-->
-
         <!-- BEGIN PAGE LEVEL JS-->
         @yield('js_plugin')
         <!-- END PAGE LEVEL JS-->
-        
+        <script src="{{ asset('admin/js/core/app.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('admin/js/scripts/customizer.js') }}" type="text/javascript"></script>
+        <!-- END STACK JS-->
+
+        <script src="{{ asset('admin/js/custom.js') }}" type="text/javascript"></script>
+
         @yield('custom_js')
     </body>
 </html>
+
+@endif

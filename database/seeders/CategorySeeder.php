@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Admin\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 
 class CategorySeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+        Auth::loginUsingId(1);
         Category::create([
             'pl_name' => 'Bussienss',
             'sl_name' => 'ব্যাবসা',
@@ -42,7 +44,7 @@ class CategorySeeder extends Seeder
             'sl_slug' => 'খেলাধুলা',
         ]);
 
- 
+
 
     }
 }

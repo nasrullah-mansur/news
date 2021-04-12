@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
@@ -45,7 +44,7 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
-        $category = Category::where('id', $id)->firstOrFail();
-        $category->delete();
+        $category = $this->categoryService->delete($id);
+        return $category;
     }
 }

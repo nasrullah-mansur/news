@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 @section('css_plugin')
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/css/tables/datatable/datatables.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/css/tables/extensions/buttons.dataTables.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/css/tables/datatable/buttons.bootstrap4.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/css/extensions/sweetalert.css') }}">
+@include('components.datatable_css')
 @endsection
 @section('content')
 <section>
@@ -33,7 +30,9 @@
                                         <th>SL</th>
                                         <th>Name (ML)</th>
                                         <th>Name (SL)</th>
+                                        <th>News Count</th>
                                         <th style="max-width: 220px;">Created At</th>
+                                        <th style="max-width: 220px;">Created By</th>
                                         <th style="max-width: 140px; text-align: center;">Actions</th>
                                     </tr>
                                 </thead>
@@ -45,7 +44,9 @@
                                         <th>SL</th>
                                         <th>Name (ML)</th>
                                         <th>Name (SL)</th>
+                                        <th>News Count</th>
                                         <th style="max-width: 220px;">Created At</th>
+                                        <th style="max-width: 220px;">Created By</th>
                                         <th style="max-width: 140px; text-align: center;">Actions</th>
                                     </tr>
                                 </tfoot>
@@ -82,8 +83,7 @@
             <br>
             </div>
             <div class="modal-footer">
-            <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
-            value="close">
+            <input type="reset" class="btn btn-outline-secondary btn-lg" value="Reset">
             <button type="submit" id="add_category_btn" class="btn btn-outline-primary btn-lg add-category">Add Category</button>
             </div>
         </form>
@@ -122,8 +122,7 @@
 
             </div>
             <div class="modal-footer">
-            <input type="reset" class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
-            value="close">
+            <input type="reset" class="btn btn-outline-secondary btn-lg" value="Reset">
             <button type="submit" id="update_category_btn" class="btn btn-outline-primary btn-lg add-category">Update Category</button>
             </div>
         </form>
@@ -134,16 +133,7 @@
 @endsection
 
 @section('js_plugin')
-<script src="{{ asset('admin/vendors/js/tables/datatable/datatables.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/datatable/dataTables.buttons.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/datatable/buttons.bootstrap4.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/jszip.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/pdfmake.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/vfs_fonts.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/buttons.html5.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/buttons.print.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/tables/buttons.colVis.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('admin/vendors/js/extensions/sweetalert.min.js') }}" type="text/javascript"></script>
+@include('components.datatable_js')
 @endsection
 
 @section('custom_js')
@@ -159,7 +149,9 @@
             { data: "DT_RowIndex", searchable: false },
             { data: "pl_name" },
             { data: "sl_name" },
+            { data: "news_count" },
             { data: "created_at" },
+            { data: "created_by" },
             { data: "action" }
         ],
         createdRow: function (row) {
@@ -194,6 +186,7 @@
                 toastr.success("Category successfully added!", "WELL DONE");
             },
             error: function (error) {
+                console.log(error);
                 if(error.responseJSON.errors.pl_name){
                     DataErrors.pl_name.innerHTML = error.responseJSON.errors.pl_name[0];
                 }
@@ -306,19 +299,28 @@
                     $.ajax({
                         type: "POST",
                         url: `/admin/category/${delteteDataId}/delete`,
-                        success: function(){
-                            swal({
-                                icon: "success",
-                                title: "Deleted!",
-                                text: "Your imaginary file has been deleted.",
-                                timer: 2000,
-                                showConfirmButton: true,
-                            });
-                            table.DataTable().ajax.reload();
+                        success: function(response){
+                            console.log(response);
+                            if(response == 'category has news') {
+                                swal({
+                                    icon: "error",
+                                    title: "Sorry!",
+                                    text: "This Category has news",
+                                    showConfirmButton: true,
+                                });
+                            } else {
+                                swal({
+                                    icon: "success",
+                                    title: "Deleted!",
+                                    text: "Your imaginary file has been deleted.",
+                                    timer: 2000,
+                                    showConfirmButton: true,
+                                });
+                                table.DataTable().ajax.reload();
+                            }
+
                         }
                     });
-
-                    return;
                 } else {
                     swal({
                         icon: "error",

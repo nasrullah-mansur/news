@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +23,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(function (){
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+});
 
 require __DIR__.'/auth.php';
 
 
 // ADMIN ROUTES;
-Route::prefix('admin')->group(function (){
+Route::prefix('admin')->middleware('auth')->group(function (){
+
+    // USERS;
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users/get-users', [UserController::class, 'GetUsers'])->name('users.GetUsers');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
+    Route::post('/users/store', [UserController::class, 'store'])->name('new.user.store');
+    Route::post('/user/{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
+
     // CATEGORY;
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');
     Route::get('/category/get', [CategoryController::class, 'getCategories'])->name('categories.get');
@@ -34,4 +47,23 @@ Route::prefix('admin')->group(function (){
     Route::post('/category/{id}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
     Route::get('/category/{id}', [CategoryController::class, 'show'])->name('admin.category.show');
     Route::post('/category/update', [CategoryController::class, 'update'])->name('admin.category.update');
+
+    // NEWS;
+    Route::get('/news', [NewsController::class, 'index'])->name('admin.news.index');
+    Route::get('/news/all', [NewsController::class, 'GetAllNews'])->name('admin.news.all');
+    Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');
+    Route::post('/news/store', [NewsController::class, 'store'])->name('admin.news.store');
+    Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
+    Route::put('/news/{id}/update', [NewsController::class, 'update'])->name('admin.news.update');
+    Route::post('/news/{id}/delete', [NewsController::class, 'destroy'])->name('admin.news.destroy');
+    Route::get('/author/{id}/news', [NewsController::class, 'NewsByAuthor'])->name('admin.author.news');
+
+    // SOCIAL;
+    Route::get('/socials', [SocialController::class, 'index'])->name('admin.socials');
+    Route::get('/socials/all', [SocialController::class, 'getAllSocial'])->name('admin.social.all');
+    Route::post('/socials/store', [SocialController::class, 'store'])->name('admin.social.store');
+    Route::get('/socials/edit/{id}', [SocialController::class, 'edit'])->name('admin.social.edit');
+    Route::post('/socials/update', [SocialController::class, 'update'])->name('admin.social.update');
+    Route::post('/socials/{id}/delete', [SocialController::class, 'destroy'])->name('admin.social.delete');
+
 });
