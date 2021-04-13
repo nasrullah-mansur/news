@@ -38,7 +38,7 @@ class NewsController extends Controller
     {
         $news = $this->newsService->store($request);
         if ($news['success'] == true) {
-            return redirect()->route('admin.news.index')->with('store', '');
+            return redirect()->route('admin.news.index')->with('store', 'News Successfully added');
         }
     }
 
@@ -54,7 +54,7 @@ class NewsController extends Controller
         $newsData = News::where('id', $id)->firstOrFail();
         $news = $this->newsService->update($request, $newsData);
         if ($news['success'] == true) {
-            return redirect()->route('admin.news.index')->with('update', '');
+            return redirect()->route('admin.news.index')->with('update', 'News Successfully updated');
         }
     }
 

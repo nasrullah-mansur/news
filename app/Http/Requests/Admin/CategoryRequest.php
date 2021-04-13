@@ -35,18 +35,18 @@ class CategoryRequest extends FormRequest
                 if($this->request->get('sl_name') == $category->sl_name) {
                     return [
                         'pl_name' => 'required',
-                        'sl_name' => 'nullable'
+                        'sl_name' => 'required'
                     ];
                 } else {
                     return [
                         'pl_name' => 'required',
-                        'sl_name' => 'unique:categories'
+                        'sl_name' => 'required|unique:categories'
                     ];
                 }
             } else {
                 return [
                     'pl_name' => 'required|unique:categories',
-                    'sl_name' => 'unique:categories'
+                    'sl_name' => 'required|unique:categories'
                 ];
             }
 
@@ -56,11 +56,12 @@ class CategoryRequest extends FormRequest
             if($this->request->get('sl_name') == '') {
                 return [
                     'pl_name' => 'required|unique:categories',
+                    'sl_name' => 'required',
                 ];
             } else {
                 return [
                     'pl_name' => 'required|unique:categories',
-                    'sl_name' => 'unique:categories'
+                    'sl_name' => 'required|unique:categories'
                 ];
             }
 

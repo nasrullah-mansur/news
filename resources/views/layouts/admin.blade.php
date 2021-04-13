@@ -291,29 +291,27 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('admin.socials') ? 'open' : '' }}">
                         <a href="#"><i class="ft-feather"></i><span class="menu-title">Appearance</span></a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="#">Menu</a></li>
-                            <li><a class="menu-item" href="{{ route('admin.socials') }}">Social Media</a></li>
+                            <li class="{{ Route::is('admin.socials') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.socials') }}">Social Media</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('users', 'users.*', 'user.*') ? 'open' : '' }}">
                         <a href="#"><i class="ft-user"></i><span class="menu-title">Users</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="{{ route('users') }}">All users</a></li>
+                            <li class="{{ Route::is('users') ? 'active' : '' }}"><a class="menu-item" href="{{ route('users') }}">All users</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('admin.wizard.*', 'admin.footer.*', 'admin.translation.edit') ? 'open' : '' }}">
                         <a href="#"><i class="ft-settings"></i><span class="menu-title">Sections</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">Wizard</a></li>
-                            <li><a class="menu-item" href="#">Footer Section</a></li>
-                            <li><a class="menu-item" href="#">Subscriber Section</a></li>
-                            <li><a class="menu-item" href="#">Coming Soon</a></li>
-                            <li><a class="menu-item" href="#">Maintenance</a></li>
+                            <li class="{{ Route::is('admin.wizard.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.wizard.edit') }}">Wizard</a></li>
+                            <li class="{{ Route::is('admin.footer.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.footer.edit') }}">Footer</a></li>
+                            <li class="{{ Route::is('admin.translation.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.translation.edit') }}">Translation</a></li>
                         </ul>
                     </li>
 
@@ -352,15 +350,27 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         <!-- BEGIN STACK JS-->
         <script src="{{ asset('admin/js/core/app-menu.min.js') }}" type="text/javascript"></script>
         <!-- BEGIN PAGE LEVEL JS-->
-        @yield('js_plugin')
+
         <!-- END PAGE LEVEL JS-->
         <script src="{{ asset('admin/js/core/app.min.js') }}" type="text/javascript"></script>
+        @yield('js_plugin')
         <script src="{{ asset('admin/js/scripts/customizer.js') }}" type="text/javascript"></script>
         <!-- END STACK JS-->
+
 
         <script src="{{ asset('admin/js/custom.js') }}" type="text/javascript"></script>
 
         @yield('custom_js')
+
+        @if(Session::has('store'))
+        <script>
+            toastr.success("{{ Session::get('store') }}", "WELL DONE");
+        </script>
+        @elseif(Session::has('update'))
+        <script>
+            toastr.success("{{ Session::get('update') }}", "WELL DONE");
+        </script>
+        @endif
     </body>
 </html>
 

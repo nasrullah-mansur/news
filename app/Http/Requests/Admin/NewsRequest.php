@@ -31,7 +31,7 @@ class NewsRequest extends FormRequest
                 'pl_details' => 'required',
 
                 // SL;
-                'sl_headline' => 'nullable|unique:news',
+                'sl_headline' => 'required|unique:news',
 
                 'category' => 'required',
                 'image' => 'required|mimes:png,jpg,jpeg,gif',
@@ -53,7 +53,7 @@ class NewsRequest extends FormRequest
                             'pl_details' => 'required',
 
                             // SL;
-                            'sl_headline' => 'nullable',
+                            'sl_headline' => 'required',
 
                             'category' => 'required',
                             'image' => 'mimes:png,jpg,jpeg,gif',
@@ -69,7 +69,7 @@ class NewsRequest extends FormRequest
                             'pl_details' => 'required',
 
                             // SL;
-                            'sl_headline' => 'nullable|unique:news',
+                            'sl_headline' => 'required|unique:news',
 
                             'category' => 'required',
                             'image' => 'mimes:png,jpg,jpeg,gif',
@@ -86,7 +86,7 @@ class NewsRequest extends FormRequest
                         'pl_details' => 'required',
 
                         // SL;
-                        'sl_headline' => 'nullable',
+                        'sl_headline' => 'required',
 
                         'category' => 'required',
                         'image' => 'mimes:png,jpg,jpeg,gif',

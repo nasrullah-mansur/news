@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\Admin\TranslationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WizardController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -65,5 +68,17 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/socials/edit/{id}', [SocialController::class, 'edit'])->name('admin.social.edit');
     Route::post('/socials/update', [SocialController::class, 'update'])->name('admin.social.update');
     Route::post('/socials/{id}/delete', [SocialController::class, 'destroy'])->name('admin.social.delete');
+
+    // WIZARD;
+    Route::get('/wizard', [WizardController::class, 'edit'])->name('admin.wizard.edit');
+    Route::post('/wizard/update', [WizardController::class, 'update'])->name('admin.wizard.update');
+
+    // FOOTER;
+    Route::get('/footer', [FooterController::class, 'edit'])->name('admin.footer.edit');
+    Route::post('/footer/update', [FooterController::class, 'update'])->name('admin.footer.update');
+
+    // TRANSLATION;
+    Route::get('/translation', [TranslationController::class, 'edit'])->name('admin.translation.edit');
+    Route::post('/translation/update', [TranslationController::class, 'update'])->name('admin.translation.update');
 
 });

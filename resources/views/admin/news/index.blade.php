@@ -61,9 +61,6 @@
     </div>
 </section>
 
-
-
-
 @endsection
 @section('js_plugin')
 @include('components.datatable_js')
@@ -150,13 +147,5 @@
     });
 </script>
 
-@if(Session::has('store'))
-<script>
-    toastr.success("News successfully added!", "WELL DONE");
-</script>
-@elseif(Session::has('update'))
-<script>
-    toastr.success("News successfully updated!", "WELL DONE");
-</script>
-@endif
+
 @endsection

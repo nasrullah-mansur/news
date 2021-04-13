@@ -3,6 +3,10 @@
   padding: 1.4rem 0;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .invalid-massage {
   padding: 0 3px;
 }
@@ -77,4 +81,9 @@
 
 .form-group .card {
     margin-bottom: 0;
+}
+
+/* Select 2 */
+.select2-container {
+    width: 100% !important;
 }
