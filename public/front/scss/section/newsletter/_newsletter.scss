@@ -1,0 +1,92 @@
+/*-------------------------
+9.newsletter-area
+--------------------------*/ 
+.newsletter-area {
+     .newsletter-wrap {
+          padding: 60px 35px;
+          background: var(--primary-color);
+          border: 5px solid #EEEEEE;
+          border-radius: 15px;
+     }
+     .newsletter-text {
+          margin-bottom: 40px;
+          h2 {
+               margin-bottom: 15px;
+               font-size: 35px;
+               font-weight: 600;
+               text-transform: capitalize;
+               color: var(--white);
+          }
+          p {
+               margin-bottom: 0;
+               font-size: 16px;
+               line-height: 28px;
+               font-weight: 400;
+               color: var(--white);
+          }
+     }
+     .newsletter-form {
+          .form-control {
+               width: 309px;
+               height: 52px;
+               border-radius: 5px;
+               background: var(--white);
+               border: none;
+               font-family: $bodyFont;
+               font-size: 14px;
+               font-weight: 400;
+               color: #B5B5B5;
+               padding: 2px 15px;
+          }
+          .subscribe-btn {
+               width: 158px;
+               height: 52px;
+               border: none;
+               border-radius: 5px;
+               background: #3858F6;
+               color: var(--white);
+               transition: $transition;
+               &:hover {
+                    background: var(--white);
+                    color: var(--primary-color);
+               }
+          }
+     }
+}
+@media (max-width: 991px) {
+     .newsletter-area .newsletter-image {
+          text-align: center;
+          margin-top: 30px;
+     }
+     .newsletter-area .newsletter-text {
+          text-align: center;
+     }
+     .newsletter-area .form-inline {
+          justify-content: center;
+     }
+}
+@media (max-width: 767px) {
+     .newsletter-area .newsletter-form .form-control {
+          width: 100%;
+          margin-bottom: 20px;
+     }
+     .newsletter-area .form-inline .form-group {
+          margin-bottom: 0;
+     }
+     .newsletter-area .form-inline {
+         display: block;
+         text-align: center;
+     }
+}
+@media (max-width: 480px) {
+     .newsletter-area .newsletter-text h2 {
+          font-size: 26px;
+     }
+     .newsletter-area .newsletter-text p {
+          font-size: 14px;
+          line-height: 26px;
+     }
+     .newsletter-area .newsletter-wrap {
+          padding: 50px 15px;
+     }
+}

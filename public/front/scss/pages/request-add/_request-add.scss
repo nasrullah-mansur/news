@@ -1,0 +1,70 @@
+.request-add-form {
+     .form-title {
+          margin-bottom: 40px;
+          font-size: 30px;
+          font-weight: 500;
+          color: #424242;
+     }
+     .form-group {
+          margin-bottom: 25px;
+          .form-control {
+               width: 100%;
+               height: 60px;
+               border: 1px solid #E9DBDB;
+               border-radius: 6px;
+               padding: 5px 15px;
+               font-family: $bodyFont;
+               font-size: 16px;
+               font-weight: 400;
+               color: #B5B5B5;
+          }
+          .message-box {
+               padding: 15px;
+               height: 150px;
+          }
+          .add-banenr-uplode {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               justify-content: center;
+               border: 1px dashed #E9DBDB;
+               padding: 15px;
+               height: 150px;
+               border-radius: 6px;
+               margin: 0;
+               cursor: pointer;
+               img {
+                    width: 40px;
+                    height: 40px;
+               }
+               .uplode-label-text {
+                    margin: 10px 0;
+                    display: block;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 1;
+                    color: #B5B5B5;
+               }
+               .choose-btn {
+                    width: 104px;
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: var(--white);
+                    background: var(--primary-color);
+                    text-align: center;
+                    border-radius: 5px;
+               }
+          }
+          .form-control-file {
+               display: none;
+          }
+     }
+}
+
+@media (max-width: 480px) {
+     .request-add-form .form-title {
+          font-size: 26px;
+     }
+}

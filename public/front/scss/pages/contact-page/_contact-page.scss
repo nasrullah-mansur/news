@@ -1,0 +1,65 @@
+.contact-page {
+     .contact-info {
+          .contact-info-top {
+               margin-bottom: 30px;
+               h2 {
+                    margin-bottom: 15px;
+                    font-size: 30px;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    color: #424242;
+               }
+               p {
+                    margin: 0;
+                    font-size: 16px;
+                    line-height: 28px;
+                    color: #B5B5B5;
+               }
+          }
+          .contact-info-list {
+               .single-info {
+                    margin-bottom: 30px;
+                    h4 {
+                         margin-bottom: 10px;
+                         font-size: 18px;
+                         font-weight: 500;
+                         text-transform: capitalize;
+                         color: #424242;
+                    }
+                    p {
+                         margin: 0;
+                         font-size: 16px;
+                         font-weight: 400;
+                         color: #B5B5B5;
+                    }
+                    span {
+                         display: block;
+                         font-size: 16px;
+                         font-weight: 400;
+                         color: #B5B5B5;
+                    }
+                    a {
+                         font-size: 16px;
+                         font-weight: 400;
+                         color: #3943B7;
+                    }
+               }
+          }
+     }
+}
+.map-area {
+     .google-map {
+          overflow: hidden;
+          width: 100%;
+          height: 550px;
+          border-radius: 15px;
+     }
+}
+@media (max-width: 480px) {
+     .contact-page .contact-info .contact-info-top h2 {
+          font-size: 26px;
+     }
+     .map-area .google-map {
+          height: 400px;
+     }
+}

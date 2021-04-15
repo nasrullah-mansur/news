@@ -1,0 +1,119 @@
+/*-------------------------
+15.accordion
+--------------------------*/
+.accordion {
+     .card {
+          margin-bottom: 35px;
+          border: none;
+          background: #FFFFFF;
+          box-shadow: 0px 0px 45px rgba(197, 183, 183, 0.25);
+          border-radius: 10px !important;
+          .card-header {
+               padding: 0;
+               border: none;
+               .btn-link {
+                    position: relative;
+                    padding: 0;
+                    padding: 0;
+                    border: none;
+                    background: var(--white);
+                    padding: 20px;
+                    padding-left: 80px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #424242;
+                    text-decoration: none;
+                    .qicon {
+                         position: absolute;
+                         left: 20px;
+                         top: 50%;
+                         transform: translateY(-50%);
+                         display: inline-block;
+                         margin-right: 15px;
+                         width: 45px;
+                         height: 45px;
+                         line-height: 45px;
+                         background: var(--primary-color);
+                         color: var(--white);
+                         font-size: 22px;
+                         font-weight: 500;
+                         text-align: center;
+                         border-radius: 5px;
+                    }
+                    &:before {
+                         position: absolute;
+                         content: "\f107";
+                         right: 20px;
+                         top: 21px;
+                         font-family: "Font Awesome 5 free";
+                         font-weight: 900;
+                         color: #3943B7;
+                    }
+               }
+          }
+          .card-body {
+               padding: 0 60px 30px 85px;
+               .anser-text {
+                    position: relative;
+                    padding-left: 60px;
+                    .ans-icon {
+                         position: absolute;
+                         left: 0;
+                         top: 0;
+                         display: inline-block;
+                         margin-right: 15px;
+                         width: 45px;
+                         height: 45px;
+                         line-height: 45px;
+                         background: #F0AC0E;
+                         color: var(--white);
+                         font-size: 22px;
+                         font-weight: 500;
+                         text-align: center;
+                         border-radius: 5px;
+                    }
+                    p {
+                         margin: 0;
+                    }
+               }
+          }
+     }
+}
+@media (max-width: 991px) {
+     .accordion .card .card-body {
+          padding: 20px 20px 30px 20px;
+     }
+}
+@media (max-width: 480px) {
+     .accordion .card .card-header .btn-link {
+          padding: 20px 10px;
+          padding-left: 50px;
+          font-size: 14px;
+     }
+     .accordion .card .card-header .btn-link .qicon {
+          margin-right: 0;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 18px;
+          left: 10px;
+     }
+     .accordion .card .card-body .anser-text .ans-icon {
+          margin-right: 0;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          font-size: 18px;
+          left: 0;
+     }
+     .accordion .card .card-body {
+          padding: 10px 10px 20px 10px;
+     }
+     .accordion .card .card-body .anser-text {
+          padding-left: 40px;
+     }
+     .accordion .card .card-body .anser-text p {
+          font-size: 14px;
+          line-height: 24px;
+     }
+}

@@ -1,0 +1,175 @@
+/*-------------------------
+16.sidebar
+--------------------------*/
+.sidebar-area {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 250px;
+     height: 100vh;
+     padding: 30px 15px;
+     background: var(--white);
+     box-shadow: 30px 0 60px rgba(0, 0, 0, .05);
+     z-index: 5;
+     margin-left: -250px;
+     transition: $transition;
+     overflow-y: scroll;
+     -ms-overflow-style: none;  
+     scrollbar-width: none; 
+     &::-webkit-scrollbar {
+          display: none;
+     }
+      
+     &.is-active {
+          margin-left: 0;
+     }
+     .language-dropdown {
+          .dropdown-toggle {
+              padding: 0;
+              border:none;
+              background: transparent;
+              font-size: 16px;
+              font-weight: 400;
+              text-transform: capitalize;
+              color: #242121;
+              .flag {
+                  margin-right: 10px;
+                  width: 36px;
+                  height: 36px;
+                  border-radius: 50%;
+              }
+          }
+          .dropdown-menu {
+              width: 125px;
+              border: none;
+              box-shadow: 15px 0 30px rgba(0, 0, 0, .05);
+              a {
+                  font-size: 16px;
+                  font-weight: 400;
+                  text-transform: capitalize;
+                  color: #242121;
+              }
+          }
+     }
+     .follow-area {
+          margin: 15px 0;
+          ul {
+              margin: 0;
+              padding: 0;
+              li {
+                  display: inline-block;
+                  list-style: none;
+                  margin-left: 15px;
+                  font-size: 16px;
+                  font-weight: 400;
+                  text-transform: capitalize;
+                  color: #444444;
+                  &:first-child {
+                      margin-left: 0;
+                  }
+                  a {
+                      font-size: 16px;
+                      color: #807979;
+                      transition: $transition;
+                      &:hover {
+                          color: var(--primary-color);
+                      }
+                  }
+              }
+          }
+     }
+     .nav-tabs {
+          border-bottom: none;
+          .nav-item {
+               margin: 0;
+               width: 50%;
+               .nav-link {
+                    padding: 0;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 0;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    color: #424242;
+                    text-align: center;
+                    &.active {
+                         background: var(--primary-color);
+                         color: var(--white)
+                    }
+               }
+          }
+     }
+     .tab-content {
+          padding-top: 30px;
+     }
+     .mobile-menu {
+          ul {
+               margin: 0;
+               padding: 0;
+               li {
+                   display: block;
+                   list-style: none;
+                   padding: 15px 0;
+                   border-bottom: 1px solid #EBEBEB;
+                   &:last-child {
+                    border-bottom: none;
+                   }
+                   a {
+                       display: block;
+                       font-size: 16px;
+                       line-height: 1;
+                       font-weight: 500;
+                       text-transform: capitalize;
+                       color: #444444;
+                       transition: $transition;
+                       &:hover {
+                         color: var(--primary-color);
+                       }
+                   }
+                   &.current-menu-item {
+                       a {
+                         color: var(--primary-color);
+                       }
+                   }
+               }
+           }
+     }
+     .catagory-list {
+          li {
+              padding: 15px 0;
+              border-bottom: 1px solid #EBEBEB;
+              &:last-child {
+                  border-bottom: none;
+              }
+              a {
+                  position: relative;
+                  padding-left: 20px;
+                  display: block;
+                  font-size: 14px;
+                  font-weight: 400;
+                  text-transform: capitalize;
+                  color: #424242;
+                  line-height: 1;
+                  transition: $transition;
+                  &:before {
+                      position: absolute;
+                      content: '';
+                      width: 8px;
+                      height: 8px;
+                      border-radius: 2px;
+                      background: currentColor;
+                      left: 0;
+                      top: 3px;
+                  }
+                  .catagory-count {
+                      float: right;
+                  }
+                  &:hover {
+                      color: var(--primary-color);
+                  }
+              }
+          }
+          
+      }
+}

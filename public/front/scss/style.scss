@@ -1,0 +1,72 @@
+/*
+------------- Table of content ----------------
+
+Template Name: Newsly Responsive  HTML5 Template
+Template URI: http://zainiklab.com
+Description: newsly Responsive  HTML5 Template
+Author: Gobinda Sarkar
+Author URI: http://newsly.com
+Version: 1.0
+
+---------------------- common content ----------
+1.body reset content
+2.header area
+3.footer area
+4.hero-section
+5.section-header
+6.follow-area
+7.primary-tabs
+8.post-style
+9.newsletter-area
+10.add-area
+11.pagination
+12.breadcrumb
+13.button
+14.contact-form
+15.accordion
+16.sidebar
+17.sidebar-widget
+18.comments
+
+
+*/
+
+
+// variable
+@import "variable/_variable.scss";
+
+// mixin
+@import "mixin/_mixin.scss";
+
+// body reset content
+@import "reset/_predefine.scss";
+
+// component content
+@import "section/header/header";
+@import "section/footer/footer";
+@import "section/hero-section/hero-section";
+@import "section/section-header/section-header";
+@import "section/follow-area/follow-area";
+@import "section/primary-tabs/primary-tabs";
+@import "section/post-style/grid-post";
+@import "section/post-style/list-post";
+@import "section/post-style/video-post";
+@import "section/newsletter/newsletter";
+@import "section/add-area/add-area";
+@import "section/pagination/pagination";
+@import "section/breadcrumb/breadcrumb";
+@import "section/button/button";
+@import "section/contact-form/contact-form";
+@import "section/accordion/accordion";
+@import "section/sidebar/sidebar";
+@import "section/sidebar-widget/sidebar-widget";
+@import "section/comments/comments";
+@import "section/comments/comment-post";
+
+// page content
+@import "pages/search-page/search-page";
+@import "pages/request-add/request-add";
+@import "pages/contact-page/contact-page";
+@import "pages/privacy-policy/privacy-policy";
+@import "pages/cookies/cookies";
+@import "pages/single-blog-page/single-blog-page";

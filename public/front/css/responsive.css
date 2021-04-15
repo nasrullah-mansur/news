@@ -1,0 +1,56 @@
+/* Normal desktop :992px. */
+
+@media (min-width: 992px) and (max-width: 1200px) {
+	
+}
+
+@media (max-width: 1199px) {
+    
+}
+
+/* Tablet desktop :768px. */
+@media (max-width: 991px) {
+	.section{
+          padding: 60px 0
+     }
+     .section-top{
+          padding: 60px 0 0
+     }
+     .section-bottom{
+          padding: 0 0 60px 0
+     }
+     .pb-90 {
+         padding-bottom: 30px;
+     }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+
+
+/*  Small mobile :320px. */
+@media  (max-width: 767px) {
+	.section{
+          padding: 50px 0
+     }
+     .section-top{
+          padding: 50px 0 0
+     }
+     .section-bottom{
+          padding: 0 0 50px 0
+     }
+     .pb-90 {
+         padding-bottom: 20px;
+     }
+}
+@media (min-width: 320px) and (max-width: 767px) {
+	
+}
+
+
+/* Large Mobile :577px. */
+
+@media only screen and (min-width: 577px) and (max-width: 767px) {
+	
+}
+

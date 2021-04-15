@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             WizardSeeder::class,
             FooterSeeder::class,
+            TranslationSeeder::class,
+            ThemeSeeder::class,
         ]);
     }
 }

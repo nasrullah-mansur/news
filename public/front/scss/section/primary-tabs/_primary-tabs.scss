@@ -1,0 +1,71 @@
+/*-------------------------
+7.primary-tabs
+--------------------------*/
+.tab-menu {
+     display: inline-block;
+     .nav-tabs {
+          margin: 0;
+          padding: 0;
+          border: none;
+          margin-top: 10px;
+          .nav-item {
+               border: none;
+               margin-left: 15px;
+               &:first-child {
+                    margin-left: 0;
+               }
+               .nav-link {
+                    position: relative;
+                    border: none;
+                    background: transparent;
+                    padding: 0;
+                    font-size: 16px;
+                    font-weight: 400;
+                    text-transform: capitalize;
+                    color: #424242;
+                    transition: $transition;
+                    line-height: 1;
+                    &::before {
+                         position: absolute;
+                         content: '';
+                         width: 0;
+                         height: 1px;
+                         background: var(--primary-color);
+                         bottom: -36px;
+                         left: 0;
+                         opacity: 0;
+                         transition: $transition;
+                    }
+                    &:hover {
+                         color: var(--primary-color);
+                    }
+                    &.active {
+                         color: var(--primary-color);
+                         &::before {
+                              width: 100%;
+                              opacity: 1;
+                         }
+                    }
+               }
+          }
+     }
+}
+
+@media (max-width: 1199px) {
+     .tab-menu .nav-tabs .nav-item .nav-link::before {
+          bottom: -32px;
+     }
+}
+@media (max-width: 767px) {
+     .tab-menu {
+          margin-top: 15px;
+     }
+}
+@media (max-width: 375px) {
+     .tab-menu .nav-tabs .nav-item {
+          margin-left: 10px;
+     }
+     .tab-menu .nav-tabs .nav-item .nav-link {
+          font-size: 14px;
+     }
+}

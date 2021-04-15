@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\TranslationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -36,12 +38,21 @@ require __DIR__.'/auth.php';
 // ADMIN ROUTES;
 Route::prefix('admin')->middleware('auth')->group(function (){
 
+    // THEME;
+    Route::get('/theme/setting', [ThemeController::class, 'edit'])->name('theme.edit');
+    Route::post('/theme/update', [ThemeController::class, 'update'])->name('theme.update');
+
     // USERS;
     Route::get('/users', [UserController::class, 'index'])->name('users');
     Route::get('/users/get-users', [UserController::class, 'GetUsers'])->name('users.GetUsers');
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
     Route::post('/users/store', [UserController::class, 'store'])->name('new.user.store');
     Route::post('/user/{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
+
+    // PROFILE;
+    Route::get('/profile/{name}',[ProfileController::class, 'profile'])->name('view.profile');
+    Route::get('/password/reset',[ProfileController::class, 'password_reset'])->name('my.password.reset');
+    Route::post('/password/reset',[ProfileController::class, 'password_update'])->name('my.password.update');
 
     // CATEGORY;
     Route::get('/category', [CategoryController::class, 'index'])->name('admin.category.index');

@@ -179,21 +179,19 @@ class NewsService
         $newsData['video'] = $request->video;
         $newsData['tags'] = implode(',' ,$request->tag);
 
-        $news_update = $news->update($newsData);
-
         if($request->has('image')) {
             $image = Image::where('news_id', $news->id)->firstOrFail();
-            $image->delete();
-            $image = new Image();
-            $image->image_one = ResizeImageUpload($request->image, 'news/image_one/', null, 1110, 495);
-            $image->image_two = ResizeImageUpload($request->image, 'news/image_two/', null, 625, 265);
-            $image->image_three = ResizeImageUpload($request->image, 'news/image_three/', null, 340, 200);
-            $image->image_four = ResizeImageUpload($request->image, 'news/image_four/', null, 190, 160);
+            $image->image_one = ResizeImageUpload($request->image, 'news/image_one/', $image->image_one, 1110, 495);
+            $image->image_two = ResizeImageUpload($request->image, 'news/image_two/', $image->image_two, 625, 265);
+            $image->image_three = ResizeImageUpload($request->image, 'news/image_three/', $image->image_three, 340, 200);
+            $image->image_four = ResizeImageUpload($request->image, 'news/image_four/', $image->image_four, 190, 160);
 
             $image->image_alt = $request->image_alt;
             $image->news_id = $news->id;
             $image->save();
         }
+
+        $news->update($newsData);
 
 
         if ($news) {

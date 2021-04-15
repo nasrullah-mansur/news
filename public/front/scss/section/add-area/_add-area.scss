@@ -1,0 +1,24 @@
+/*-------------------------
+10.add-area
+--------------------------*/
+.add-area {
+     .single-add {
+          overflow: hidden;
+          border-radius: 15px;
+          &:hover {
+               img {
+                    transform: scale(1.1);
+               }
+          }
+          img {
+               transition: $transition;
+               width: 100%;
+               height: auto;
+          }
+     }
+}
+@media (max-width: 767px) {
+     .big-add {
+          margin-bottom: 30px;
+     }
+}

@@ -235,7 +235,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                   <span class="user-name">John Doe</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                  <a class="dropdown-item" href="#"><i class="ft-user"></i> My Profile</a>
+                                  <a class="dropdown-item" href="{{ route('view.profile', Auth::user()->name ) }}"><i class="ft-user"></i> My Profile</a>
                                   <form action="{{ route('logout') }}" method="POST">
                                       @csrf
                                       <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();"><i class="ft-power"></i> Logout</a>
@@ -283,11 +283,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('view.profile') ? 'open' : '' }}">
                         <a href="#"><i class="ft-unlock"></i><span class="menu-title">Authentication</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">My Profile</a></li>
-                            <li><a class="menu-item" href="#">Change Password</a></li>
+                            <li class="{{ Route::is('view.profile') ? 'active' : '' }}"><a class="menu-item" href="{{ route('view.profile', user_name_slug(Auth::user()->name) ) }}">My Profile</a></li>
+                            <li class="{{ Route::is('my.password.reset') ? 'active' : '' }}"><a class="menu-item" href="{{ route('my.password.reset') }}">Change Password</a></li>
                         </ul>
                     </li>
 
@@ -315,12 +315,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('theme.edit') ? 'open' : '' }}">
                         <a href="#"><i class="ft-sliders"></i><span class="menu-title">Setting</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">App Setting</a></li>
-                            <li><a class="menu-item" href="#">Role & Permission</a></li>
-                            <li><a class="menu-item" href="#">Email Setting</a></li>
+                            <li class="{{ Route::is('theme.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('theme.edit') }}">Theme Setting</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -369,6 +367,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         @elseif(Session::has('update'))
         <script>
             toastr.success("{{ Session::get('update') }}", "WELL DONE");
+        </script>
+        @elseif(Session::has('error'))
+        <script>
+            toastr.success("{{ Session::get('error') }}", "SORRY");
         </script>
         @endif
     </body>

@@ -1,0 +1,114 @@
+/*-------------------------
+6.follow-area
+--------------------------*/
+.follow-area {
+     .followers-count {
+          font-size: 18px;
+          font-weight: 500;
+          color: #424242;
+          .icon {
+               color: #FD183D;
+          }
+          a {
+               color: var(--primary-color);
+               transition: $transition;
+               &:hover {
+                    color: var(--hover-color);
+               }
+          }
+     }
+     .single-follower {
+          display: flex;
+          align-items: center;
+          margin-bottom: 30px;
+          width: 100%;
+          height: 70px;
+          background: var(--primary-color);
+          color: var(--white);
+          border-radius: 5px;
+          padding: 5px 15px ;
+          font-size: 20px;
+          font-weight: 500;
+          text-transform: capitalize;
+          transition: $transition;
+          
+          .icon {
+               display: inline-block;
+               margin-right: 15px;
+               width: 40px;
+               height: 40px;
+               line-height: 42px;
+               border-radius: 50%;
+               text-align: center;
+               background: var(--white);
+               color: var(--primary-color);
+               font-size: 20px;
+          }
+          &.facebook-follower {
+               background: #4281FF;
+               .icon {
+                    color: #4281FF; 
+               }
+          }
+          &.twitter-follower {
+               background: #42C0F5;
+               .icon {
+                    color: #42C0F5; 
+               }
+          }
+          &.youtube-follower {
+               background: #EF5043;
+               .icon {
+                    color: #EF5043; 
+               }
+          }
+          &.vimeo-follower {
+               background: #37C7EA;
+               .icon {
+                    color: #37C7EA; 
+               }
+          }
+          &.dribbble-follower {
+               background: #F7679D;
+               .icon {
+                    color: #F7679D; 
+               }
+          }
+          &.instagram-follower {
+               background: #C23785;
+               .icon {
+                    color: #C23785; 
+               }
+          }
+          &.behance-follower {
+               background: #1B7BFD;
+               .icon {
+                    color: #1B7BFD; 
+               }
+          }
+          &.google-follower {
+               background: #FF8032;
+               .icon {
+                    color: #FF8032; 
+               }
+          }
+          &:hover {
+               color: var(--white);
+               background: var(--hover-color);
+          }
+          
+     }
+}
+@media (max-width: 1199px) {
+     .follow-area .single-follower {
+          font-size: 14px;
+     }
+     .follow-area .single-follower .icon {
+          margin-right: 10px;
+     }
+}
+@media (max-width: 575px) {
+     .follow-area .followers-count {
+          margin-top: 15px;
+     }
+}

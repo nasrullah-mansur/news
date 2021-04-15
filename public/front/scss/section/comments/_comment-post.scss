@@ -1,0 +1,86 @@
+.comment-post {
+     .comments-list {
+          .single-comment {
+               margin-top: 35px;
+               &:last-child {
+                    margin-bottom: 0;
+               }
+               .comments-avatar {
+                    border-radius: 0 15px 0 15px;
+                    width: 100px;
+                    height: 95px;
+                    margin-right: 30px;
+               }
+               .avatar-info {
+                    margin-bottom: 10px;
+                    column-gap: 60px;
+                    flex-flow: row wrap;
+                    .avatar-name {
+                         font-size: 16px;
+                         font-weight: 500;
+                         text-transform: capitalize;
+                         color: #424242;
+                    }
+                    .comment-time {
+                         font-size: 16px;
+                         font-weight: 400;
+                         color: #B0B0B0;
+                    }
+                    .reply {
+                         font-size: 16px;
+                         color: #B5B5B5;
+                         transition: $transition;
+                         &:hover {
+                              color: var(--primary-color);
+                         }
+                    }
+               }
+               .comment-text {
+                    margin: 0;
+                    font-size: 16px;
+                    line-height: 28px;
+                    color: #B5B5B5;
+               }
+               .children {
+                    padding-left: 130px;
+               }
+          }
+     }
+}
+@media (max-width: 1199px) {
+     .comment-post .comments-list .single-comment .comments-avatar {
+          margin-right: 15px;
+     }
+     .comment-post .comments-list .single-comment .children {
+          padding-left: 100px;
+     }
+}
+@media (max-width: 767px) {
+     .comment-post .comments-list .single-comment .comments-avatar {
+          width: 60px;
+          height: auto;
+     }
+     .comment-post .comments-list .single-comment .comment-text {
+          font-size: 14px;
+          line-height: 20px;
+     }
+     .comment-post .comments-list .single-comment .children {
+          padding-left: 30px;
+     }
+     .comment-post .comments-list .single-comment .avatar-info {
+          margin-bottom: 5px;
+          -webkit-column-gap: 60px;
+          column-gap: 10px;
+     }
+}
+@media (max-width: 414px) {
+     .comment-post .comments-list .single-comment .avatar-info .avatar-name {
+          font-size: 14px;
+     }
+     .comment-post .comments-list .single-comment .avatar-info .comment-time {
+          font-size: 14px;
+     }
+     .comment-post .comments-list .single-comment .children {
+          padding-left: 15px;
+     }
+}

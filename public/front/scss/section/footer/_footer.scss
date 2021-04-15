@@ -1,0 +1,235 @@
+/*-------------------------
+3.footer area
+--------------------------*/
+.footer-area {
+     background: #1F2024;
+     .footer-top {
+          padding-top: 70px;
+          .social-media {
+               margin: 0;
+               padding: 0;
+               li {
+                    display: inline-block;
+                    list-style: none;
+                    margin-left: 30px;
+                    &:first-child {
+                         margin-left: 0;
+                    }
+                    a {
+                         display: inline-block;
+                         font-size: 16px;
+                         font-weight: 500;
+                         text-transform: capitalize;
+                         color: var(--white);
+                         transition: $transition;
+                         &:hover {
+                              color: var(--primary-color);
+                         }
+                    }
+               }
+          }
+     }
+     .widget-area {
+          padding: 45px 0 30px 0;
+          .single-widget {
+               margin-bottom: 30px;
+               .widget-title {
+                    margin-bottom: 20px;
+                    font-size: 22px;
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    color: var(--whtie);
+               }
+          }
+          .most-viwed-post {
+               ul {
+                    margin: 0;
+                    padding: 0;
+                    li {
+                         display: block;
+                         position: relative;
+                         list-style: none;
+                         margin-bottom: 15px;
+                         padding-left: 30px;
+                         &:after {
+                              position: absolute;
+                              content: '';
+                              width: 16px;
+                              height: 16px;
+                              border-radius: 16px;
+                              background: #27292D;
+                              border: 3px solid #1B1D1F;
+                              top: 6px;
+                              left: 0;
+                         }
+                         &:last-child {
+                              margin-bottom: 0;
+                         }
+                         .date {
+                              display: block;
+                              font-size: 14px;
+                              font-weight: 400;
+                              color: var(--white);
+                         }
+                         a {
+                              display: block;
+                              font-size: 16px;
+                              font-weight: 500;
+                              color: var(--white);
+                              text-transform: capitalize;
+                              transition: $transition;
+                              &:hover {
+                                   color: var(--primary-color);
+                              }
+                         }
+                    }
+               }
+          }
+          .widget-menu {
+               ul {
+                    margin: 0;
+                    padding: 0;
+                    li {
+                         display: block;
+                         list-style: none;
+                         margin-bottom: 15px;
+                         &:last-child {
+                              margin-bottom: 0;
+                         }
+                         a {
+                              display: inline-block;
+                              font-size: 16px;
+                              font-weight: 400;
+                              text-transform: capitalize;
+                              color: var(--white);
+                              transition: $transition;
+                              &:hover {
+                                   color: var(--primary-color);
+                              }
+                         }
+                    }
+               }
+          }
+          .fashsion-news {
+               ul {
+                    display: flex;
+                    flex-flow: row wrap;
+                    column-gap: 15px;
+                    row-gap: 20px;
+                    margin: 0;
+                    padding: 0;
+                    li {
+                         overflow: hidden;
+                         border-radius: 5px;
+                         &:hover {
+                              img {
+                                   transform: scale(1.1);
+                              }
+                         }
+                         a {
+                              display: inline-block;
+                              img {
+                                   width: 100%;
+                                   height: auto;
+                                   transition: $transition;
+                              }
+                         }
+                    }
+               }
+          }
+     }
+     .footer-bottom {
+          background: #161619;
+          padding: 22px 0;
+          .copyright-area {
+               p {
+                    margin: 0;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: var(--whtie);
+                    a {
+                         font-weight: 500;
+                         color: var(--white);
+                         transition: $transition;
+                         &:hover {
+                              color: var(--primary-color);
+                         }
+                    }
+               }
+          }
+          .footer-menu {
+               a  {
+                    display: inline-block;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: var(--whtie);
+                    transition: $transition;
+                    &:hover {
+                         color: var(--primary-color);
+                    }
+               }
+          }
+     }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+     .footer-area .widget-area .single-widget .widget-title {
+          font-size: 20px;
+     }
+	.footer-area .widget-area .most-viwed-post ul li a {
+          font-size: 14px;
+     }
+     .footer-area .widget-area .most-viwed-post ul li .date {
+          font-size: 13px;
+     }
+     .footer-area .widget-area .widget-menu ul li a {
+          font-size: 14px;
+     }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+     .footer-area .widget-area .fashsion-news ul li {
+          width: 44%;
+     }
+     .footer-area .footer-top .social-media li a {
+          font-size: 14px;
+     }
+     .footer-area .footer-top .social-media li {
+          margin-left: 15px;
+     }
+}
+@media (max-width: 575px) {
+     .footer-area .footer-top .social-media {
+          margin-top: 15px;
+     }
+}
+@media (max-width: 480px) {
+     .footer-area .footer-top .social-media li a {
+          font-size: 14px;
+     }
+     .footer-area .footer-top .social-media li {
+          margin-left: 15px;
+     }
+}
+@media (max-width: 375px) {
+     .footer-area .footer-top .social-media li a {
+          font-size: 13px;
+     }
+     .footer-area .footer-top .social-media li {
+          margin-left: 5px;
+     }
+     .footer-area .widget-area .single-widget .widget-title {
+          font-size: 20px;
+     }
+	.footer-area .widget-area .most-viwed-post ul li a {
+          font-size: 14px;
+     }
+     .footer-area .widget-area .most-viwed-post ul li .date {
+          font-size: 13px;
+     }
+     .footer-area .widget-area .widget-menu ul li a {
+          font-size: 14px;
+     }
+     .footer-area .widget-area .widget-menu ul li {
+          margin-bottom: 10px;
+     }
+}

@@ -1,0 +1,64 @@
+/*-------------------------
+12.breadcrumb
+--------------------------*/
+.breadcrumb-area {
+     padding: 160px 0;
+     background: #F5F6FE;
+     .page-title {
+          margin-bottom: 20px;
+          font-size: 30px;
+          font-weight: 500;
+          text-transform: capitalize;
+          color: #424242;
+     }
+     .breadcrumb-page {
+          margin: 0;
+          padding: 0;
+          li {
+               display: inline-block;
+               position: relative;
+               margin: 0 5px;
+               list-style: none;
+               font-size: 16px;
+               font-weight: 500;
+               text-transform: capitalize;
+               color: #3943B7;
+               a {
+                    color: #424242;
+                    transition: $transition;
+                    &:hover {
+                         color: var(--hover-color);
+                    }
+               }
+               &:last-child {
+                    &::before {
+                         display: none;
+                    }
+               }
+               &:before {
+                    position: absolute;
+                    content: '/';
+                    left: calc(100% + 5px);
+                    top: 0;
+                    color: currentColor;
+               }
+          }
+     }
+}
+@media (max-width:991px) {
+     .breadcrumb-area {
+          padding: 120px 0;
+     }
+}
+@media (max-width:575px) {
+     .breadcrumb-area {
+          padding: 100px 0;
+     }
+     .breadcrumb-area .page-title {
+          margin-bottom: 15px;
+          font-size: 26px;
+     }
+     .breadcrumb-area .breadcrumb-page li {
+          font-size: 14px;
+     }
+}
