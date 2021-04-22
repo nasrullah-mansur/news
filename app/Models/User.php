@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Profile;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -44,5 +45,11 @@ class User extends Authenticatable
     public function getNameAttribute($value)
     {
         return ucwords($value);
+    }
+
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

@@ -148,10 +148,4 @@
         allowClear: false
     });
 </script>
-
-@if(Session::has('update'))
-<script>
-    toastr.success("Successfully updated!", "WELL DONE");
-</script>
-@endif
 @endsection

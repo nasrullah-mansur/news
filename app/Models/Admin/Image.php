@@ -45,6 +45,8 @@ class Image extends Model
         $this->attributes['image_four'] = 'news/image_four/' . $value;
     }
 
+
+
     protected static function boot()
     {
         parent::boot();

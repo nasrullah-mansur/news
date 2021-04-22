@@ -14,6 +14,8 @@ class Theme extends Model
         'logo',
         'footer_logo',
         'pl_flag',
+        'pl_name',
+        'sl_name',
         'sl_flag',
         'favicon',
         'google_map',

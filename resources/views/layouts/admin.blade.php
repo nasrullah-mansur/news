@@ -231,11 +231,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <li class="dropdown dropdown-user nav-item">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false">
                                   <span class="avatar avatar-online">
-                                    <img src="{{ asset('admin/images/portrait/small/avatar-s-1.png') }}" alt="avatar"><i></i></span>
-                                  <span class="user-name">John Doe</span>
+                                    <img src="{{ AuthUserProfileInfo()->profile == null ? asset('admin/images/portrait/small/avatar-s-1.png') : asset(AuthUserProfileInfo()->profile) }}" alt="avatar"><i></i></span>
+                                  <span class="user-name">{{ auth()->user()->name }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                  <a class="dropdown-item" href="{{ route('view.profile', Auth::user()->name ) }}"><i class="ft-user"></i> My Profile</a>
+                                  <a class="dropdown-item" href="{{ route('view.profile', user_name_slug(Auth::user()->name) ) }}"><i class="ft-user"></i> My Profile</a>
                                   <form action="{{ route('logout') }}" method="POST">
                                       @csrf
                                       <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();"><i class="ft-power"></i> Logout</a>
@@ -251,27 +251,28 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
             <div class="main-menu-content">
                 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                    <li class="nav-item {{ Route::is('dashboard', 'dashboard.*') ? 'open' : '' }}">
-                        <a href="index.html"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a>
-                        <ul class="menu-content">
-                            <li class="{{ Route::is('dashboard') ? 'active' : '' }}"><a class="menu-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                            <li><a class="menu-item" href="#">Analytics</a></li>
-                        </ul>
+                    <li class="nav-item {{ Route::is('dashboard', 'dashboard.*') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard') }}"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a>
                     </li>
 
-                    <li class="nav-item {{ Route::is('admin.news.*', 'admin.category.*') ? 'open' : '' }}">
+                    <li class="nav-item {{ Route::is('admin.page', 'page.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.page') }}"><i class="ft-home"></i><span class="menu-title">Pages</span></a>
+                    </li>
+
+                    <li class="nav-item {{ Route::is('admin.news.*', 'admin.category.*', 'admin.breaking.*') ? 'open' : '' }}">
                         <a href="index.html"><i class="ft-airplay"></i><span class="menu-title">News</span></a>
                         <ul class="menu-content">
                             <li class="{{ Route::is('admin.news.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.news.index') }}">News</a></li>
                             <li class="{{ Route::is('admin.category.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.category.index') }}">Category</a></li>
+                            <li class="{{ Route::is('admin.breaking.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.breaking.index') }}">Breaking News</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('gallery.images', 'gallery.videos') ? 'open' : '' }}">
                         <a href="#"><i class="ft-image"></i><span class="menu-title">Gallery</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">Image Gallery</a></li>
-                            <li><a class="menu-item" href="#">Video Gallery</a></li>
+                            <li class="{{ Route::is('gallery.images') ? 'active' : '' }}"><a class="menu-item" href="{{ route('gallery.images') }}">Image Gallery</a></li>
+                            <li class="{{ Route::is('gallery.videos') ? 'active' : '' }}"><a class="menu-item" href="{{ route('gallery.videos') }}">Video Gallery</a></li>
                         </ul>
                     </li>
 
@@ -291,10 +292,10 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item {{ Route::is('admin.socials') ? 'open' : '' }}">
+                    <li class="nav-item {{ Route::is('admin.socials', 'menu.*') ? 'open' : '' }}">
                         <a href="#"><i class="ft-feather"></i><span class="menu-title">Appearance</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">Menu</a></li>
+                            <li class="{{ Route::is('menu.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('menu.index') }}">Menu</a></li>
                             <li class="{{ Route::is('admin.socials') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.socials') }}">Social Media</a></li>
                         </ul>
                     </li>

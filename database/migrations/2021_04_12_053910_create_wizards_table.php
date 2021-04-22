@@ -16,6 +16,7 @@ class CreateWizardsTable extends Migration
         Schema::create('wizards', function (Blueprint $table) {
             $table->id();
             $table->integer('trending_news_count');
+            $table->integer('world_news_count');
             $table->integer('sport_news_count');
             $table->integer('entertainment_news_count');
             $table->integer('video_news_count');

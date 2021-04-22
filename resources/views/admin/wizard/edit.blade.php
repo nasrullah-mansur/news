@@ -34,6 +34,15 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                            <label for="trending_news_count">World News Count</label>
+                            <input type="number" id="world_news_count" class="form-control {{ $errors->has('world_news_count') ? 'is-invalid' : '' }}" placeholder="Trending news count" name="world_news_count" value="{{ $wizard->world_news_count }}">
+                            @if ($errors->has('trending_news_count'))
+                                <div class="invalid-feedback">{{ $errors->first('world_news_count') }}</div>
+                            @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
                             <label for="sport_news_count">Sport News Count</label>
                             <input type="number" id="sport_news_count" class="form-control {{ $errors->has('sport_news_count') ? 'is-invalid' : '' }}" placeholder="Sport news count" name="sport_news_count" value="{{ $wizard->sport_news_count }}">
                             @if ($errors->has('sport_news_count'))

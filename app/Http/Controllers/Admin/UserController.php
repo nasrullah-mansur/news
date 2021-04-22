@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Profile;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::where('id', $id)->firstOrFail();
+        $user = User::where('id', $id)->with('profile')->firstOrFail();
         return view('admin.user.show', compact('user'));
     }
 
@@ -46,6 +47,10 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
+
+        Profile::create([
+            'user_id' => $user->id
+        ]);
     }
 
     public function destroy($id)

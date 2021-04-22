@@ -8,11 +8,11 @@
     <div class="row">
       <div class="col-12">
         <div class="card profile-with-cover">
-          <div class="card-img-top img-fluid bg-cover height-300" style="background: url('{{ asset('admin/images/carousel/22.jpg') }}') 50%;"></div>
+          <div class="card-img-top img-fluid bg-cover height-300" style="background: url('{{ $user->profile->banner == null ? asset('admin/images/carousel/22.jpg') : asset($user->profile->banner) }}') 50%;"></div>
           <div class="media profil-cover-details w-100">
             <div class="media-left pl-2 pt-2">
               <a href="#" class="profile-image">
-                <img src="{{ asset('admin/images/portrait/small/avatar-s-8.png') }}" class="rounded-circle img-border height-100"
+                <img src="{{ $user->profile->profile == null ? asset('admin/images/portrait/small/avatar-s-8.png') : asset($user->profile->profile) }}" class="rounded-circle img-border height-100"
                 alt="Card image">
               </a>
             </div>
@@ -23,10 +23,10 @@
                 </div>
                 <div class="col-md-8 text-right">
                   <div class="d-none d-md-flex float-right ml-2" role="group" aria-label="Basic example">
-                    <a href="#" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-facebook-f"></i> <span class="d-none d-lg-inline-block">Facebook</span></a>
-                    <a href="#" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-twitter"></i> <span class="d-none d-lg-inline-block">Twitter</span></a>
-                    <a href="#" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-linkedin"></i> <span class="d-none d-lg-inline-block">Linkedin</span></a>
-                    <a href="#" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-edit"></i></a>
+                    <a href="{{ $user->profile->facebook }}" target="_blank" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-facebook-f"></i> <span class="d-none d-lg-inline-block">Facebook</span></a>
+                    <a href="{{ $user->profile->twitter }}" target="_blank" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-twitter"></i> <span class="d-none d-lg-inline-block">Twitter</span></a>
+                    <a href="{{ $user->profile->linkedin }}" target="_blank" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-linkedin"></i> <span class="d-none d-lg-inline-block">Linkedin</span></a>
+                    <a href="{{ route('my.profile.edit', $user->id ) }}" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-edit"></i></a>
                   </div>
                 </div>
               </div>

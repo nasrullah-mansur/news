@@ -11,6 +11,7 @@ class Wizard extends Model
 
     protected $fillable = [
         'trending_news_count',
+        'world_news_count',
         'sport_news_count',
         'entertainment_news_count',
         'video_news_count',

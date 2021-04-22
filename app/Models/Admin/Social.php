@@ -14,7 +14,8 @@ class Social extends Model
         'user_id',
         'social_name',
         'social_link',
-        'icon_class'
+        'icon_class',
+        'followers'
     ];
 
     public function user()

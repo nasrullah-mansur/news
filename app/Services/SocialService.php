@@ -37,6 +37,7 @@ class SocialService
         $socialData['social_name'] = $request->social_name;
         $socialData['social_link'] = $request->social_link;
         $socialData['icon_class'] = $request->icon_class;
+        $socialData['followers'] = $request->followers;
 
         $social = Social::create($socialData);
         if ($social) {
@@ -62,6 +63,7 @@ class SocialService
         $socialData['social_name'] = $request->social_name;
         $socialData['social_link'] = $request->social_link;
         $socialData['icon_class'] = $request->icon_class;
+        $socialData['followers'] = $request->followers;
 
         $social->fill($socialData)->save();
 

@@ -16,6 +16,7 @@ class WizardSeeder extends Seeder
     {
         Wizard::create([
             'trending_news_count' => 4,
+            'world_news_count' => 4,
             'sport_news_count' => 4,
             'entertainment_news_count' => 4,
             'video_news_count' => 4,

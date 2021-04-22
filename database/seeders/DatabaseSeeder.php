@@ -22,6 +22,11 @@ class DatabaseSeeder extends Seeder
             FooterSeeder::class,
             TranslationSeeder::class,
             ThemeSeeder::class,
+            ProfileSeeder::class,
+            PageSeeder::class,
+            MainMenuSeeder::class,
+            FooterMenuSeeder::class,
+            SocialSeeder::class,
         ]);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Admin\Profile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +13,7 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        $user = Auth::user();
+        $user = User::where('id', Auth::user()->id)->with('profile')->firstOrFail();
         return view('admin.user.show', compact('user'));
     }
 
@@ -48,5 +50,47 @@ class ProfileController extends Controller
         return redirect('/');
 
 
+    }
+
+
+    public function edit($id)
+    {
+        $profile = Profile::where('user_id', $id)->with('user')->firstOrFail();
+        return view('admin.profile.edit', compact('profile'));
+    }
+
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'profile' => 'nullable|mimes:png,jpg,jpeg,gif',
+            'banner' => 'nullable|mimes:png,jpg,jpeg,gif',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'linkedin' => 'required',
+        ]);
+
+        $user = User::where('id', Auth::user()->id )->firstOrFail();
+        $profile = Profile::where('user_id', Auth::user()->id )->firstOrFail();
+
+        $user->update([
+            'name' => $request->name,
+        ]);
+
+        $profile->facebook = $request->facebook;
+        $profile->twitter = $request->twitter;
+        $profile->linkedin = $request->linkedin;
+
+        if($request->has('profile')) {
+            $profile->profile = ResizeImageUpload($request->profile, 'user/profile/', $profile->profile, 110, 110);
+        }
+        if($request->has('banner')) {
+            $profile->banner = ResizeImageUpload($request->banner, 'user/profile/', $profile->banner, 800, 600);
+        }
+
+        $profile->save();
+
+        return redirect()->back()->with('update', 'Profile Successfully Updated');
     }
 }

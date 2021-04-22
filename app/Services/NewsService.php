@@ -4,6 +4,7 @@ namespace   App\Services;
 use App\Models\Admin\Category;
 use App\Models\Admin\Image;
 use App\Models\Admin\News;
+use App\Models\Admin\Visitor;
 use Illuminate\Support\Str;
 
 class NewsService
@@ -115,6 +116,7 @@ class NewsService
         $newsData['sl_seo_description'] = $request->sl_seo_description;
 
         $newsData['category_id'] = $request->category;
+        $newsData['type_id'] = $request->type;
         $newsData['video'] = $request->video;
         $newsData['tags'] = implode(',' ,$request->tag);
 
@@ -131,6 +133,12 @@ class NewsService
         $image->news_id = $news->id;
 
         $image->save();
+
+        $visitor = new Visitor();
+        $visitor->news_id = $news->id;
+        $visitor->visitor = 0;
+        $visitor->save();
+
 
         if ($news) {
             $data['success'] = true;
@@ -176,6 +184,7 @@ class NewsService
         $newsData['sl_seo_description'] = $request->sl_seo_description;
 
         $newsData['category_id'] = $request->category;
+        $newsData['type_id'] = $request->type;
         $newsData['video'] = $request->video;
         $newsData['tags'] = implode(',' ,$request->tag);
 

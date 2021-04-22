@@ -34,6 +34,7 @@ class NewsRequest extends FormRequest
                 'sl_headline' => 'required|unique:news',
 
                 'category' => 'required',
+                'type' => 'required',
                 'image' => 'required|mimes:png,jpg,jpeg,gif',
                 'image_alt' => 'required',
                 'tag' => 'required',
@@ -56,6 +57,7 @@ class NewsRequest extends FormRequest
                             'sl_headline' => 'required',
 
                             'category' => 'required',
+                            'type' => 'required',
                             'image' => 'mimes:png,jpg,jpeg,gif',
                             'image_alt' => 'required',
                             'tag' => 'required',
@@ -72,6 +74,7 @@ class NewsRequest extends FormRequest
                             'sl_headline' => 'required|unique:news',
 
                             'category' => 'required',
+                            'type' => 'required',
                             'image' => 'mimes:png,jpg,jpeg,gif',
                             'image_alt' => 'required',
                             'tag' => 'required',
@@ -89,6 +92,7 @@ class NewsRequest extends FormRequest
                         'sl_headline' => 'required',
 
                         'category' => 'required',
+                        'type' => 'required',
                         'image' => 'mimes:png,jpg,jpeg,gif',
                         'image_alt' => 'required',
                         'tag' => 'required',

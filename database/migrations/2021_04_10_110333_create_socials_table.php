@@ -19,6 +19,7 @@ class CreateSocialsTable extends Migration
             $table->string('social_name');
             $table->text('social_link')->default('#');
             $table->string('icon_class');
+            $table->string('followers');
             $table->timestamps();
         });
     }

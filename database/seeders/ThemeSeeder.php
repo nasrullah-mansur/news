@@ -14,12 +14,18 @@ class ThemeSeeder extends Seeder
      */
     public function run()
     {
-        // Theme::create([
-        //     'theme_name' => 'Theme Name',
-        //     'logo' => '',
-        //     'favicon' => '',
-        //     'google_map' => '',
-        //     'copyright' => '',
-        // ]);
+        Theme::create([
+            'theme_name' => 'Theme Name',
+            'logo' => 'front/images/logo.png',
+            'footer_logo' => 'front/images/footer-logo.png',
+            'favicon' => 'front/images/favicon.png',
+            'google_map' => 'Google Map',
+            'copyright' => '&copy; All right reserved.',
+
+            'pl_flag' => 'front/images/flag.png',
+            'sl_flag' => 'front/images/flag.png',
+            'pl_name' => 'English',
+            'sl_name' => 'Bangla',
+        ]);
     }
 }

@@ -17,6 +17,7 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('category_id');
+            $table->integer('type_id');
             $table->text('video')->nullable();
             $table->text('tags');
 

@@ -19,7 +19,9 @@ class CreateThemesTable extends Migration
             $table->string('logo');
             $table->string('footer_logo');
             $table->string('favicon');
+            $table->string('pl_name');
             $table->string('pl_flag');
+            $table->string('sl_name');
             $table->string('sl_flag');
             $table->longText('google_map');
             $table->string('copyright');

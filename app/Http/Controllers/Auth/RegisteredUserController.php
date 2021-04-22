@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use App\Models\Admin\Profile;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
 
 class RegisteredUserController extends Controller
 {
@@ -44,8 +45,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]));
 
+
         event(new Registered($user));
 
+        Profile::create([
+            'user_id' => Auth::user()->id
+        ]);
         return redirect(RouteServiceProvider::HOME);
     }
 }

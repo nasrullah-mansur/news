@@ -31,6 +31,7 @@
                                         <th>Name</th>
                                         <th>Link</th>
                                         <th>Icon Class</th>
+                                        <th>Followers</th>
                                         <th style="max-width: 220px;">Created At</th>
                                         <th style="max-width: 140px; text-align: center;">Actions</th>
 
@@ -45,6 +46,7 @@
                                         <th>Name</th>
                                         <th>Link</th>
                                         <th>Icon Class</th>
+                                        <th>Followers</th>
                                         <th style="max-width: 220px;">Created At</th>
                                         <th style="max-width: 140px; text-align: center;">Actions</th>
                                     </tr>
@@ -86,6 +88,11 @@
                 <input name="icon_class" type="text" class="form-control" id="icon_class" placeholder="Icon Class">
                 <div class="invalid-feedback"></div>
             </fieldset>
+            <fieldset class="form-group floating-label-form-group">
+                <label for="followers">Followers</label>
+                <input name="followers" type="text" class="form-control" id="followers" placeholder="Followers">
+                <div class="invalid-feedback"></div>
+            </fieldset>
             <br>
             </div>
             <div class="modal-footer">
@@ -125,9 +132,14 @@
                     <input name="icon_class" type="text" class="form-control" id="icon_class_update" placeholder="Icon Class">
                     <div class="invalid-feedback"></div>
                 </fieldset>
+                <fieldset class="form-group floating-label-form-group">
+                    <label for="followers_update">Followers</label>
+                    <input name="followers" type="text" class="form-control" id="followers_update" placeholder="Followers">
+                    <div class="invalid-feedback"></div>
+                </fieldset>
             <br>
             <fieldset class="form-group floating-label-form-group">
-                <input type="text" name="id" value="">
+                <input type="hidden" name="id" value="">
                 <div class="invalid-feedback"></div>
             </fieldset>
 
@@ -162,6 +174,7 @@
                 { data: "social_name" },
                 { data: "social_link" },
                 { data: "icon_class" },
+                { data: "followers" },
                 { data: "created_at" },
                 { data: "action" }
             ],
@@ -179,16 +192,19 @@
             social_name: AddSocialModal.find('input[name="social_name"]')[0],
             social_link: AddSocialModal.find('input[name="social_link"]')[0],
             icon_class: AddSocialModal.find('input[name="icon_class"]')[0],
+            followers: AddSocialModal.find('input[name="followers"]')[0],
         }
         let FormData = {
             social_name: FormElements.social_name.value,
             social_link: FormElements.social_link.value,
             icon_class: FormElements.icon_class.value,
+            followers: FormElements.followers.value,
         };
         let DataErrors = {
             social_name: FormElements.social_name.nextElementSibling,
             social_link: FormElements.social_link.nextElementSibling,
             icon_class: FormElements.icon_class.nextElementSibling,
+            followers: FormElements.followers.nextElementSibling,
         }
         $.ajax({
             type: "POST",
@@ -226,6 +242,7 @@
             social_name: EditModal.find('input[name="social_name"]')[0],
             social_link: EditModal.find('input[name="social_link"]')[0],
             icon_class: EditModal.find('input[name="icon_class"]')[0],
+            followers: EditModal.find('input[name="followers"]')[0],
             id: EditModal.find('input[name="id"]')[0],
         }
 
@@ -242,6 +259,7 @@
                     EditFormElements.social_name.value = data.social_name;
                     EditFormElements.social_link.value = data.social_link;
                     EditFormElements.icon_class.value = data.icon_class;
+                    EditFormElements.followers.value = data.followers;
                     EditFormElements.id.value = data.id;
                 }
             });
@@ -255,12 +273,14 @@
         social_name: EditFormElements.social_name.value,
         social_link: EditFormElements.social_link.value,
         icon_class: EditFormElements.icon_class.value,
+        followers: EditFormElements.followers.value,
         id: EditFormElements.id.value,
     };
     let UpdateDataErrors = {
         social_name: EditFormElements.social_name.nextElementSibling,
         social_link: EditFormElements.social_link.nextElementSibling,
         icon_class: EditFormElements.icon_class.nextElementSibling,
+        followers: EditFormElements.icon_class.nextElementSibling,
     }
     $.ajax({
         type: 'POST',

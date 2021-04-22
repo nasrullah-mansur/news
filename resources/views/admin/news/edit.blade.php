@@ -147,6 +147,21 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Select Type</label>
+                            <select class="type form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" >
+                                <option></option>
+                                <option {{ $news->type_id == 1 ? 'selected' : '' }} value="1">Trending News</option>
+                                <option {{ $news->type_id == 2 ? 'selected' : '' }} value="2">World News</option>
+                                <option {{ $news->type_id == 3 ? 'selected' : '' }} value="3">Sport News</option>
+                                <option {{ $news->type_id == 4 ? 'selected' : '' }} value="4">Entertainment News</option>
+                                <option {{ $news->type_id == 5 ? 'selected' : '' }} value="5">Video News</option>
+                            </select>
+                            @if ($errors->has('type'))
+                                <div class="invalid-feedback d-block">{{ $errors->first('type') }}</div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
                         <fieldset class="form-group">
                             <label>News Image</label>
                             <img id="preview" style="max-height: 120px" class="img-fluid d-block mb-1" src="{{ asset($news->image->image_four) }}" alt="News image">
@@ -220,6 +235,12 @@
         placeholder: "Select Category",
         allowClear: true
     });
+
+    $(".type").select2({
+        placeholder: "Select Type",
+        allowClear: true
+    });
+
     $("#image").change(function() {
         readURL(this, $('#preview'));
     });

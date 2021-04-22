@@ -8,7 +8,6 @@ use App\Services\NewsService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NewsRequest;
 use App\Models\Admin\Category;
-use App\Models\Image;
 
 class NewsController extends Controller
 {
@@ -36,6 +35,7 @@ class NewsController extends Controller
 
     public function store(NewsRequest $request)
     {
+        // return $request;
         $news = $this->newsService->store($request);
         if ($news['success'] == true) {
             return redirect()->route('admin.news.index')->with('store', 'News Successfully added');

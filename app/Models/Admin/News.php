@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Admin\Visitor;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class News extends Model
     protected $fillable = [
         'user_id',
         'category_id',
+        'type_id',
         'tags',
 
         // PL;
@@ -28,6 +30,12 @@ class News extends Model
         'sl_slug',
         'sl_details',
         'sl_seo_title',
+
+        'video',
+        'pl_seo_tag',
+        'sl_seo_tag',
+        'pl_seo_description',
+        'sl_seo_description',
     ];
 
     public function user()
@@ -45,6 +53,10 @@ class News extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function visitor()
+    {
+        return $this->hasOne(Visitor::class);
+    }
 
     protected static function boot()
     {

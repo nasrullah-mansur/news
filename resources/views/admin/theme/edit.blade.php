@@ -8,7 +8,6 @@
 <section id="basic-form-layouts">
     <form action="{{ route('theme.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        {{ $errors }}
         <div class="row">
             <div class="col-md-12">
             <div class="card">
@@ -31,13 +30,16 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="theme_name">Theme Name</label>
                           <div class="col-md-9">
-                            <input type="text" id="theme_name" class="form-control" placeholder="Theme name" name="theme_name" value="{{ $theme->theme_name }}">
+                            <input type="text" id="theme_name" class="form-control {{ $errors->has('theme_name') ? 'is-invalid' : '' }}" placeholder="Theme name" name="theme_name" value="{{ $theme->theme_name }}">
+                            @if($errors->has('theme_name'))
+                            <span class="text-danger"> - {{ $errors->first('theme_name') }}</span>
+                            @endif
                           </div>
                         </div>
 
 
                         <div class="form-group row">
-                            <label class="col-md-3 label-control">Logo</label>
+                            <label class="col-md-3 label-control">Primary Logo</label>
                             <div class="col-md-9">
                                 <img id="logo_preview" src="{{ asset($theme->logo) }}" alt="">
                               <br>
@@ -62,6 +64,16 @@
                             </div>
                           </div>
 
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="pl_name">Primary Language Name</label>
+                            <div class="col-md-9">
+                              <input type="text" id="pl_name" class="form-control {{ $errors->has('pl_name') ? 'is-invalid' : '' }}" placeholder="Primary Language Name" name="pl_name" value="{{ $theme->pl_name }}">
+                              @if($errors->has('pl_name'))
+                                <span class="text-danger"> - {{ $errors->first('pl_name') }}</span>
+                                @endif
+                            </div>
+                          </div>
+
                         <div class="form-group row">
                             <label class="col-md-3 label-control">Primary Language Flag</label>
                             <div class="col-md-9">
@@ -72,6 +84,16 @@
                                 <input id="pl_flag_input" name="pl_flag" type="file" class="d-none" value="{{ $theme->pl_flag }}">
                                 <span class="file-custom btn btn-info">Change ml flag</span>
                               </label>
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="sl_name">Secondary Language Name</label>
+                            <div class="col-md-9">
+                              <input type="text" id="sl_name" class="form-control {{ $errors->has('sl_name') ? 'is-invalid' : '' }}" placeholder="Secondary Language Name" name="sl_name" value="{{ $theme->sl_name }}">
+                              @if($errors->has('sl_name'))
+                            <span class="text-danger"> - {{ $errors->first('sl_name') }}</span>
+                            @endif
                             </div>
                           </div>
 
@@ -105,7 +127,10 @@
                         <div class="form-group row">
                             <label class="col-md-3 label-control" for="google_map">Google Map</label>
                             <div class="col-md-9">
-                              <textarea id="google_map" rows="5" class="form-control" name="google_map" placeholder="Google Map" value="{{ $theme->google_map }}">{{ $theme->google_map }}</textarea>
+                              <textarea id="google_map" rows="5" class="form-control {{ $errors->has('google_map') ? 'is-invalid' : '' }}" name="google_map" placeholder="Google Map" value="{{ $theme->google_map }}">{{ $theme->google_map }}</textarea>
+                              @if($errors->has('google_map'))
+                            <span class="text-danger"> - {{ $errors->first('google_map') }}</span>
+                            @endif
                             </div>
                           </div>
 
@@ -113,6 +138,9 @@
                             <label class="col-md-3 label-control" for="copyright">Copyright</label>
                             <div class="col-md-9">
                               <textarea type="text" id="copyright" class="form-control summernote" name="copyright" value="{{ $theme->copyright }}">{{ $theme->copyright }}</textarea>
+                              @if($errors->has('copyright'))
+                            <span class="text-danger"> - {{ $errors->first('copyright') }}</span>
+                            @endif
                             </div>
                           </div>
 

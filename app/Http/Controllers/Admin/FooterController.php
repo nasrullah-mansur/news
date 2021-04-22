@@ -37,6 +37,6 @@ class FooterController extends Controller
         $footer->image_by = $request->image_by;
         $footer->image_count = $request->image_count;
         $footer->save();
-        return redirect()->back()->with('update', '');
+        return redirect()->back()->with('update', 'Successfully Updated');
     }
 }
