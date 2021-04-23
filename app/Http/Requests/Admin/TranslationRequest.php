@@ -74,6 +74,44 @@ class TranslationRequest extends FormRequest
             'sl_twenty_four' => 'required',
             'pl_twenty_five' => 'required',
             'sl_twenty_five' => 'required',
+
+            'sl_twenty_six' => 'required',
+            'sl_twenty_seven' => 'required',
+            'sl_twenty_eight' => 'required',
+            'sl_twenty_nine' => 'required',
+            'sl_twenty_nine' => 'required',
+
+            'pl_thirty' => 'required',
+            'pl_thirty_one' => 'required',
+            'pl_thirty_two' => 'required',
+            'pl_thirty_three' => 'required',
+            'pl_thirty_four' => 'required',
+            'pl_thirty_five' => 'required',
+            'pl_thirty_six' => 'required',
+            'pl_thirty_seven' => 'required',
+            'pl_thirty_eight' => 'required',
+            'pl_thirty_nine' => 'required',
+            'pl_forty' => 'required',
+
+            'pl_twenty_six' => 'required',
+            'pl_twenty_seven' => 'required',
+            'pl_twenty_eight' => 'required',
+            'pl_twenty_nine' => 'required',
+            'pl_twenty_nine' => 'required',
+
+            'sl_thirty' => 'required',
+            'sl_thirty_one' => 'required',
+            'sl_thirty_two' => 'required',
+            'sl_thirty_three' => 'required',
+            'sl_thirty_four' => 'required',
+            'sl_thirty_five' => 'required',
+            'sl_thirty_six' => 'required',
+            'sl_thirty_seven' => 'required',
+            'sl_thirty_eight' => 'required',
+            'sl_thirty_nine' => 'required',
+            'sl_forty' => 'required',
+
+
         ];
     }
 }

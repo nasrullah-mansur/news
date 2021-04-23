@@ -16,14 +16,19 @@ class ThemeSeeder extends Seeder
     {
         Theme::create([
             'theme_name' => 'Theme Name',
-            'logo' => 'front/images/logo.png',
-            'footer_logo' => 'front/images/footer-logo.png',
-            'favicon' => 'front/images/favicon.png',
+            'logo' => 'logo.png',
+            'footer_logo' => 'footer-logo.png',
+            'favicon' => 'favicon.png',
             'google_map' => 'Google Map',
+            'pl_address' => '<p>2972 Westheimer Rd. Santa  Illinois 85486 </p>',
+            'pl_support_hour' => '<span>Sunday - Friday </span> <span>9.30pm  - 10 am  </span>',
+            'sl_address' => '<p>2972 Westheimer Rd. Santa  Illinois 85486 </p>',
+            'sl_support_hour' => '<span>Sunday - Friday </span> <span>9.30pm  - 10 am  </span>',
+            'quick_contact' => ' <a href="#">Sport@eamplae.com</a> <p>[+88 ] -456 6632 3136</p>',
             'copyright' => '&copy; All right reserved.',
 
-            'pl_flag' => 'front/images/flag.png',
-            'sl_flag' => 'front/images/flag.png',
+            'pl_flag' => 'flag.png',
+            'sl_flag' => 'flag.png',
             'pl_name' => 'English',
             'sl_name' => 'Bangla',
         ]);

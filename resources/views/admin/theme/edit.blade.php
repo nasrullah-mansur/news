@@ -135,6 +135,56 @@
                           </div>
 
                           <div class="form-group row">
+                            <label class="col-md-3 label-control" for="pl_address">Address</label>
+                            <div class="col-md-9">
+                              <textarea type="text" id="pl_address" class="form-control summernote" name="pl_address" value="{{ $theme->pl_address }}">{{ $theme->pl_address }}</textarea>
+                              @if($errors->has('pl_address'))
+                            <span class="text-danger"> - {{ $errors->first('pl_address') }}</span>
+                            @endif
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="sl_address">Address SL</label>
+                            <div class="col-md-9">
+                              <textarea type="text" id="sl_address" class="form-control summernote" name="sl_address" value="{{ $theme->sl_address }}">{{ $theme->sl_address }}</textarea>
+                              @if($errors->has('sl_address'))
+                            <span class="text-danger"> - {{ $errors->first('sl_address') }}</span>
+                            @endif
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="pl_support_hour">Support Hours</label>
+                            <div class="col-md-9">
+                              <textarea type="text" id="pl_support_hour" class="form-control summernote" name="pl_support_hour" value="{{ $theme->pl_support_hour }}">{{ $theme->pl_support_hour }}</textarea>
+                              @if($errors->has('pl_support_hour'))
+                            <span class="text-danger"> - {{ $errors->first('pl_support_hour') }}</span>
+                            @endif
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="sl_support_hour">Support Hours</label>
+                            <div class="col-md-9">
+                              <textarea type="text" id="sl_support_hour" class="form-control summernote" name="sl_support_hour" value="{{ $theme->sl_support_hour }}">{{ $theme->sl_support_hour }}</textarea>
+                              @if($errors->has('sl_support_hour'))
+                            <span class="text-danger"> - {{ $errors->first('sl_support_hour') }}</span>
+                            @endif
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label class="col-md-3 label-control" for="quick_contact">Quick Contact</label>
+                            <div class="col-md-9">
+                              <textarea type="text" id="quick_contact" class="form-control summernote" name="quick_contact" value="{{ $theme->quick_contact }}">{{ $theme->quick_contact }}</textarea>
+                              @if($errors->has('quick_contact'))
+                            <span class="text-danger"> - {{ $errors->first('quick_contact') }}</span>
+                            @endif
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
                             <label class="col-md-3 label-control" for="copyright">Copyright</label>
                             <div class="col-md-9">
                               <textarea type="text" id="copyright" class="form-control summernote" name="copyright" value="{{ $theme->copyright }}">{{ $theme->copyright }}</textarea>

@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Admin\Comment;
 use App\Models\Admin\Visitor;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +57,11 @@ class News extends Model
     public function visitor()
     {
         return $this->hasOne(Visitor::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     protected static function boot()

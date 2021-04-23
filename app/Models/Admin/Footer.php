@@ -12,7 +12,6 @@ class Footer extends Model
     protected $fillable = [
         'wizard_one_by',
         'wizard_one_count',
-        'quick_link_count',
         'categories',
         'images_from',
         'image_by',

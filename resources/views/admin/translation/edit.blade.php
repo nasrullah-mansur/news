@@ -339,6 +339,187 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_twenty_six') ? 'is-invalid' : '' }}" name="pl_twenty_six" value="{{ $heading->pl_twenty_six }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_twenty_six') ? 'is-invalid' : '' }}" name="sl_twenty_six" value="{{ $heading->sl_twenty_six }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_twenty_seven') ? 'is-invalid' : '' }}" name="pl_twenty_seven" value="{{ $heading->pl_twenty_seven }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_twenty_seven') ? 'is-invalid' : '' }}" name="sl_twenty_seven" value="{{ $heading->sl_twenty_seven }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_twenty_eight') ? 'is-invalid' : '' }}" name="pl_twenty_eight" value="{{ $heading->pl_twenty_eight }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_twenty_eight') ? 'is-invalid' : '' }}" name="sl_twenty_eight" value="{{ $heading->sl_twenty_eight }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_twenty_nine') ? 'is-invalid' : '' }}" name="pl_twenty_nine" value="{{ $heading->pl_twenty_nine }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_twenty_nine') ? 'is-invalid' : '' }}" name="sl_twenty_nine" value="{{ $heading->sl_twenty_nine }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty') ? 'is-invalid' : '' }}" name="pl_thirty" value="{{ $heading->pl_thirty }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty') ? 'is-invalid' : '' }}" name="sl_thirty" value="{{ $heading->sl_thirty }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_one') ? 'is-invalid' : '' }}" name="pl_thirty_one" value="{{ $heading->pl_thirty_one }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_one') ? 'is-invalid' : '' }}" name="sl_thirty_one" value="{{ $heading->sl_thirty_one }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_two') ? 'is-invalid' : '' }}" name="pl_thirty_two" value="{{ $heading->pl_thirty_two }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_two') ? 'is-invalid' : '' }}" name="sl_thirty_two" value="{{ $heading->sl_thirty_two }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_three') ? 'is-invalid' : '' }}" name="pl_thirty_three" value="{{ $heading->pl_thirty_three }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_three') ? 'is-invalid' : '' }}" name="sl_thirty_three" value="{{ $heading->sl_thirty_three }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_four') ? 'is-invalid' : '' }}" name="pl_thirty_four" value="{{ $heading->pl_thirty_four }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_four') ? 'is-invalid' : '' }}" name="sl_thirty_four" value="{{ $heading->sl_thirty_four }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_five') ? 'is-invalid' : '' }}" name="pl_thirty_five" value="{{ $heading->pl_thirty_five }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_five') ? 'is-invalid' : '' }}" name="sl_thirty_five" value="{{ $heading->sl_thirty_five }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_six') ? 'is-invalid' : '' }}" name="pl_thirty_six" value="{{ $heading->pl_thirty_six }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_six') ? 'is-invalid' : '' }}" name="sl_thirty_six" value="{{ $heading->sl_thirty_six }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_seven') ? 'is-invalid' : '' }}" name="pl_thirty_seven" value="{{ $heading->pl_thirty_seven }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_seven') ? 'is-invalid' : '' }}" name="sl_thirty_seven" value="{{ $heading->sl_thirty_seven }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_eight') ? 'is-invalid' : '' }}" name="pl_thirty_eight" value="{{ $heading->pl_thirty_eight }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_eight') ? 'is-invalid' : '' }}" name="sl_thirty_eight" value="{{ $heading->sl_thirty_eight }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_thirty_nine') ? 'is-invalid' : '' }}" name="pl_thirty_nine" value="{{ $heading->pl_thirty_nine }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_thirty_nine') ? 'is-invalid' : '' }}" name="sl_thirty_nine" value="{{ $heading->sl_thirty_nine }}">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_forty') ? 'is-invalid' : '' }}" name="pl_forty" value="{{ $heading->pl_forty }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_forty') ? 'is-invalid' : '' }}" name="sl_forty" value="{{ $heading->sl_forty }}">
+                                                </div>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                     <tfoot>

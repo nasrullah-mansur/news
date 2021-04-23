@@ -20,6 +20,11 @@ class Theme extends Model
         'favicon',
         'google_map',
         'copyright',
+        'pl_address',
+        'pl_support_hour',
+        'sl_address',
+        'sl_support_hour',
+        'quick_contact',
     ];
 
 

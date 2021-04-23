@@ -17,7 +17,6 @@ class CreateFootersTable extends Migration
             $table->id();
             $table->integer('wizard_one_by');
             $table->integer('wizard_one_count');
-            $table->integer('quick_link_count');
             $table->string('categories');
             $table->integer('images_from');
             $table->integer('image_by');

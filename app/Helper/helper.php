@@ -11,6 +11,7 @@ use App\Models\Admin\MainMenu;
 use App\Models\Admin\FooterMenu;
 use App\Models\Admin\Social;
 use App\Models\Admin\Translation;
+use App\Models\Admin\Visitor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -75,6 +76,35 @@ function AuthUserProfileInfo()
 
 
 // echo Session::get('active_language');
+
+
+function Categories()
+{
+    return Category::all();
+}
+
+
+
+
+
+
+
+function MainMenu()
+{
+    return MainMenu::orderBy('ordering')->get();
+}
+
+function FooterMenu()
+{
+    return FooterMenu::orderBy('ordering')->get();
+}
+
+
+
+
+
+
+
 function active_lang()
 {
     if(session()->exists('active_language')) {
@@ -87,12 +117,6 @@ function active_lang()
 
 }
 
-function Categories()
-{
-    return Category::all();
-}
-
-
 function translate()
 {
     return Translation::first();
@@ -102,17 +126,6 @@ function translate()
 function newsCount()
 {
     return Wizard::first();
-}
-
-
-function MainMenu()
-{
-    return MainMenu::orderBy('ordering')->get();
-}
-
-function FooterMenu()
-{
-    return FooterMenu::orderBy('ordering')->get();
 }
 
 function ThemeSetting()
@@ -127,12 +140,12 @@ function Footer()
 
 function AllCategories()
 {
-    return Category::all();
+    return Category::with('news')->get();
 }
 
 function FooterGallery()
 {
-   $category_id = Footer()->images_from;
+    $category_id = Footer()->images_from;
     $image_count = Footer()->image_count;
     $footer_gallery = News::where('category_id', $category_id)->with('image')->limit($image_count)->get();
 
@@ -150,6 +163,16 @@ function HeadingStyle($data)
 function SocialMedia()
 {
     return Social::all();
+}
+
+function MostVisitedNews($count)
+{
+    return Visitor::with('news')->orderBy('created_at', 'DESC')->limit($count)->get();
+}
+
+function MostRecentPost($count)
+{
+    return News::with('user','category','image', 'comment')->orderBy('created_at', 'DESC')->limit($count)->get();
 }
 
 

@@ -23,6 +23,7 @@ class WizardSeeder extends Seeder
             'news_per_page' => 4,
             'recent_news_count' => 4,
             'related_news_count' => 4,
+            'popular_news_count' => 4,
         ]);
     }
 }

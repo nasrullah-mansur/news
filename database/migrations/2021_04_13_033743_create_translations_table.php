@@ -65,6 +65,38 @@ class CreateTranslationsTable extends Migration
             $table->text('sl_twenty_four');
             $table->text('pl_twenty_five');
             $table->text('sl_twenty_five');
+            $table->text('pl_twenty_six');
+            $table->text('sl_twenty_six');
+            $table->text('pl_twenty_seven');
+            $table->text('sl_twenty_seven');
+            $table->text('pl_twenty_eight');
+            $table->text('sl_twenty_eight');
+            $table->text('pl_twenty_nine');
+            $table->text('sl_twenty_nine');
+            $table->text('pl_thirty');
+            $table->text('sl_thirty');
+            $table->text('pl_thirty_one');
+            $table->text('sl_thirty_one');
+            $table->text('pl_thirty_two');
+            $table->text('sl_thirty_two');
+            $table->text('pl_thirty_three');
+            $table->text('sl_thirty_three');
+            $table->text('pl_thirty_four');
+            $table->text('sl_thirty_four');
+            $table->text('pl_thirty_five');
+            $table->text('sl_thirty_five');
+            $table->text('pl_thirty_six');
+            $table->text('sl_thirty_six');
+            $table->text('pl_thirty_seven');
+            $table->text('sl_thirty_seven');
+            $table->text('pl_thirty_eight');
+            $table->text('sl_thirty_eight');
+            $table->text('pl_thirty_nine');
+            $table->text('sl_thirty_nine');
+            $table->text('pl_forty');
+            $table->text('sl_forty');
+
+
             $table->timestamps();
         });
     }

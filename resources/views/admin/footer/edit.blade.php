@@ -53,16 +53,6 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                    <label for="quick_link_count">Quick Link Count</label>
-                                    <input type="number" id="quick_link_count" class="form-control {{ $errors->has('quick_link_count') ? 'is-invalid' : '' }}" placeholder="Wizard one count" name="quick_link_count" value="{{ $footer->quick_link_count }}">
-                                    @if ($errors->has('quick_link_count'))
-                                        <div class="invalid-feedback">{{ $errors->first('quick_link_count') }}</div>
-                                    @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="form-group">
                                         <label>Categories</label>
                                         <select class="select2 form-control {{ $errors->has('categories') ? 'is-invalid' : '' }}" multiple="multiple" name="categories[]" >
                                             @foreach ($categories as $category)

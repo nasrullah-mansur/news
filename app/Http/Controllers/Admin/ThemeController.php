@@ -26,6 +26,9 @@ class ThemeController extends Controller
             'sl_flag' => 'mimes:png,jpg,jpeg,gif',
             'favicon' => 'mimes:png,jpg,jpeg,gif',
             'google_map' => 'required',
+            'address' => 'required',
+            'support_hour' => 'required',
+            'quick_contact' => 'required',
             'copyright' => 'required',
         ]);
 
@@ -58,6 +61,14 @@ class ThemeController extends Controller
         $theme->sl_name = $request->sl_name;
 
         $theme->google_map = $request->google_map;
+
+        $theme->pl_address = $request->pl_address;
+        $theme->pl_support_hour = $request->pl_support_hour;
+
+        $theme->sl_address = $request->sl_address;
+        $theme->sl_support_hour = $request->sl_support_hour;
+
+        $theme->quick_contact = $request->quick_contact;
         $theme->copyright = $request->copyright;
 
         $theme->save();

@@ -30,42 +30,77 @@
 
 @section('content')
         <!-- hero-section start here  -->
+        @if(active_lang() == 'pl')
         <section class="hero-section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="hero-post">
                             <div class="post-thumbnial">
-                                <a href="single-blog.html">
-                                    <img src="{{ asset('front/images/hero-post-1.png') }}" alt="hero-post" />
+                                <a href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">
+                                    <img src="{{ asset($top_news[0]->news->image->image_two) }}" alt="{{ $top_news[0]->news->image->image_alt }}" />
                                 </a>
                             </div>
                             <div class="post-info">
-                                <a class="post-catagory" href="single-blog.html">Top News</a>
-                                <h2 class="post-title"><a href="single-blog.html">Tanzania's president dies aged 61 after Covid. </a></h2>
-                                <p class="post-content">UK vaccine supply hit by India delivery delay</p>
-                                <a class="hero-post-btn" href="single-blog.html">Read More</a>
+                                <a class="post-catagory" href="{{ route('front.category', $top_news[0]->news->category->pl_slug) }}">{{ $top_news[0]->news->category->pl_name }}</a>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ $top_news[0]->news->pl_headline }}</a></h2>
+                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ translate()->pl_fourteen }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="hero-post hero-post-medium">
                             <div class="post-thumbnial">
-                                <a href="single-blog.html">
-                                    <img src="{{ asset('front/images/hero-post-2.png') }}" alt="hero-post" />
+                                <a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">
+                                    <img src="{{ asset($top_news[1]->news->image->image_three) }}" alt="{{ $top_news[1]->news->image->image_alt }}" />
                                 </a>
                             </div>
                             <div class="post-info">
-                                <a class="post-catagory" href="single-blog.html">Goolge Heath</a>
-                                <h2 class="post-title"><a href="single-blog.html">Help for Your Home. All in one </a></h2>
-                                <p class="post-content">UK vaccine supply hit by India </p>
-                                <a class="hero-post-btn btn-outline" href="single-blog.html">Read More</a>
+                                <a class="post-catagory" href="{{ route('front.category', $top_news[1]->news->category->pl_slug) }}">{{ $top_news[1]->news->category->pl_name }}</a>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ $top_news[1]->news->pl_headline }}</a></h2>
+                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ translate()->pl_fourteen }}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        @else
+        <section class="hero-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="hero-post">
+                            <div class="post-thumbnial">
+                                <a href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">
+                                    <img src="{{ asset($top_news[0]->news->image->image_two) }}" alt="{{ asset($top_news[0]->news->image->image_alt) }}" />
+                                </a>
+                            </div>
+                            <div class="post-info">
+                                <a class="post-catagory" href="{{ route('front.category', $top_news[0]->news->category->sl_slug) }}">{{ $top_news[0]->news->category->sl_name }}</a>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ $top_news[0]->news->sl_headline }}</a></h2>
+                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ translate()->sl_fourteen }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="hero-post hero-post-medium">
+                            <div class="post-thumbnial">
+                                <a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">
+                                    <img src="{{ asset($top_news[1]->news->image->image_three) }}" alt="{{ asset($top_news[1]->news->image->image_alt) }}" />
+                                </a>
+                            </div>
+                            <div class="post-info">
+                                <a class="post-catagory" href="{{ route('front.category', $top_news[1]->news->category->sl_slug) }}">{{ $top_news[1]->news->category->sl_name }}</a>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ $top_news[1]->news->sl_headline }}</a></h2>
+                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ translate()->sl_fourteen }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
         <!-- hero-section end here  -->
 
         <!-- Follow Us area start here  -->
@@ -145,14 +180,14 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ asset($tranding_news_tab_list->image->image_three) }}" alt="post" /></a>
+                                            <a href="{{ route('single.news', $tranding_news_tab_list->pl_slug) }}"><img src="{{ asset($tranding_news_tab_list->image->image_three) }}" alt="post" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $tranding_news_tab_list->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $tranding_news_tab_list->pl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $tranding_news_tab_list->category->pl_slug) }}" class="catagory">{{ $tranding_news_tab_list->category->pl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->pl_slug) }}">{{ $tranding_news_tab_list->pl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $tranding_news_tab_list->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -169,14 +204,14 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ asset($tranding_news_item->image->image_three) }}" alt="{{ $tranding_news_item->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $tranding_news_item->pl_slug) }}"><img src="{{ asset($tranding_news_item->image->image_three) }}" alt="{{ $tranding_news_item->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $tranding_news_item->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $tranding_news_item->pl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $tranding_news_item->category->pl_slug) }}" class="catagory">{{ $tranding_news_item->category->pl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->pl_slug) }}">{{ $tranding_news_item->pl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $tranding_news_item->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -221,14 +256,14 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ asset($tranding_news_tab_list->image->image_three) }}" alt="post" /></a>
+                                            <a href="{{ route('single.news', $tranding_news_tab_list->sl_slug) }}"><img src="{{ asset($tranding_news_tab_list->image->image_three) }}" alt="post" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $tranding_news_tab_list->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $tranding_news_tab_list->sl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $tranding_news_tab_list->category->sl_slug) }}" class="catagory">{{ $tranding_news_tab_list->category->sl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->sl_slug) }}">{{ $tranding_news_tab_list->sl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $tranding_news_tab_list->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -245,14 +280,14 @@
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ asset($tranding_news_item->image->image_three) }}" alt="{{ $tranding_news_item->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $tranding_news_item->sl_slug) }}"><img src="{{ asset($tranding_news_item->image->image_three) }}" alt="{{ $tranding_news_item->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $tranding_news_item->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $tranding_news_item->sl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $tranding_news_item->category->sl_slug) }}" class="catagory">{{ $tranding_news_item->category->sl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->sl_slug) }}">{{ $tranding_news_item->sl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $tranding_news_item->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -304,19 +339,19 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $worldNews->first()->pl_slug) }}"><img src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $worldNews->first()->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $worldNews->first()->pl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $worldNews->first()->category->pl_slug) }}" class="catagory">{{ $worldNews->first()->category->pl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $worldNews->first()->pl_slug) }}">{{ $worldNews->first()->pl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> J{{ $worldNews->first()->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> J{{ $worldNews->first()->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $worldNews->first()->comment->count() }}</span></li>
                                             </ul>
                                             <p class="post-content">
                                                 {{ substr($worldNews->first()->pl_details, 0, 200) }}
                                             </p>
-                                            <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                                            <a class="read-btn" href="{{ route('single.news', $worldNews->first()->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -328,14 +363,14 @@
                                     @endif
                                     <div class="single-list-post ">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $wNews->image->image_four }}" alt="{{ $wNews->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNews->pl_slug) }}"><img src="{{ $wNews->image->image_four }}" alt="{{ $wNews->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $wNews->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $wNews->pl_headline }} </a></h3>
+                                            <a href="{{ route('front.category', $wNews->category->pl_slug) }}" class="catagory">{{ $wNews->category->pl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNews->pl_slug) }}">{{ $wNews->pl_headline }} </a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $wNews->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $wNews->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $wNews->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -356,19 +391,19 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->pl_slug) }}"><img src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $wNewsByCat->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $wNewsByCat->pl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $wNewsByCat->first()->category->pl_slug) }}" class="catagory">{{ $wNewsByCat->category->pl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ $wNewsByCat->pl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
                                             </ul>
                                             <p class="post-content">
                                                 {{ substr($wNewsByCat->pl_details, 0, 200) }}
                                             </p>
-                                            <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                                            <a class="read-btn" href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -380,14 +415,14 @@
                                     @endif
                                     <div class="single-list-post ">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $wNewsByCat->image->image_four }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->pl_slug) }}"><img src="{{ $wNewsByCat->image->image_four }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $wNewsByCat->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $wNewsByCat->pl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $wNewsByCat->category->pl_slug) }}" class="catagory">{{ $wNewsByCat->category->pl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ $wNewsByCat->pl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -433,19 +468,19 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $worldNews->first()->sl_slug) }}"><img src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $worldNews->first()->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $worldNews->first()->sl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $worldNews->first()->category->sl_slug) }}" class="catagory">{{ $worldNews->first()->category->sl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $worldNews->first()->sl_slug) }}">{{ $worldNews->first()->sl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> J{{ $worldNews->first()->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> J{{ $worldNews->first()->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $worldNews->first()->comment->count() }}</span></li>
                                             </ul>
                                             <p class="post-content">
                                                 {{ substr($worldNews->first()->sl_details, 0, 200) }}
                                             </p>
-                                            <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                                            <a class="read-btn" href="{{ route('single.news', $worldNews->first()->sl_slug) }}">{{ translate()->sl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -457,14 +492,14 @@
                                     @endif
                                     <div class="single-list-post ">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $wNews->image->image_four }}" alt="{{ $wNews->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNews->sl_slug) }}"><img src="{{ $wNews->image->image_four }}" alt="{{ $wNews->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $wNews->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $wNews->sl_headline }} </a></h3>
+                                            <a href="{{ route('front.category', $wNews->category->sl_slug) }}" class="catagory">{{ $wNews->category->sl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNews->sl_slug) }}">{{ $wNews->sl_headline }} </a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $wNews->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $wNews->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $wNews->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -485,19 +520,19 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->sl_slug) }}"><img src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $wNewsByCat->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $wNewsByCat->sl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $wNewsByCat->first()->category->sl_slug) }}" class="catagory">{{ $wNewsByCat->category->sl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->sl_slug) }}">{{ $wNewsByCat->sl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
                                             </ul>
                                             <p class="post-content">
                                                 {{ substr($wNewsByCat->sl_details, 0, 200) }}
                                             </p>
-                                            <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                                            <a class="read-btn" href="{{ route('single.news', $wNewsByCat->sl_slug) }}">{{ translate()->sl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -509,14 +544,14 @@
                                     @endif
                                     <div class="single-list-post ">
                                         <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="{{ $wNewsByCat->image->image_four }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->sl_slug) }}"><img src="{{ $wNewsByCat->image->image_four }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
-                                            <a href="single-blog.html" class="catagory">{{ $wNewsByCat->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="single-blog.html">{{ $wNewsByCat->sl_headline }}</a></h3>
+                                            <a href="{{ route('front.category', $wNewsByCat->category->sl_slug) }}" class="catagory">{{ $wNewsByCat->category->sl_name }}</a>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->sl_slug) }}">{{ $wNewsByCat->sl_headline }}</a></h3>
                                             <ul class="post-meta">
-                                                <li><a href="#"><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</a></li>
-                                                <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                                <li><span><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
+                                                <li><span><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -580,22 +615,22 @@
                             @foreach ($SportNews as $sportNewsItem)
                             <div class="{{ $loop->first ? 'single-grid-post' : 'single-list-post' }}">
                                 <div class="post-thumbnail">
-                                    <a href="single-blog.html"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
+                                    <a href="{{ route('single.news', $sportNewsItem->pl_slug) }}"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="single-blog.html" class="catagory">{{ $sportNewsItem->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="single-blog.html">{{ $sportNewsItem->pl_headline }}</a></h3>
+                                    <a href="{{ route('front.category', $sportNewsItem->category->pl_slug) }}" class="catagory">{{ $sportNewsItem->category->pl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ $sportNewsItem->pl_headline }}</a></h3>
                                     <ul class="post-meta">
-                                        <li><a href="#"><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</a></li>
-                                        <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                        <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> Comment {{ $sportNewsItem->comment->count() }}</span></li>
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
                                         {{ substr($sportNewsItem->pl_details, 0, 200) }}
                                     </p>
 
+                                    <a class="read-btn" href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                     @endif
-                                    <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                             @endforeach
@@ -611,22 +646,22 @@
                             @foreach ($EntertainmentNews as $sportNewsItem)
                             <div class="{{ $loop->first ? 'single-grid-post' : 'single-list-post' }}">
                                 <div class="post-thumbnail">
-                                    <a href="single-blog.html"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
+                                    <a href="{{ route('single.news', $sportNewsItem->pl_slug) }}"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="single-blog.html" class="catagory">{{ $sportNewsItem->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="single-blog.html">{{ $sportNewsItem->pl_headline }}</a></h3>
+                                    <a href="{{ route('front.category', $sportNewsItem->category->pl_slug) }}" class="catagory">{{ $sportNewsItem->category->pl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ $sportNewsItem->pl_headline }}</a></h3>
                                     <ul class="post-meta">
-                                        <li><a href="#"><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</a></li>
-                                        <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                        <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> Comment {{ $sportNewsItem->comment->count() }}</span></li>
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
                                         {{ substr($sportNewsItem->pl_details, 0, 200) }}
                                     </p>
 
+                                    <a class="read-btn" href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                     @endif
-                                    <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                             @endforeach
@@ -651,22 +686,22 @@
                             @foreach ($SportNews as $sportNewsItem)
                             <div class="{{ $loop->first ? 'single-grid-post' : 'single-list-post' }}">
                                 <div class="post-thumbnail">
-                                    <a href="single-blog.html"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
+                                    <a href="{{ route('single.news', $sportNewsItem->sl_slug) }}"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="single-blog.html" class="catagory">{{ $sportNewsItem->category->sl_name }}</a>
-                                    <h3 class="post-title"><a href="single-blog.html">{{ $sportNewsItem->sl_headline }}</a></h3>
+                                    <a href="{{ route('front.category', $sportNewsItem->category->sl_slug) }}" class="catagory">{{ $sportNewsItem->category->sl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->sl_slug) }}">{{ $sportNewsItem->sl_headline }}</a></h3>
                                     <ul class="post-meta">
-                                        <li><a href="#"><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</a></li>
-                                        <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                        <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> Comment {{ $sportNewsItem->comment->count() }}</span></li>
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
                                         {{ substr($sportNewsItem->sl_details, 0, 200) }}
                                     </p>
 
+                                    <a class="read-btn" href="{{ route('single.news', $sportNewsItem->sl_slug) }}">{{ translate()->sl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                     @endif
-                                    <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                             @endforeach
@@ -682,22 +717,22 @@
                             @foreach ($EntertainmentNews as $sportNewsItem)
                             <div class="{{ $loop->first ? 'single-grid-post' : 'single-list-post' }}">
                                 <div class="post-thumbnail">
-                                    <a href="single-blog.html"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
+                                    <a href="{{ route('single.news', $sportNewsItem->sl_slug) }}"><img src="{{ $loop->first ? asset($sportNewsItem->image->image_three) : asset($sportNewsItem->image->image_four) }}" alt="{{ $sportNewsItem->image->image_alt }}" /></a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="single-blog.html" class="catagory">{{ $sportNewsItem->category->sl_name }}</a>
-                                    <h3 class="post-title"><a href="single-blog.html">{{ $sportNewsItem->sl_headline }}</a></h3>
+                                    <a href="{{ route('front.category', $sportNewsItem->category->sl_slug) }}" class="catagory">{{ $sportNewsItem->category->sl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->sl_slug) }}">{{ $sportNewsItem->sl_headline }}</a></h3>
                                     <ul class="post-meta">
-                                        <li><a href="#"><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</a></li>
-                                        <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                        <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> Comment {{ $sportNewsItem->comment->count() }}</span></li>
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
                                         {{ substr($sportNewsItem->sl_details, 0, 200) }}
                                     </p>
 
+                                    <a class="read-btn" href="{{ route('single.news', $sportNewsItem->sl_slug) }}">{{ translate()->sl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                     @endif
-                                    <a class="read-btn" href="#">Read More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                             @endforeach
@@ -749,15 +784,15 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-video-post">
                                 <div class="post-thumbnail">
-                                    <a href="single-blog-video.html"><img src="{{ asset($VideoNewsItem->image->image_four) }}" alt="{{ $VideoNewsItem->image->image_alt }}" /></a>
-                                    <a class="video-btn" href="single-blog-video.html"><i class="fas fa-play"></i></a>
+                                    <a href="{{ route('single.news', $VideoNewsItem->pl_slug) }}"><img src="{{ asset($VideoNewsItem->image->image_three) }}" alt="{{ $VideoNewsItem->image->image_alt }}" /></a>
+                                    <a class="video-btn" href="{{ route('single.news', $VideoNewsItem->pl_slug) }}"><i class="fas fa-play"></i></a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="single-blog-video.html" class="catagory">{{ $VideoNewsItem->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="single-blog-video.html">{{ $VideoNewsItem->pl_headline }}</a></h3>
+                                    <a href="{{ route('front.category', $VideoNewsItem->category->pl_slug) }}" class="catagory">{{ $VideoNewsItem->category->pl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $VideoNewsItem->pl_slug) }}">{{ $VideoNewsItem->pl_headline }}</a></h3>
                                     <ul class="post-meta">
-                                        <li><a href="#"><i class="far fa-clock"></i> {{ $VideoNewsItem->created_at->format('M d, Y') }}</a></li>
-                                        <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                        <li><span><i class="far fa-clock"></i> {{ $VideoNewsItem->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> Comment 123</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -783,15 +818,15 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-video-post">
                                 <div class="post-thumbnail">
-                                    <a href="single-blog-video.html"><img src="{{ asset($VideoNewsItem->image->image_four) }}" alt="{{ $VideoNewsItem->image->image_alt }}" /></a>
-                                    <a class="video-btn" href="single-blog-video.html"><i class="fas fa-play"></i></a>
+                                    <a href="{{ route('single.news', $VideoNewsItem->sl_slug) }}"><img src="{{ asset($VideoNewsItem->image->image_three) }}" alt="{{ $VideoNewsItem->image->image_alt }}" /></a>
+                                    <a class="video-btn" href="{{ route('single.news', $VideoNewsItem->sl_slug) }}"><i class="fas fa-play"></i></a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="single-blog-video.html" class="catagory">{{ $VideoNewsItem->category->sl_name }}</a>
-                                    <h3 class="post-title"><a href="single-blog-video.html">{{ $VideoNewsItem->sl_headline }}</a></h3>
+                                    <a href="{{ route('front.category', $VideoNewsItem->category->sl_slug) }}" class="catagory">{{ $VideoNewsItem->category->sl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $VideoNewsItem->sl_slug) }}">{{ $VideoNewsItem->sl_headline }}</a></h3>
                                     <ul class="post-meta">
-                                        <li><a href="#"><i class="far fa-clock"></i> {{ $VideoNewsItem->created_at->format('M d, Y') }}</a></li>
-                                        <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                        <li><span><i class="far fa-clock"></i> {{ $VideoNewsItem->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> Comment 123</span></li>
                                     </ul>
                                 </div>
                             </div>

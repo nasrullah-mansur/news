@@ -17,9 +17,9 @@ class CategorySeeder extends Seeder
     {
         Auth::loginUsingId(1);
         Category::create([
-            'pl_name' => 'Bussienss',
+            'pl_name' => 'Business',
             'sl_name' => 'ব্যাবসা',
-            'pl_slug' => 'bussienss',
+            'pl_slug' => 'business',
             'sl_slug' => 'ব্যাবসা',
         ]);
 

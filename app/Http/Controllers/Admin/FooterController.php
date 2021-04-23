@@ -22,7 +22,6 @@ class FooterController extends Controller
         $request->validate([
             'wizard_one_by' => 'required',
             'wizard_one_count' => 'required',
-            'quick_link_count' => 'required',
             'categories' => 'required',
             'images_from' => 'required',
             'image_by' => 'required',
@@ -31,7 +30,6 @@ class FooterController extends Controller
         $footer = Footer::first();
         $footer->wizard_one_by = $request->wizard_one_by;
         $footer->wizard_one_count = $request->wizard_one_count;
-        $footer->quick_link_count = $request->quick_link_count;
         $footer->categories = implode(',', $request->categories);
         $footer->images_from = $request->images_from;
         $footer->image_by = $request->image_by;

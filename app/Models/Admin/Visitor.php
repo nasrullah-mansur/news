@@ -2,8 +2,9 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Admin\News;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Visitor extends Model
 {
@@ -13,6 +14,12 @@ class Visitor extends Model
         'news_id',
         'visitor'
     ];
+
+
+    public function news()
+    {
+        return $this->belongsTo(News::class);
+    }
 
 
 }

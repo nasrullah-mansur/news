@@ -276,10 +276,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item {{ Route::is('contact.index', 'admin.comment.index') }}">
                         <a href="#"><i class="ft-message-square"></i><span class="menu-title">Contact</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#">Comment</a></li>
+                            <li class="{{ Route::is('contact.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('contact.index') }}">Contact form</a></li>
+                            <li class="{{ Route::is('admin.comment.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.comment.index') }}">Comment</a></li>
                             <li><a class="menu-item" href="#">Add Request</a></li>
                         </ul>
                     </li>

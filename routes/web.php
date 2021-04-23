@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\BreakingNewsController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WizardController;
 use App\Http\Controllers\Front\FrontController;
+use App\Models\Admin\Comment;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -142,6 +145,21 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/page/contact', [PageController::class, 'contact_edit'])->name('page.contact.edit');
     Route::post('/page/contact', [PageController::class, 'contact_update'])->name('page.contact.update');
 
+    // CONTACT;
+    Route::get('/user/contact/contact-form', [ContactController::class, 'index'])->name('contact.index');
+    Route::get('/user/contact/contact-form/all-contact', [ContactController::class, 'contact_all'])->name('contact.contact.all');
+    Route::get('/user/contact/{id}/reply', [ContactController::class, 'contact_reply'])->name('contact.reply');
+    Route::post('/user/contact/reply', [ContactController::class, 'reply_send'])->name('contact.reply.send');
+    Route::post('/contact/contact/{id}/delete', [ContactController::class, 'destroy'])->name('contact.contact.delete');
+
+
+    // COMMENT;
+    Route::get('/comment/all', [CommentController::class, 'index'])->name('admin.comment.index');
+    Route::get('/comment/comment/all-comment', [CommentController::class, 'comment_all'])->name('admin.comment.all');
+    Route::get('/comment/comment/{id}', [CommentController::class, 'view'])->name('admin.comment.view');
+    Route::get('/comment/comment/{id}/delete', [CommentController::class, 'destroy'])->name('admin.comment.destroy');
+    Route::post('/comment/comment/{id}/delete', [CommentController::class, 'delete'])->name('admin.comment.delete');
+
 
 });
 
@@ -150,6 +168,16 @@ Route::prefix('admin')->middleware('auth')->group(function (){
 // FRONT ROUTE;
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/news/{slug}', [FrontController::class, 'singleNews'])->name('single.news');
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
+Route::get('/news/category/{slug}', [FrontController::class, 'category'])->name('front.category');
+
+Route::get('/privacy-policy', [FrontController::class, 'privacy'])->name('front.privacy');
+Route::get('/cookies', [FrontController::class, 'cookies'])->name('front.cookies');
+Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
+Route::get('/request-add', [FrontController::class, 'request_add'])->name('front.request.add');
+
+// CONTACT;
+Route::post('/user/contact', [ContactController::class, 'store'])->name('user.contact');
 
 
 

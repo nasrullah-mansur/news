@@ -26,6 +26,7 @@ class WizardController extends Controller
             'news_per_page' => 'required',
             'recent_news_count' => 'required',
             'related_news_count' => 'required',
+            'popular_news_count' => 'required',
         ]);
 
         $wizard->trending_news_count = $request->trending_news_count;
@@ -35,6 +36,7 @@ class WizardController extends Controller
         $wizard->news_per_page = $request->news_per_page;
         $wizard->recent_news_count = $request->recent_news_count;
         $wizard->related_news_count = $request->related_news_count;
+        $wizard->popular_news_count = $request->popular_news_count;
 
         $wizard->save();
 

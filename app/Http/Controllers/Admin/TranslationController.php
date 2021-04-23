@@ -17,6 +17,7 @@ class TranslationController extends Controller
 
     public function update(TranslationRequest $request)
     {
+
         $heading = Translation::first();
 
         $heading->pl_one = $request->pl_one;
@@ -69,6 +70,43 @@ class TranslationController extends Controller
         $heading->sl_twenty_four = $request->sl_twenty_four;
         $heading->pl_twenty_five = $request->pl_twenty_five;
         $heading->sl_twenty_five = $request->sl_twenty_five;
+
+        $heading->pl_twenty_six = $request->pl_twenty_six;
+        $heading->sl_twenty_six = $request->sl_twenty_six;
+        $heading->pl_twenty_seven = $request->pl_twenty_seven;
+        $heading->sl_twenty_seven = $request->sl_twenty_seven;
+        $heading->pl_twenty_eight = $request->pl_twenty_eight;
+        $heading->sl_twenty_eight = $request->sl_twenty_eight;
+        $heading->pl_twenty_nine = $request->pl_twenty_nine;
+        $heading->sl_twenty_nine = $request->sl_twenty_nine;
+
+        $heading->pl_thirty = $request->pl_thirty;
+        $heading->sl_thirty = $request->sl_thirty;
+        $heading->pl_thirty_one = $request->pl_thirty_one;
+        $heading->sl_thirty_one = $request->sl_thirty_one;
+        $heading->pl_thirty_two = $request->pl_thirty_two;
+        $heading->sl_thirty_two = $request->sl_thirty_two;
+
+        $heading->pl_thirty_three = $request->pl_thirty_three;
+        $heading->sl_thirty_three = $request->sl_thirty_three;
+        $heading->pl_thirty_four = $request->pl_thirty_four;
+        $heading->sl_thirty_four = $request->sl_thirty_four;
+        $heading->pl_thirty_five = $request->pl_thirty_five;
+        $heading->sl_thirty_five = $request->sl_thirty_five;
+
+
+
+        $heading->pl_thirty_six = $request->pl_thirty_six;
+        $heading->pl_thirty_seven = $request->pl_thirty_seven;
+        $heading->pl_thirty_eight = $request->pl_thirty_eight;
+        $heading->pl_thirty_nine = $request->pl_thirty_nine;
+        $heading->pl_forty = $request->pl_forty;
+
+        $heading->sl_thirty_six = $request->sl_thirty_six;
+        $heading->sl_thirty_seven = $request->sl_thirty_seven;
+        $heading->sl_thirty_eight = $request->sl_thirty_eight;
+        $heading->sl_thirty_nine = $request->sl_thirty_nine;
+        $heading->sl_forty = $request->sl_forty;
 
         $heading->save();
         return redirect()->route('admin.translation.edit')->with('update', 'Updated Successfully');

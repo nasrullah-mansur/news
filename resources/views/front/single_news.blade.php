@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="breadcrumb-wrap text-center">
-                            <h2 class="page-title">News Details</h2>
+                            <h2 class="page-title">{{ active_lang() == 'pl' ? translate()->pl_fifteen : translate()->sl_fifteen }}</h2>
                             <ul class="breadcrumb-page ">
                                 <li><a href="index.html">Home</a></li>
                                 <li>Business</li>
@@ -22,22 +22,25 @@
         <section class="single-blog-page section">
             <div class="container">
                 <div class="single-post">
-                    <a href="#" class="post-catagory">Business</a>
-                    <h2 class="post-title">Despite All Prevention, You Are Likely to Get Mass-market fashion is very modern. the Coronavirus.</h2>
+                    <a href="#" class="post-catagory">{{ $news->category->pl_name }}</a>
+                    <h2 class="post-title">{{ $news->pl_headline }}</h2>
                     <div class="post-thumbnail">
-                        <img  src="assets/images/posts/single-post-thumbnail2.png" alt="single-post-thumbnail" />
-                        <a class="video-btn popup-video" data-autoplay="true" data-vbtype="video" href="https://youtu.be/01fswlREnjM"><i class="fas fa-play"></i></a>
+                        <img  src="{{ asset($news->image->image_one) }}" alt="{{ $news->image->image_alt }}" />
+                        @if ($news->video != null)
+                        <a class="video-btn popup-video" data-autoplay="true" data-vbtype="video" href="{{ $news->video }}"><i class="fas fa-play"></i></a>
+
+                        @endif
                     </div>
                     <div class="post-meta d-flex justify-content-between align-items-center">
                         <div class="post-meta-left d-flex align-items-center">
                             <div class="author d-flex align-items-center">
-                                <a href="#" class="author-image"><img src="assets/images/author.png" alt="author" /></a>
-                                <h4 class="author-name mb-0">By <a href="#">Johan Doho</a></h4>
+                                <a href="#" class="author-image"><img src="{{ $news->user->profile->profile == null ? Avatar::create($news->user->name)->toBase64() : asset($news->user->profile->profile) }}" alt="{{ $news->user->name }}" /></a>
+                                <h4 class="author-name mb-0">By <a href="#">{{ $news->user->name }}</a></h4>
                             </div>
-                            <span class="post-time"><i class="far fa-clock"></i> June 12, 2020</span>
+                            <span class="post-time"><i class="far fa-clock"></i> {{ $news->created_at->format('D m, Y') }}</span>
                         </div>
                         <div class="post-meta-right">
-                            <a class="comment" href="#"><i class="far fa-comment"></i> Comment 123</a>
+                            <a class="comment" href="#comment_post"><i class="far fa-comment"></i> Comment {{ count($comments) }}</a>
                         </div>
                     </div>
                     <div class="post-share d-flex align-items-center">
@@ -49,201 +52,238 @@
                         </ul>
                     </div>
                     <div class="post-content">
-                        <h3>Mass-market fashion is very modern.</h3>
-                        <p>Aenean consectetur massa quis sem volutpat, a condimentum tortor pretium. Cras ligula consequat, sagittis nulla at, sollicitudin lorem. Orci varius  penatibus et magnis dis parturient montes. Cras id ligula consequat, sagittis nulla at, sollicitudin lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-                        <p>Cras id ligula consequat, sagittis nulla at, sollicitudin lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pharetra eget quam sollicitudin orci duis magna eget.</p>
+                        {!! $news->pl_details !!}
                     </div>
-                    <div class="post-content-image image-left">
-                        <div class="post-image">
-                            <img src="assets/images/posts/single-post-image-1.png" alt="single-post-image-1" />
-                        </div>
-                        <p><b>Kusto ornare suscipit </b> montes, eget amet. Tempus aenean et mattis mi proin. Ut quam nisi, molestie habitant turpis.Bibendum risus sociis eget sed malesuada tellus eget. Nascetur eget tempor.</p>
-                        <p>Bibendum risus sociis eget sed malesuada tellus eget. Nascetur eget tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna zeget.Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget  </p>
-                        <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
-                    </div>
-                    <blockquote class="post-blockqhote">
-                        <i class="qhote-iocn fas fa-quote-right"></i>
-                        <p>Aenean consectetur massa quis sem volutpat, a condimentum tortor pretium. Crasconsequat, sagittis nulla at, sollicitudin lorem. Orci varius  penatibus et magnis dis parturient montes.  ligula consequat, sagittis nulla at, sollicitudin lorem. Orci varius </p>
-                    </blockquote>
+
                     <div class="add-area">
                         <a href="#">
-                            <img src="assets/images/big-add-banner.png" alt="big-add-banner" />
+                            <img src="{{ asset('front/images/big-add-banner.png') }}" alt="big-add-banner" />
                         </a>
-                    </div>
-                    <div class="post-content-image image-right">
-                        <div class="post-image">
-                            <img src="assets/images/posts/single-post-image-2.png" alt="single-post-image-1" />
-                        </div>
-                        <p><b>Kusto ornare suscipit </b> montes, eget amet. Tempus aenean et mattis mi proin. Ut quam nisi, molestie habitant turpis.Bibendum risus sociis eget sed malesuada tellus eget. Nascetur eget tempor.</p>
-                        <p>Bibendum risus sociis eget sed malesuada tellus eget. Nascetur eget tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna zeget.Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget  </p>
-                        <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
                     </div>
                     <div class="post-tags">
                         <ul>
-                            <li><a href="#">CORONAVIRUS</a></li>
-                            <li><a href="#">COVIED</a></li>
-                            <li><a href="#">NEWSPAPER</a></li>
-                            <li><a href="#">MEDICIN</a></li>
+                            @foreach (explode(',', $news->tags) as $single_tag)
+                            <li><a href="#">{{ $single_tag }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="comment-post mb-50">
-                    <h2 class="section-title">Comment Post</h2>
+                <div class="comment-post" id="comment_post">
+                    <h2 class="section-title">{{ translate()->pl_sixteen }}</h2>
                     <ul class="comments-list mt-45">
+                        @foreach ($comments as $comment)
                         <li class="single-comment">
                             <div class="media">
-                                <img src="assets/images/comment-1.png" class="comments-avatar" alt="comment" />
+                                <img src="{{ Avatar::create($comment->name)->toBase64() }}" class="comments-avatar" alt="comment" />
                                 <div class="media-body">
                                   <div class="avatar-info d-flex">
-                                    <a class="avatar-name" href="#">Cameron Williamson</a>
-                                    <span class="comment-time">May 12, 2020</span>
-                                    <a href="#" class="reply"><i class="fas fa-reply"></i></a>
+                                    <span class="avatar-name">{{ $comment->name }}</span>
+                                    <span class="comment-time">{{ $comment->created_at->format('M d, Y') }}</span>
+                                    <a href="#leve_comment" class="reply"><i data-id="{{ $comment->id }}" class="fas fa-reply"></i></a>
                                   </div>
-                                  <p class="comment-text">Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetrasollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam </p>
+                                  <p class="comment-text">{{ $comment->comment }}</p>
                                 </div>
                             </div>
+                            @if($comment->reply != null)
                             <ul class="children">
+                                @foreach ($comment->reply as $reply_comment)
                                 <li class="single-comment">
                                     <div class="media">
-                                        <img src="assets/images/comment-2.png" class="comments-avatar" alt="comment" />
+                                        <img src="{{ Avatar::create($reply_comment->name)->toBase64() }}" class="comments-avatar" alt="comment" />
                                         <div class="media-body">
                                           <div class="avatar-info d-flex">
-                                            <a class="avatar-name" href="#">Cameron Williamson</a>
-                                            <span class="comment-time">May 12, 2020</span>
-                                            <a href="#" class="reply"><i class="fas fa-reply"></i></a>
+                                            <span class="avatar-name">{{ $reply_comment->name }}</span>
+                                            <span class="comment-time">{{ $reply_comment->created_at->format('M d, Y') }}</span>
+                                            <a href="#leve_comment" class="reply"><i data-id="{{ $comment->id }}" class="fas fa-reply"></i></a>
                                           </div>
-                                          <p class="comment-text">Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetrasollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam </p>
+                                          <p class="comment-text">{{ $reply_comment->comment }}</p>
                                         </div>
                                     </div>
                                 </li>
+                                @endforeach
                             </ul>
+                            @endif
                         </li>
-                        <li class="single-comment">
-                            <div class="media">
-                                <img src="assets/images/comment-3.png" class="comments-avatar" alt="comment" />
-                                <div class="media-body">
-                                  <div class="avatar-info d-flex">
-                                    <a class="avatar-name" href="#">Cameron Williamson</a>
-                                    <span class="comment-time">May 12, 2020</span>
-                                    <a href="#" class="reply"><i class="fas fa-reply"></i></a>
-                                  </div>
-                                  <p class="comment-text">Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetrasollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam </p>
-                                </div>
-                            </div>
-                        </li>
+
+                        @endforeach
                     </ul>
                 </div>
                 <!-- comments area start here  -->
-                <div class="comments">
-                    <h2 class="section-title">Leave A  Reply</h2>
+                @if (active_lang() == 'pl')
+                <div class="comments" style="padding-top: 50px" id="leve_comment">
+                    <h2 class="section-title">{{ translate()->pl_seventeen }}</h2>
                     <div class="comments-form mt-45">
-                        <form action="#">
+                        <form action="{{ route('comment.store') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <textarea class="form-control comment-box" id="commentbox" name="commentbox" placeholder="Write you text here . . . "></textarea>
+                                        <textarea class="form-control comment-box" id="commentbox" name="comment" placeholder="{{ translate()->pl_eighteen }}"></textarea>
+                                        @if($errors->has('comment'))
+                                        <span class="text-danger">{{ $errors->first('comment') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-4 .col-md-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="yourname" name="yourname" placeholder="Your Name" />
+                                        <input type="text" class="form-control" id="yourname" name="name" placeholder="{{ translate()->pl_nineteen }}" />
+                                        @if($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-4 .col-md-4">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="youremail" name="youremail" placeholder="Email Address" />
+                                        <input type="email" class="form-control" id="youremail" name="email" placeholder="{{ translate()->pl_twenty }}" />
+                                        @if($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-4 .col-md-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone No" />
+                                        <input type="text" class="form-control" id="phonenumber" name="phone" placeholder="{{ translate()->pl_twenty_one }}" />
+                                        @if($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <button type="submit" class="primary-btn">Post  Comment</button>
+                                    <input type="hidden" name="p_id" value="0">
+                                    <input type="hidden" name="news_id" value="{{ $news->id }}">
+                                    <button  type="submit" class="primary-btn">{{ translate()->pl_twenty_two }}</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                @else
+                <div class="comments" style="padding-top: 50px" id="leve_comment">
+                    <h2 class="section-title">{{ translate()->sl_seventeen }}</h2>
+                    <div class="comments-form mt-45">
+                        <form action="{{ route('comment.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control comment-box" id="commentbox" name="comment" placeholder="{{ translate()->sl_eighteen }}"></textarea>
+                                        @if($errors->has('comment'))
+                                        <span class="text-danger">{{ $errors->first('comment') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 .col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="yourname" name="name" placeholder="{{ translate()->sl_nineteen }}" />
+                                        @if($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 .col-md-4">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="youremail" name="email" placeholder="{{ translate()->sl_twenty }}" />
+                                        @if($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 .col-md-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="phonenumber" name="phone" placeholder="{{ translate()->sl_twenty_one }}" />
+                                        @if($errors->has('phone'))
+                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="hidden" name="p_id" value="0">
+                                    <input type="hidden" name="news_id" value="{{ $news->id }}">
+                                    <button  type="submit" class="primary-btn">{{ translate()->sl_twenty_two }}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @endif
                 <!-- comments area start here  -->
             </div>
         </section>
         <!-- Single News Page end here  -->
 
         <!-- releted Post area start here -->
+        @if (active_lang() == 'pl')
         <div class="releted-post-area pb-90">
             <div class="container">
                 <div class="section-header">
                     <div class="row aling-items-center">
                         <div class="col-md-5">
-                            <h2 class="section-title">Releted <span>Post</span></h2>
+                            <h2 class="section-title">{!! HeadingStyle(translate()->pl_twenty_three) !!}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    @foreach ($relatedNews as $news_item)
                     <div class="col-lg-6">
                         <div class="single-list-post ">
                             <div class="post-thumbnail">
-                                <a href="#"><img src="assets/images/posts/lsit-post-1.png" alt="post" /></a>
+                                <a href="{{ route('single.news', $news_item->pl_slug) }}"><img src="{{ asset($news_item->image->image_four) }}" alt="{{ $news_item->image->image_alt }}" /></a>
                             </div>
                             <div class="post-info">
-                                <a href="#" class="catagory">Heath</a>
-                                <h3 class="post-title"><a href="#">This Chinese Province Hex It Faked Fiscal Data </a></h3>
+                                <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->pl_name }}</a>
+                                <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ $news_item->pl_headline }}</a></h3>
                                 <ul class="post-meta">
-                                    <li><a href="#"><i class="far fa-clock"></i> June 12, 2017</a></li>
-                                    <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
+                                    <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
+                                    <li><span><i class="far fa-comment"></i> Comment {{ $news_item->comment->count() }}</span></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="single-list-post ">
-                            <div class="post-thumbnail">
-                                <a href="#"><img src="assets/images/posts/lsit-post-2.png" alt="post" /></a>
-                            </div>
-                            <div class="post-info">
-                                <a href="#" class="catagory">Heath</a>
-                                <h3 class="post-title"><a href="#">This Chinese Province Hex It Faked Fiscal Data </a></h3>
-                                <ul class="post-meta">
-                                    <li><a href="#"><i class="far fa-clock"></i> June 12, 2017</a></li>
-                                    <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="single-list-post ">
-                            <div class="post-thumbnail">
-                                <a href="#"><img src="assets/images/posts/lsit-post-3.png" alt="post" /></a>
-                            </div>
-                            <div class="post-info">
-                                <a href="#" class="catagory">Heath</a>
-                                <h3 class="post-title"><a href="#">This Chinese Province Hex It Faked Fiscal Data </a></h3>
-                                <ul class="post-meta">
-                                    <li><a href="#"><i class="far fa-clock"></i> June 12, 2017</a></li>
-                                    <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="single-list-post ">
-                            <div class="post-thumbnail">
-                                <a href="#"><img src="assets/images/posts/lsit-post-4.png" alt="post" /></a>
-                            </div>
-                            <div class="post-info">
-                                <a href="#" class="catagory">Heath</a>
-                                <h3 class="post-title"><a href="#">This Chinese Province Hex It Faked Fiscal Data </a></h3>
-                                <ul class="post-meta">
-                                    <li><a href="#"><i class="far fa-clock"></i> June 12, 2017</a></li>
-                                    <li><a href="#"><i class="far fa-comment"></i> Comment 123</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
             </div>
         </div>
+        @else
+        <div class="releted-post-area pb-90">
+            <div class="container">
+                <div class="section-header">
+                    <div class="row aling-items-center">
+                        <div class="col-md-5">
+                            <h2 class="section-title">{!! HeadingStyle(translate()->sl_twenty_three) !!}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($relatedNews as $news_item)
+                    <div class="col-lg-6">
+                        <div class="single-list-post ">
+                            <div class="post-thumbnail">
+                                <a href="{{ route('single.news', $news_item->sl_slug) }}"><img src="{{ asset($news_item->image->image_four) }}" alt="{{ $news_item->image->image_alt }}" /></a>
+                            </div>
+                            <div class="post-info">
+                                <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->sl_name }}</a>
+                                <h3 class="post-title"><a href="{{ route('single.news', $news_item->sl_slug) }}">{{ $news_item->sl_headline }}</a></h3>
+                                <ul class="post-meta">
+                                    <li><a href="#"><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</a></li>
+                                    <li><a href="#"><i class="far fa-comment"></i> Comment {{ $news_item->comment->count() }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        @endif
         <!-- releted Post area end here -->
+@endsection
+
+@section('custom_js')
+<script>
+    $('.reply').on('click', function(e) {
+        $('input[name="p_id"]').val(e.target.getAttribute('data-id'))
+    })
+</script>
 @endsection

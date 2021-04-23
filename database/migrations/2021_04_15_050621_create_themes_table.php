@@ -24,6 +24,11 @@ class CreateThemesTable extends Migration
             $table->string('sl_name');
             $table->string('sl_flag');
             $table->longText('google_map');
+            $table->text('pl_address');
+            $table->text('pl_support_hour');
+            $table->text('sl_address');
+            $table->text('sl_support_hour');
+            $table->text('quick_contact');
             $table->string('copyright');
             $table->timestamps();
         });

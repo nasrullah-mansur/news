@@ -91,6 +91,21 @@
                                 @endif
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label for="popular_news_count">Popular News Count</label>
+                                <input type="number" id="popular_news_count" class="form-control {{ $errors->has('popular_news_count') ? 'is-invalid' : '' }}" placeholder="Popular news count" name="popular_news_count" value="{{ $wizard->popular_news_count }}">
+                                @if ($errors->has('popular_news_count'))
+                                    <div class="invalid-feedback">{{ $errors->first('popular_news_count') }}</div>
+                                @endif
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h4 class="form-section border-bottom mb-2 mt-3 pb-1">News Details Page</h4>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                 <label for="related_news_count">Related News Count</label>

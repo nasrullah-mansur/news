@@ -30,7 +30,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-3">
                             <div class="logo-area">
-                                <a href="index.html"><img src="{{ asset(ThemeSetting()->logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
+                                <a href="{{ url('/') }}"><img src="{{ asset(ThemeSetting()->logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -71,11 +71,11 @@
                                                 <ul class="catagory-list">
                                                     @if(active_lang() == 'sl')
                                                     @foreach (Categories() as $category)
-                                                    <li><a href="categories.html">{{ $category->sl_name }}<span class="catagory-count">[10]</span></a></li>
+                                                    <li><a href="{{ route('front.category', $category->sl_slug) }}">{{ $category->sl_name }}<span class="catagory-count">[{{ $category->news->count() }}]</span></a></li>
                                                     @endforeach
                                                     @else
                                                     @foreach (Categories() as $category)
-                                                    <li><a href="categories.html">{{ $category->pl_name }}<span class="catagory-count">[10]</span></a></li>
+                                                    <li><a href="{{ route('front.category', $category->pl_slug) }}">{{ $category->pl_name }}<span class="catagory-count">[{{ $category->news->count() }}]</span></a></li>
                                                     @endforeach
                                                     @endif
                                                 </ul>
@@ -87,11 +87,11 @@
                                             <ul>
                                                 @if(active_lang() == 'sl')
                                                 @foreach (MainMenu() as $mainMenu)
-                                                <li class="current-menu-item"><a href="index.html">{{ $mainMenu->sl_label }}</a></li>
+                                                <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->sl_label }}</a></li>
                                                 @endforeach
                                                 @else
                                                 @foreach (MainMenu() as $mainMenu)
-                                                <li class="current-menu-item"><a href="index.html">{{ $mainMenu->pl_label }}</a></li>
+                                                <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->pl_label }}</a></li>
                                                 @endforeach
                                                 @endif
                                             </ul>
@@ -123,7 +123,7 @@
                     <div class="col-6">
                         <div class="heaer-left">
                             <div class="logo-area">
-                                <a href="index.html"><img src="{{ asset('front/images/logo.png') }}" alt="logo" /></a>
+                                <a href="index.html"><img src="{{ asset(ThemeSetting()->logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
                             </div>
                         </div>
                     </div>
@@ -151,14 +151,13 @@
         <!-- sidebar area start here  -->
         <aside class="sidebar-area">
             <div class="dropdown language-dropdown">
-                <button class="dropdown-toggle" type="button" id="dropdownlanguagemobile" data-toggle="dropdown" >
-                   <img class="flag" src="{{ asset('front/images/flag.png') }}" alt="flag" /> <span>English</span>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownlanguagemobile">
-                  <a class="dropdown-item" href="#">English</a>
-                  <a class="dropdown-item" href="#">Bangla</a>
-                  <a class="dropdown-item" href="#">HIndi</a>
-                </div>
+                <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
+                    <img class="flag" src="{{ active_lang() == 'pl' ? asset(ThemeSetting()->pl_flag) : asset(ThemeSetting()->sl_flag) }}" alt="flag" /> <span>{{ active_lang() == 'pl' ? ThemeSetting()->pl_name : ThemeSetting()->sl_name }}</span>
+                 </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="{{ route('lang.forgot') }}">{{ ThemeSetting()->pl_name }}</a>
+                     <a class="dropdown-item" href="{{ route('change.lang') }}">{{ ThemeSetting()->sl_name }}</a>
+                 </div>
             </div>
             <div class="follow-area">
                 <ul>
@@ -181,11 +180,15 @@
                 <div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
                     <nav class="mobile-menu">
                         <ul>
-                            <li class="current-menu-item"><a href="#">Home</a></li>
-                            <li><a href="categories.html">Enterainment</a></li>
-                            <li><a href="categories.html">Health</a></li>
-                            <li><a href="categories.html">Travel</a></li>
-                            <li><a href="categories.html">Sport</a></li>
+                            @if(active_lang() == 'sl')
+                            @foreach (MainMenu() as $mainMenu)
+                            <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->sl_label }}</a></li>
+                            @endforeach
+                            @else
+                            @foreach (MainMenu() as $mainMenu)
+                            <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->pl_label }}</a></li>
+                            @endforeach
+                            @endif
                         </ul>
                     </nav>
                 </div>
@@ -193,11 +196,11 @@
                     <ul class="catagory-list">
                         @if(active_lang() == 'sl')
                         @foreach (Categories() as $category)
-                        <li><a href="categories.html">{{ $category->sl_name }}<span class="catagory-count">[10]</span></a></li>
+                        <li><a href="{{ route('front.category', $category->sl_slug) }}">{{ $category->sl_name }}<span class="catagory-count">[{{ $category->news->count() }}]</span></a></li>
                         @endforeach
                         @else
                         @foreach (Categories() as $category)
-                        <li><a href="categories.html">{{ $category->pl_name }}<span class="catagory-count">[10]</span></a></li>
+                        <li><a href="{{ route('front.category', $category->pl_slug) }}">{{ $category->pl_name }}<span class="catagory-count">[{{ $category->news->count() }}]</span></a></li>
                         @endforeach
                         @endif
                     </ul>
@@ -222,7 +225,7 @@
                         <div class="col-sm-9 text-sm-right">
                             <ul class="social-media">
                                 @foreach (FooterMenu() as $footer_menu_item)
-                                <li><a href="{{ $footer_menu_item->url }}">{{ $footer_menu_item->pl_name }}</a></li>
+                                <li><a href="{{ url($footer_menu_item->url) }}">{{ $footer_menu_item->pl_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -236,18 +239,23 @@
                             <div class="single-widget most-viwed-post">
                                 <h3 class="widget-title">{!! HeadingStyle(translate()->pl_eleven) !!}</h3>
                                 <ul>
+                                    @if (Footer()->wizard_one_by == 1)
+                                    @foreach (MostVisitedNews(Footer()->wizard_one_count + 1) as $most_view)
+                                    @foreach (DB::table('news')->where('id', $most_view->news_id)->orderBy('created_at', 'DESC')->get() as $nost_view_news)
                                     <li>
-                                        <span class="date">28 june,21</span>
-                                        <a href="single-blog.html">Tex Perkins On How To Get Into</a>
+                                        <span class="date">{{ \Carbon\Carbon::parse($nost_view_news->created_at)->format('M d, Y') }}</span>
+                                        <a href="{{ route('single.news', $nost_view_news->pl_slug) }}">{{ $nost_view_news->pl_headline }}</a>
                                     </li>
+                                    @endforeach
+                                    @endforeach
+                                    @else
+                                    @foreach (MostRecentPost(Footer()->wizard_one_count) as $most_recent_footer)
                                     <li>
-                                        <span class="date">28 june,21</span>
-                                        <a href="single-blog.html">Tex Perkins On How To Get Into</a>
+                                        <span class="date">{{ \Carbon\Carbon::parse($most_recent_footer->created_at)->format('M d, Y') }}</span>
+                                        <a href="{{ route('single.news', $most_recent_footer->pl_slug) }}">{{ $most_recent_footer->pl_headline }}</a>
                                     </li>
-                                    <li>
-                                        <span class="date">28 june,21</span>
-                                        <a href="single-blog.html">Tex Perkins On How To Get Into</a>
-                                    </li>
+                                    @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -256,7 +264,7 @@
                                 <h3 class="widget-title">{!! HeadingStyle(translate()->pl_twelve) !!}</h3>
                                 <ul>
                                     @foreach (FooterMenu() as $footer_menu)
-                                    <li><a href="{{ url($footer_menu->pl_label) }}">{{ $footer_menu->pl_label }}</a></li>
+                                    <li><a href="{{ url($footer_menu->url) }}">{{ $footer_menu->pl_label }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -268,7 +276,7 @@
                                     @foreach (explode(',', Footer()->categories) as $footer_cat_count)
                                     @foreach (AllCategories() as $FooterCat)
                                     @if ($FooterCat->id == $footer_cat_count)
-                                    <li><a href="categories.html">{{ $FooterCat->pl_name }}</a></li>
+                                    <li><a href="{{ route('front.category', $FooterCat->pl_slug) }}">{{ $FooterCat->pl_name }}</a></li>
                                     @endif
                                     @endforeach
                                     @endforeach
@@ -277,10 +285,10 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="single-widget fashsion-news">
-                                <h3 class="widget-title">{!! HeadingStyle(translate()->pl_fourteen) !!}</h3>
+                                <h3 class="widget-title">{!! HeadingStyle(translate()->pl_twenty_eight) !!}</h3>
                                 <ul>
                                     @foreach (FooterGallery() as $footer_gallery)
-                                    <li><a href="#"><img style="max-width: 112px" src="{{ asset($footer_gallery->image->image_four) }}" alt="fashion" /></a></li>
+                                    <li><a href="{{ route('single.news', $footer_gallery->pl_slug) }}"><img style="max-width: 112px" src="{{ asset($footer_gallery->image->image_four) }}" alt="{{ $footer_gallery->image->image_alt }}" /></a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -293,7 +301,109 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="copyright-area text-center text-sm-left">
-                                <p>&copy; 2021 <a href="index.html">Zainiklab</a> .All right reserved</p>
+                                {!! ThemeSetting()->copyright !!}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-center text-sm-right">
+                            <div class="footer-menu">
+                                <a href="privacy-policy.html">Privacy & Policy</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        @else
+
+        <footer class="footer-area">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row align-content-center">
+                        <div class="col-sm-3">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="{{ asset(ThemeSetting()->footer_logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 text-sm-right">
+                            <ul class="social-media">
+                                @foreach (FooterMenu() as $footer_menu_item)
+                                <li><a href="{{ $footer_menu_item->url }}">{{ $footer_menu_item->sl_name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-widget most-viwed-post">
+                                <h3 class="widget-title">{!! HeadingStyle(translate()->sl_eleven) !!}</h3>
+                                <ul>
+                                    @if (Footer()->wizard_one_by == 1)
+                                    @foreach (MostVisitedNews(Footer()->wizard_one_count + 1) as $most_view)
+                                    @foreach (DB::table('news')->where('id', $most_view->news_id)->orderBy('created_at', 'DESC')->get() as $nost_view_news)
+                                    <li>
+                                        <span class="date">{{ \Carbon\Carbon::parse($nost_view_news->created_at)->format('M d, Y') }}</span>
+                                        <a href="{{ route('single.news', $nost_view_news->sl_slug) }}">{{ $nost_view_news->sl_headline }}</a>
+                                    </li>
+                                    @endforeach
+                                    @endforeach
+                                    @else
+                                    @foreach (MostRecentPost(Footer()->wizard_one_count) as $most_recent_footer)
+                                    <li>
+                                        <span class="date">{{ \Carbon\Carbon::parse($most_recent_footer->created_at)->format('M d, Y') }}</span>
+                                        <a href="{{ route('single.news', $most_recent_footer->sl_slug) }}">{{ $most_recent_footer->sl_headline }}</a>
+                                    </li>
+                                    @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-widget widget-menu">
+                                <h3 class="widget-title">{!! HeadingStyle(translate()->sl_twelve) !!}</h3>
+                                <ul>
+                                    @foreach (FooterMenu() as $footer_menu)
+                                    <li><a href="{{ url($footer_menu->url) }}">{{ $footer_menu->sl_label }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="single-widget widget-menu">
+                                <h3 class="widget-title">{!! HeadingStyle(translate()->sl_thirteen) !!}</h3>
+                                <ul>
+                                    @foreach (explode(',', Footer()->categories) as $footer_cat_count)
+                                    @foreach (AllCategories() as $FooterCat)
+                                    @if ($FooterCat->id == $footer_cat_count)
+                                    <li><a href="{{ route('front.category', $FooterCat->sl_slug) }}">{{ $FooterCat->sl_name }}</a></li>
+                                    @endif
+                                    @endforeach
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="single-widget fashsion-news">
+                                <h3 class="widget-title">{!! HeadingStyle(translate()->sl_twenty_eight) !!}</h3>
+                                <ul>
+                                    @foreach (FooterGallery() as $footer_gallery)
+                                    <li><a href="{{ route('single.news', $footer_gallery->sl_slug) }}"><img style="max-width: 112px" src="{{ asset($footer_gallery->image->image_four) }}" alt="{{ $footer_gallery->image->image_alt }}" /></a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="copyright-area text-center text-sm-left">
+                                {!! ThemeSetting()->copyright !!}
                             </div>
                         </div>
                         <div class="col-sm-6 text-center text-sm-right">
@@ -312,5 +422,6 @@
         <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('front/js/plugins.js') }}"></script>
         <script src="{{ asset('front/js/main.js') }}"></script>
+        @yield('custom_js')
     </body>
 </html>
