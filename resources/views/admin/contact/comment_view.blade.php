@@ -31,7 +31,6 @@
 
                             <br>
                             <br>
-                            <a href="{{ route('admin.comment.destroy', $comment->id) }}" class="btn btn-danger delete-btn" id="delete_btn">delete</a>
                         </ul>
                     </div>
                 </div>

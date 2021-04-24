@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{{ ThemeSetting()->theme_name }}</title>
         <meta name="description" content="Newsly Responsive  HTML5 Template " />
-        <meta name="keywords" content="business,corporate, creative, woocommerach, design, gallery, minimal, modern, landing page, cv, designer, freelancer, html, one page, personal, portfolio, programmer, responsive, vcard, one page" />
+        <meta name="keywords" content="" />
         <meta name="author" content="Newsly" />
         <!-- Place favicon.ico in the root directory -->
         <link rel="shortcut icon" href="{{ asset(ThemeSetting()->favicon) }}" type="image/x-icon">
@@ -35,7 +35,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="header-search">
-                                <form action="#">
+                                <form action="{{ route('news.search') }}" method="POST">
+                                    @csrf
                                     <div class="form-group mb-0">
                                         <input type="text" class="form-control" id="search" name="search"  placeholder="Search News"/>
                                         <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
@@ -103,10 +104,12 @@
                                 <div class="follow-area">
                                     <ul>
                                         <li>Follow:</li>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        @foreach (SocialMedia() as $social_small)
+                                        @if ($loop->iteration > 4)
+                                            @continue
+                                        @endif
+                                        <li><a href="{{ $social_small->social_link }}"><i class="{{ $social_small->icon_class }}"></i></a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -137,9 +140,10 @@
                     </div>
                 </div>
                 <div class="mobile-search">
-                    <form action="#">
+                    <form action="{{ route('news.search') }}" method="POST">
+                        @csrf
                         <div class="form-group mb-0">
-                            <input type="text" class="form-control" id="msearch" name="msearch"  placeholder="Search News"/>
+                            <input type="text" class="form-control" id="msearch" name="search"  placeholder="Search News"/>
                             <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
@@ -162,10 +166,12 @@
             <div class="follow-area">
                 <ul>
                     <li>Follow:</li>
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    @foreach (SocialMedia() as $social_small)
+                    @if ($loop->iteration > 4)
+                        @continue
+                    @endif
+                    <li><a href="{{ $social_small->social_link }}"><i class="{{ $social_small->icon_class }}"></i></a></li>
+                    @endforeach
                 </ul>
             </div>
             <ul class="nav nav-tabs" id="sidebarTab" role="tablist">
@@ -306,7 +312,7 @@
                         </div>
                         <div class="col-sm-6 text-center text-sm-right">
                             <div class="footer-menu">
-                                <a href="privacy-policy.html">Privacy & Policy</a>
+                                <a href="{{ url('/privacy-policy') }}">Privacy & Policy</a>
                             </div>
                         </div>
                     </div>
@@ -408,7 +414,7 @@
                         </div>
                         <div class="col-sm-6 text-center text-sm-right">
                             <div class="footer-menu">
-                                <a href="privacy-policy.html">Privacy & Policy</a>
+                                <a href="{{ url('/privacy-policy') }}">Privacy & Policy</a>
                             </div>
                         </div>
                     </div>

@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="hero-post hero-post-medium">
-                            <div class="post-thumbnial">
+                        <div class="hero-post hero-post-medium" style="height: calc(100% - 30px)">
+                            <div class="post-thumbnial h-100">
                                 <a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">
-                                    <img src="{{ asset($top_news[1]->news->image->image_three) }}" alt="{{ $top_news[1]->news->image->image_alt }}" />
+                                    <img style="width: auto; height: 100%; max-width: unset;" src="{{ asset($top_news[1]->news->image->image_two) }}" alt="{{ $top_news[1]->news->image->image_alt }}" />
                                 </a>
                             </div>
                             <div class="post-info">
@@ -84,10 +84,10 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="hero-post hero-post-medium">
-                            <div class="post-thumbnial">
+                        <div class="hero-post hero-post-medium" style="height: calc(100% - 30px)">
+                            <div class="post-thumbnial h-100">
                                 <a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">
-                                    <img src="{{ asset($top_news[1]->news->image->image_three) }}" alt="{{ asset($top_news[1]->news->image->image_alt) }}" />
+                                    <img style="width: auto; height: 100%; max-width: unset;" src="{{ asset($top_news[1]->news->image->image_two) }}" alt="{{ asset($top_news[1]->news->image->image_alt) }}" />
                                 </a>
                             </div>
                             <div class="post-info">
@@ -335,7 +335,6 @@
                     <div class="tab-pane fade show active" id="wall-news" role="tabpanel" aria-labelledby="wall-news-tab">
                         <div class="post-list">
                             <div class="row">
-
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
@@ -575,11 +574,13 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="newsletter-text">
-                                <h2>Wellcome Our Newsletter</h2>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+
+                                <h2>{{ active_lang() == 'pl' ? $subscriber->pl_title : $subscriber->sl_title }}</h2>
+                                <p>{{ active_lang() == 'pl' ? $subscriber->pl_text : $subscriber->sl_text }}</p>
                             </div>
                             <div class="newsletter-form">
-                                <form action="#" class="form-inline">
+                                <form action="{{ route('subscriber.store') }}" method="POST" class="form-inline">
+                                    @csrf
                                     <div class="form-group mr-md-4">
                                       <input type="email" class="form-control" id="email" name="email" placeholder="Entar your email" />
                                     </div>

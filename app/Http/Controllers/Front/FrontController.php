@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Admin\Faq;
 use App\Models\Admin\News;
+use App\Models\Admin\Page;
 use Illuminate\Http\Request;
 use App\Models\Admin\Comment;
 use App\Models\Admin\Visitor;
 use App\Models\Admin\Category;
-use App\Models\Admin\MainMenu;
 use App\Models\Admin\BreakingNews;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Page;
+use App\Models\Admin\SubscriberSection;
 
 class FrontController extends Controller
 {
@@ -24,11 +25,11 @@ class FrontController extends Controller
         $SportNews = News::with('image', 'user', 'category')->where('type_id', 3)->limit(newsCount()->sport_news_count)->get()->reverse();
         $EntertainmentNews = News::with('image', 'user', 'category')->where('type_id', 4)->limit(newsCount()->entertainment_news_count)->get()->reverse();
         $VideoNews = News::where('video', '!=', null)->limit(newsCount()->video_news_count)->get()->reverse();
-
+        $subscriber = SubscriberSection::firstOrFail();
 
         $top_news = Visitor::with('news')->orderBy('visitor', 'DESC')->limit(2)->get();
 
-        return view('front.index', compact('categories', 'trendingNews', 'worldNews', 'SportNews', 'EntertainmentNews', 'VideoNews', 'breakingNews', 'top_news'));
+        return view('front.index', compact('categories', 'trendingNews', 'worldNews', 'SportNews', 'EntertainmentNews', 'VideoNews', 'breakingNews', 'top_news', 'subscriber'));
     }
 
 
@@ -43,6 +44,10 @@ class FrontController extends Controller
             ->get();
 
         $comments = Comment::with('reply')->where('p_id', 0)->where('news_id', $news->id)->get();
+
+        $visitor = Visitor::where('news_id', $news->id)->firstOrFail();
+        $visitor->visitor += 1;
+        $visitor->save();
 
         return view('front.single_news', compact('news', 'relatedNews', 'comments'));
     }
@@ -87,6 +92,13 @@ class FrontController extends Controller
     public function request_add()
     {
         return view('front.request_add');
+    }
+
+
+    public function faq()
+    {
+        $faqs = Faq::all();
+        return view('front.faq', compact('faqs'));
     }
 
 }

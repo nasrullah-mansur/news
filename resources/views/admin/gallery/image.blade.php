@@ -22,19 +22,17 @@
     </div>
     <div class="card-content">
 
-      <div class="card-body  my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+      <div class="card-body  my-gallery">
         <div class="row">
-            @foreach ($images as $image)
+            @foreach ($image_gallery as $image)
           <figure class="col-lg-3 col-md-6 col-12 mb-2">
-            <a href="{{ asset($image->image_one) }}" class="venobox" data-gall="gallery01">
-              <img class="img-thumbnail img-fluid" src="{{ asset($image->image_three) }}" itemprop="thumbnail" alt="{{ $image->image_alt }}" />
+            <a href="{{ asset($image->image->image_one) }}" class="venobox" data-gall="gallery01">
+              <img class="img-thumbnail img-fluid" src="{{ asset($image->image->image_three) }}" itemprop="thumbnail" alt="{{ $image->image_alt }}" />
             </a>
           </figure>
           @endforeach
-
         </div>
-        {{ $images->links() }}
-
+        {{ $image_gallery->links() }}
       </div>
   </section>
   <!--/ Image grid -->

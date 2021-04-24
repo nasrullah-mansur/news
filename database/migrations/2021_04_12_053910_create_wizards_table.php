@@ -24,6 +24,7 @@ class CreateWizardsTable extends Migration
             $table->integer('recent_news_count');
             $table->integer('related_news_count');
             $table->integer('popular_news_count');
+            $table->integer('search_result_count');
             $table->timestamps();
         });
     }

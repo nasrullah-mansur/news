@@ -82,8 +82,8 @@ let table = $(".datatable");
 
     // DELETE DATA;
     table[0].addEventListener("click", function (e) {
-        e.preventDefault();
         if (e.target.classList.contains("delete-btn")) {
+        e.preventDefault();
             let delteteDataId = e.target.getAttribute("data-id");
             swal({
                 title: "Are you sure?",

@@ -22,6 +22,7 @@ class CreateImagesTable extends Migration
             $table->string('image_two');
             $table->string('image_three');
             $table->string('image_four');
+            $table->string('image_five');
 
             $table->text('image_alt');
 

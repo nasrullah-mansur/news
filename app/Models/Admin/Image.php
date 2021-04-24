@@ -16,6 +16,7 @@ class Image extends Model
         'image_two',
         'image_three',
         'image_four',
+        'image_five',
     ];
 
     protected $appends = ['image_one'];
@@ -43,6 +44,11 @@ class Image extends Model
     public function setImageFourAttribute($value)
     {
         $this->attributes['image_four'] = 'news/image_four/' . $value;
+    }
+
+    public function setImageFiveAttribute($value)
+    {
+        $this->attributes['image_five'] = 'news/image_four/' . $value;
     }
 
 

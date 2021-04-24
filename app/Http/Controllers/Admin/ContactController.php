@@ -23,8 +23,7 @@ class ContactController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($contact){
                 return
-                '<a class="btn btn-secondary edit-btn" href="'. route('contact.reply', $contact->id) .'"><i data-id="'.$contact->id.'" class="edit-btn ft-eye"></i></a>
-                <a class="btn btn-secondary edit-btn" href="'. route('contact.reply', $contact->id) .'"><i data-id="'.$contact->id.'" class="edit-btn fa fa-reply"></i></a>
+                '<a class="btn btn-secondary edit-btn" href="'. route('contact.reply', $contact->id) .'"><i data-id="'.$contact->id.'" class="edit-btn fa fa-reply"></i></a>
                 <a class="btn btn-danger delete-btn" href="#" data-id="'.$contact->id.'"><i data-id="'.$contact->id.'" class="delete-btn ft-trash-2"></i></a>';
             })
             ->editColumn('created_at', function ($contact) {

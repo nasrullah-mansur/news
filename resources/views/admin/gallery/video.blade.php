@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('css_plugin')
+<link rel="stylesheet" href="{{ asset('admin/plugins/venobox/venobox.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/css/pages/gallery.css') }}">
+@endsection
+
 @section('content')
 
   <!-- Video grid -->
@@ -18,20 +23,33 @@
     </div>
     <div class="card-content">
 
-      <div class="card-body">
-        <h5 class="card-header">You Tube</h5>
-        <div class="row">
-            @foreach ($videos as $video)
-            <div class="col-lg-3 col-md-6 col-12 mb-2">
-              <div class="embed-responsive embed-responsive-item embed-responsive-16by9">
-                {!! $video->video !!}
-              </div>
+        <div class="card-body  my-gallery">
+            <div class="row">
+                @foreach ($video_gallery as $video)
+              <figure class="col-lg-3 col-md-6 col-12 mb-2">
+                <a data-autoplay="true" data-vbtype="video" href="{{ asset($video->video) }}" class="venobox" data-gall="gallery01">
+                  <img class="img-thumbnail img-fluid" src="{{ asset($video->image->image_three) }}" itemprop="thumbnail" alt="{{ $video->image->image_alt }}" />
+                </a>
+              </figure>
+              @endforeach
             </div>
-            @endforeach
-        </div>
-        {{ $videos->links() }}
-      </div>
+            {{ $video_gallery->links() }}
+          </div>
     </div>
   </section>
   <!-- Video grid -->
 @endsection
+
+
+@section('js_plugin')
+<script src="{{ asset('admin/plugins/venobox/venobox.min.js') }}"></script>
+@endsection
+
+@section('custom_js')
+<script>
+    $(document).ready(function(){
+    $('.venobox').venobox();
+});
+</script>
+@endsection
+

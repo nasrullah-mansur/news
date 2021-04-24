@@ -117,6 +117,19 @@
                             </div>
                         </div>
 
+                        <h4 class="form-section border-bottom mb-2 mt-3 pb-1">Search Result Page</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label for="search_result_count">Search Result Count</label>
+                                <input type="number" id="search_result_count" class="form-control {{ $errors->has('search_result_count') ? 'is-invalid' : '' }}" placeholder="Related news count" name="search_result_count" value="{{ $wizard->search_result_count }}">
+                                @if ($errors->has('search_result_count'))
+                                    <div class="invalid-feedback">{{ $errors->first('search_result_count') }}</div>
+                                @endif
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-body">
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save </button>
@@ -132,13 +145,5 @@
         </div>
     </form>
   </section>
-@endsection
-
-@section('custom_js')
-@if(Session::has('update'))
-<script>
-    toastr.success("Successfully updated!", "WELL DONE");
-</script>
-@endif
 @endsection
 

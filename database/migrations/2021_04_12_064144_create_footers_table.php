@@ -16,6 +16,7 @@ class CreateFootersTable extends Migration
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
             $table->integer('wizard_one_by');
+            $table->integer('quick_link_count');
             $table->integer('wizard_one_count');
             $table->string('categories');
             $table->integer('images_from');

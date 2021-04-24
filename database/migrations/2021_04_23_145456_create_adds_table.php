@@ -15,6 +15,12 @@ class CreateAddsTable extends Migration
     {
         Schema::create('adds', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
+            $table->string('address');
+            $table->string('name');
+            $table->string('number');
+            $table->string('message');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

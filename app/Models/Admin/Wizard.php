@@ -18,6 +18,7 @@ class Wizard extends Model
         'news_per_page',
         'recent_news_count',
         'related_news_count',
+        'search_result_count',
     ];
 
 

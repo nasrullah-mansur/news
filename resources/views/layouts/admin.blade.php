@@ -4,11 +4,12 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-  <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
-  <meta name="author" content="PIXINVENT">
-  <title>Login Page - Stack Responsive Bootstrap 4 Admin Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta name="description" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
+  <meta name="keywords" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
+  <meta name="author" content="{{ ThemeSetting()->theme_name }}" />
+  <title>{{ ThemeSetting()->theme_name }}</title>
+  <title>{{ ThemeSetting()->theme_name }}</title>
   <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
   <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
@@ -84,11 +85,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
-        <meta name="description" content="Stack admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities." />
-        <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app" />
-        <meta name="author" content="PIXINVENT" />
+        <meta name="description" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
+        <meta name="keywords" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
+        <meta name="author" content="{{ ThemeSetting()->theme_name }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Responsive Bootstrap 4 Admin Template</title>
+        <title>{{ ThemeSetting()->theme_name }} Dashboard</title>
         <link rel="apple-touch-icon" href="{{ asset('admin/images/ico/apple-icon-120.png') }}" />
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/ico/favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
@@ -141,14 +142,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
+                                <span class="nav-link">{{ ThemeSetting()->theme_name }} Dashboard</span>
                             </li>
-                            <li class="nav-item">
-                                <span class="nav-link">/</span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Categories</a>
-                            </li>
+
                         </ul>
                         <!-- PAGINATION END -->
                         <ul class="nav navbar-nav float-right">
@@ -279,9 +275,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     <li class="nav-item {{ Route::is('contact.index', 'admin.comment.index') }}">
                         <a href="#"><i class="ft-message-square"></i><span class="menu-title">Contact</span></a>
                         <ul class="menu-content">
-                            <li class="{{ Route::is('contact.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('contact.index') }}">Contact form</a></li>
-                            <li class="{{ Route::is('admin.comment.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.comment.index') }}">Comment</a></li>
-                            <li><a class="menu-item" href="#">Add Request</a></li>
+                            <li class="{{ Route::is('contact.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('contact.index') }}">Contact form</a></li>
+                            <li class="{{ Route::is('admin.comment.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.comment.index') }}">Comment</a></li>
+                            <li class="{{ Route::is('admin.add.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.add.index') }}">Add Request</a></li>
                         </ul>
                     </li>
 
@@ -314,6 +310,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <li class="{{ Route::is('admin.wizard.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.wizard.edit') }}">Wizard</a></li>
                             <li class="{{ Route::is('admin.footer.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.footer.edit') }}">Footer</a></li>
                             <li class="{{ Route::is('admin.translation.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.translation.edit') }}">Translation</a></li>
+                            <li class="{{ Route::is('admin.faq.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.faq.index') }}">Faq</a></li>
                         </ul>
                     </li>
 
@@ -337,9 +334,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         <footer class="footer footer-static footer-light navbar-border">
             <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
                 <span class="float-md-left d-block d-md-inline-block">
-                    Copyright &copy; 2018 <a class="text-bold-800 grey darken-2" href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank">PIXINVENT </a>, All rights reserved.
+                    Copyright &copy; {{ ThemeSetting()->theme_name }} All rights reserved.
                 </span>
-                <span class="float-md-right d-block d-md-inline-block d-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span>
             </p>
         </footer>
         <!-- BEGIN VENDOR JS-->

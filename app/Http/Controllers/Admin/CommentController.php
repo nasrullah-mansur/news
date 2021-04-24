@@ -68,14 +68,6 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-
-    public function destroy($id)
-    {
-        $comment = Comment::where('id', $id)->firstOrFail();
-        $comment->delete();
-        return redirect()->route('admin.comment.index')->with('update', 'Comment successfully deleted');
-    }
-
     public function delete($id)
     {
         $comment = Comment::where('id', $id)->firstOrFail();

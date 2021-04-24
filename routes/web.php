@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AddController;
 use App\Http\Controllers\Admin\BreakingNewsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -12,12 +14,14 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Admin\TranslationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WizardController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Front\SearchController;
 use App\Models\Admin\Comment;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -157,8 +161,27 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/comment/all', [CommentController::class, 'index'])->name('admin.comment.index');
     Route::get('/comment/comment/all-comment', [CommentController::class, 'comment_all'])->name('admin.comment.all');
     Route::get('/comment/comment/{id}', [CommentController::class, 'view'])->name('admin.comment.view');
-    Route::get('/comment/comment/{id}/delete', [CommentController::class, 'destroy'])->name('admin.comment.destroy');
     Route::post('/comment/comment/{id}/delete', [CommentController::class, 'delete'])->name('admin.comment.delete');
+
+    // ADD REQUEST;
+    Route::get('/add-request', [AddController::class, 'index'])->name('admin.add.index');
+    Route::get('/add-request/all-request', [AddController::class, 'all_request'])->name('admin.add.request.all');
+    Route::post('/add-request/add-request/{id}/delete', [AddController::class, 'destroy'])->name('admin.add.request.destroy');
+    Route::get('/add-request/{id}/view', [AddController::class, 'view'])->name('admin.add.request.view');
+
+    // FAQ;
+    Route::get('/faq', [FaqController::class, 'index'])->name('admin.faq.index');
+    Route::get('/faq/create', [FaqController::class, 'create'])->name('admin.faq.create');
+    Route::post('/faq/store', [FaqController::class, 'store'])->name('admin.faq.store');
+    Route::get('/faq/{id}/edit', [FaqController::class, 'edit'])->name('admin.faq.edit');
+    Route::post('/faq/{id}/update', [FaqController::class, 'update'])->name('admin.faq.update');
+    Route::get('/faq/{id}/destroy', [FaqController::class, 'destroy'])->name('admin.faq.destroy');
+
+    // Subscriber;
+    Route::get('/subscriber', [SubscriberController::class, 'index'])->name('subscriber.index');
+    Route::get('/subscriber/all', [SubscriberController::class, 'subscriber_all'])->name('subscriber.all');
+    Route::post('/subscriber/subscriber/{id}/delete', [SubscriberController::class, 'destroy'])->name('subscriber.destroy');
+    Route::post('/subscriber/section/update', [SubscriberController::class, 'section_update'])->name('subscriber.section.update');
 
 
 });
@@ -175,11 +198,23 @@ Route::get('/privacy-policy', [FrontController::class, 'privacy'])->name('front.
 Route::get('/cookies', [FrontController::class, 'cookies'])->name('front.cookies');
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 Route::get('/request-add', [FrontController::class, 'request_add'])->name('front.request.add');
+Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
+
 
 // CONTACT;
 Route::post('/user/contact', [ContactController::class, 'store'])->name('user.contact');
+Route::post('/request-add', [AddController::class, 'request'])->name('add.request');
 
 
+// SEARCH;
+Route::post('/search/content', [SearchController::class, 'search'])->name('news.search');
+Route::get('search/all/{result}', [SearchController::class, 'result'])->name('search.result');
+Route::get('search/image/{result}', [SearchController::class, 'result_image'])->name('search.result.image');
+Route::get('search/video/{result}', [SearchController::class, 'result_video'])->name('search.result.video');
+
+
+// SUBSCRIBE;
+Route::post('/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
 
 // LANGUAGE;

@@ -27,6 +27,7 @@ class WizardController extends Controller
             'recent_news_count' => 'required',
             'related_news_count' => 'required',
             'popular_news_count' => 'required',
+            'search_result_count' => 'required',
         ]);
 
         $wizard->trending_news_count = $request->trending_news_count;
@@ -37,9 +38,10 @@ class WizardController extends Controller
         $wizard->recent_news_count = $request->recent_news_count;
         $wizard->related_news_count = $request->related_news_count;
         $wizard->popular_news_count = $request->popular_news_count;
+        $wizard->search_result_count = $request->search_result_count;
 
         $wizard->save();
 
-        return redirect()->route('admin.wizard.edit')->with('update', '');
+        return redirect()->route('admin.wizard.edit')->with('update', 'Updated successful');
     }
 }

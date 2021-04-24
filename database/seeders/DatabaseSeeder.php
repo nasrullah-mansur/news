@@ -27,6 +27,10 @@ class DatabaseSeeder extends Seeder
             MainMenuSeeder::class,
             FooterMenuSeeder::class,
             SocialSeeder::class,
+            ImageSeeder::class,
+            BreakingNews::class,
+            VisitorSeeder::class,
+            SubscriberSectionSeeder::class,
         ]);
     }
 }

@@ -11,15 +11,13 @@ class GalleryController extends Controller
 {
     public function images()
     {
-        $images = Image::latest()->paginate(16);
-
-        return view('admin.gallery.image', compact('images'));
+        $image_gallery = News::with('image')->orderBy('created_at', 'DESC')->where('video', null)->paginate(16);
+        return view('admin.gallery.image', compact('image_gallery'));
     }
 
     public function videos()
     {
-        $videos = News::where('video', '!=', null)->orderBy('created_at', 'DESC')->paginate(16);
-
-        return view('admin.gallery.video', compact('videos'));
+        $video_gallery = News::with('image')->orderBy('created_at', 'DESC')->where('video', '!=', null)->paginate(16);
+        return view('admin.gallery.video', compact('video_gallery'));
     }
 }
