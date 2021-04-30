@@ -31,6 +31,7 @@ class WizardController extends Controller
         ]);
 
         $wizard->trending_news_count = $request->trending_news_count;
+        $wizard->world_news_count = $request->world_news_count;
         $wizard->sport_news_count = $request->sport_news_count;
         $wizard->entertainment_news_count = $request->entertainment_news_count;
         $wizard->video_news_count = $request->video_news_count;

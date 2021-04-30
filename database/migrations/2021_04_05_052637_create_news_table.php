@@ -25,6 +25,7 @@ class CreateNewsTable extends Migration
             $table->text('pl_headline');
             $table->text('pl_slug');
             $table->longText('pl_details');
+            $table->longText('pl_description');
             $table->text('pl_seo_title');
             $table->text('pl_seo_tag')->nullable();
             $table->text('pl_seo_description')->nullable();
@@ -32,6 +33,7 @@ class CreateNewsTable extends Migration
             // SL;
             $table->text('sl_headline')->nullable();
             $table->text('sl_slug')->nullable();
+            $table->longText('sl_description');
             $table->longText('sl_details')->nullable();
             $table->text('sl_seo_title')->nullable();
             $table->text('sl_seo_tag')->nullable();

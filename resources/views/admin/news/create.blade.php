@@ -49,6 +49,24 @@
                         </div>
                         </div>
 
+                        <h4 class="form-section border-bottom mb-2 mt-3 pb-1">News Description</h4>
+
+                        <div class="form-group">
+                        <label for="pl_description">News Description (PL)</label>
+                        <textarea id="pl_description" rows="5" class="form-control {{ $errors->has('pl_description') ? 'is-invalid' : '' }}" name="pl_description" placeholder="News Description (PL)">{{ old('pl_description') }}</textarea>
+                        @if ($errors->has('pl_description'))
+                            <div class="invalid-feedback">{{ $errors->first('pl_description') }}</div>
+                        @endif
+                        </div>
+
+                        <div class="form-group">
+                        <label for="sl_description">News Description (SL)</label>
+                        <textarea id="sl_description" rows="5" class="form-control {{ $errors->has('sl_description') ? 'is-invalid' : '' }}" name="sl_description" placeholder="News Description (SL)">{{ old('sl_description') }}</textarea>
+                        @if ($errors->has('sl_description'))
+                            <div class="invalid-feedback">{{ $errors->first('sl_description') }}</div>
+                        @endif
+                        </div>
+
                         <h4 class="form-section border-bottom mb-2 mt-3 pb-1">News Details</h4>
 
                         <div class="form-group">
@@ -61,7 +79,7 @@
 
                         <div class="form-group">
                         <label for="sl_details">News Details (SL)</label>
-                        <textarea id="sl_details" rows="5" class="form-control summernote" name="sl_details {{ $errors->has('sl_details') ? 'is-invalid' : '' }}" placeholder="News Details (SL)">{{ old('sl_details') }}</textarea>
+                        <textarea id="sl_details" rows="5" class="form-control summernote {{ $errors->has('sl_details') ? 'is-invalid' : '' }}" name="sl_details" placeholder="News Details (SL)">{{ old('sl_details') }}</textarea>
                         @if ($errors->has('sl_details'))
                             <div class="invalid-feedback">{{ $errors->first('sl_details') }}</div>
                         @endif

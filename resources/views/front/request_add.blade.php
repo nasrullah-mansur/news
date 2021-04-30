@@ -60,9 +60,9 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <textarea class="form-control message-box" id="message" name="message" placeholder="Write a short description . . . "></textarea>
-                            @if ($errors->has('message'))
-                                <span class="text-danger"> - {{ $errors->first('message') }}</span>
+                            <textarea class="form-control description-box" id="description" name="description" placeholder="Write a short description . . . "></textarea>
+                            @if ($errors->has('description'))
+                                <span class="text-danger"> - {{ $errors->first('description') }}</span>
                             @endif
                         </div>
                     </div>

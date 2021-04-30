@@ -1,4 +1,4 @@
-@if (Route::is('login', 'password.request'))
+@if (Route::is('login', 'password.request', 'password.reset'))
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -8,10 +8,9 @@
   <meta name="description" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
   <meta name="keywords" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
   <meta name="author" content="{{ ThemeSetting()->theme_name }}" />
-  <title>{{ ThemeSetting()->theme_name }}</title>
-  <title>{{ ThemeSetting()->theme_name }}</title>
-  <link rel="apple-touch-icon" href="../../../app-assets/images/ico/apple-icon-120.png">
-  <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon.ico">
+  <title>{{ ThemeSetting()->theme_name }} Dashboard</title>
+<link rel="apple-touch-icon" href="{{ asset(ThemeSetting()->favicon) }}" />
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset(ThemeSetting()->favicon) }}" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
   rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
@@ -49,36 +48,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
     <head>
@@ -90,8 +59,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         <meta name="author" content="{{ ThemeSetting()->theme_name }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ ThemeSetting()->theme_name }} Dashboard</title>
-        <link rel="apple-touch-icon" href="{{ asset('admin/images/ico/apple-icon-120.png') }}" />
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/ico/favicon.ico') }}" />
+        <link rel="apple-touch-icon" href="{{ asset(ThemeSetting()->favicon) }}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset(ThemeSetting()->favicon) }}" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
         <!-- BEGIN VENDOR CSS-->
         <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors.css') }}" />
@@ -123,8 +92,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </li>
                         <li class="nav-item">
                             <a class="navbar-brand" href="index.html">
-                                <img class="brand-logo" alt="stack admin logo" src="{{ asset('admin/images/logo/stack-logo-light.png') }}" />
-                                <h2 class="brand-text">Stack</h2>
+                                <img style="max-width: 25px" class="brand-logo" alt="stack admin logo" src="{{ asset(ThemeSetting()->favicon) }}" />
+                                <h2 class="brand-text">{{ ThemeSetting()->theme_name }}</h2>
                             </a>
                         </li>
                         <li class="nav-item d-md-none">
@@ -148,82 +117,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                         <!-- PAGINATION END -->
                         <ul class="nav navbar-nav float-right">
-                            <li class="dropdown dropdown-notification nav-item">
-                                <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
-                                    <i class="ficon ft-bell"></i>
-                                    <span class="badge badge-pill badge-default badge-danger badge-default badge-up">5</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                                    <li class="dropdown-menu-header">
-                                        <h6 class="dropdown-header m-0">
-                                            <span class="grey darken-2">Notifications</span>
-                                            <span class="notification-tag badge badge-default badge-danger float-right m-0">5 New</span>
-                                        </h6>
-                                    </li>
-                                    <li class="scrollable-container media-list">
-                                        <a href="javascript:void(0)">
-                                            <div class="media">
-                                                <div class="media-left align-self-center"><i class="ft-plus-square icon-bg-circle bg-cyan"></i></div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">You have new order!</h6>
-                                                    <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                    <small>
-                                                        <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">30 minutes ago</time>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="media">
-                                                <div class="media-left align-self-center"><i class="ft-download-cloud icon-bg-circle bg-red bg-darken-1"></i></div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading red darken-1">99% Server load</h6>
-                                                    <p class="notification-text font-small-3 text-muted">Aliquam tincidunt mauris eu risus.</p>
-                                                    <small>
-                                                        <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Five hour ago</time>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="media">
-                                                <div class="media-left align-self-center"><i class="ft-alert-triangle icon-bg-circle bg-yellow bg-darken-3"></i></div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading yellow darken-3">Warning notifixation</h6>
-                                                    <p class="notification-text font-small-3 text-muted">Vestibulum auctor dapibus neque.</p>
-                                                    <small>
-                                                        <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="media">
-                                                <div class="media-left align-self-center"><i class="ft-check-circle icon-bg-circle bg-cyan"></i></div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Complete the task</h6>
-                                                    <small>
-                                                        <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last week</time>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="media">
-                                                <div class="media-left align-self-center"><i class="ft-file icon-bg-circle bg-teal"></i></div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Generate monthly report</h6>
-                                                    <small>
-                                                        <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last month</time>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a></li>
-                                </ul>
-                            </li>
-
                             <li class="dropdown dropdown-user nav-item">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false">
                                   <span class="avatar avatar-online">
@@ -252,7 +145,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     </li>
 
                     <li class="nav-item {{ Route::is('admin.page', 'page.*') ? 'active' : '' }}">
-                        <a href="{{ route('admin.page') }}"><i class="ft-home"></i><span class="menu-title">Pages</span></a>
+                        <a href="{{ route('admin.page') }}"><i class="ft-file"></i><span class="menu-title">Pages</span></a>
+                    </li>
+
+                    <li class="nav-item {{ Route::is('add.place.*') ? 'active' : '' }}">
+                        <a href="{{ route('add.place.index') }}"><i class="ft-monitor"></i><span class="menu-title">Adds</span></a>
                     </li>
 
                     <li class="nav-item {{ Route::is('admin.news.*', 'admin.category.*', 'admin.breaking.*') ? 'open' : '' }}">
@@ -310,6 +207,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <li class="{{ Route::is('admin.wizard.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.wizard.edit') }}">Wizard</a></li>
                             <li class="{{ Route::is('admin.footer.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.footer.edit') }}">Footer</a></li>
                             <li class="{{ Route::is('admin.translation.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.translation.edit') }}">Translation</a></li>
+                            <li class="{{ Route::is('subscriber.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('subscriber.index') }}">Subscriber</a></li>
                             <li class="{{ Route::is('admin.faq.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.faq.index') }}">Faq</a></li>
                         </ul>
                     </li>

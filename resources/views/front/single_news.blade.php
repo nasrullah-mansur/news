@@ -56,17 +56,13 @@
                     </div>
 
                     <div class="add-area">
-                        <a href="#">
-                            <img src="{{ asset('front/images/big-add-banner.png') }}" alt="big-add-banner" />
+                        @foreach (singleNewsAdd() as $indexOneAdd)
+                        <a href="{{ $indexOneAdd->url }}" target="_blank">
+                            <img src="{{ asset($indexOneAdd->image) }}" alt="{{ $indexOneAdd->url }}" />
                         </a>
+                        @endforeach
                     </div>
-                    <div class="post-tags">
-                        <ul>
-                            @foreach (explode(',', $news->tags) as $single_tag)
-                            <li><a href="#">{{ $single_tag }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
+
                 </div>
                 <div class="comment-post" id="comment_post">
                     <h2 class="section-title">{{ translate()->pl_sixteen }}</h2>

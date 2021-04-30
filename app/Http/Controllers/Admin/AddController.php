@@ -47,7 +47,7 @@ class AddController extends Controller
             'address' => 'required|max:255',
             'name' => 'required|max:255',
             'number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'message' => 'required',
+            'description' => 'required',
             'file' => 'nullable|mimes:png,jpg,jpeg,gif,pdf'
         ]);
 
@@ -57,7 +57,7 @@ class AddController extends Controller
         $add_request->address = $request->address;
         $add_request->name = $request->name;
         $add_request->number = $request->number;
-        $add_request->message = $request->message;
+        $add_request->message = $request->description;
         if($request->has('file')) {
             $add_request->file = ImageUpload($request->file, 'add/request', null);
         }

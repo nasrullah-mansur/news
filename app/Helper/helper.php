@@ -9,9 +9,11 @@ use App\Models\Admin\Profile;
 use App\Models\Admin\Category;
 use App\Models\Admin\MainMenu;
 use App\Models\Admin\FooterMenu;
+use App\Models\Admin\Page;
 use App\Models\Admin\Social;
 use App\Models\Admin\Translation;
 use App\Models\Admin\Visitor;
+use App\Models\Front\AddPlace;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -80,7 +82,7 @@ function AuthUserProfileInfo()
 
 function Categories()
 {
-    return Category::all();
+    return Category::with('news')->get();
 }
 
 
@@ -174,6 +176,36 @@ function MostRecentPost($count)
 {
     return News::with('user','category','image', 'comment')->orderBy('created_at', 'DESC')->limit($count)->get();
 }
+
+
+function indexOneAdd()
+{
+    return AddPlace::where('type', 2)->inRandomOrder()->limit(1)->get();
+}
+
+function indexTwoAdd()
+{
+    return AddPlace::where('type', 1)->inRandomOrder()->limit(1)->get();
+}
+
+
+function singleNewsAdd()
+{
+    return AddPlace::where('type', 3)->inRandomOrder()->limit(1)->get();
+}
+
+function sidebarAdd()
+{
+    return AddPlace::where('type', 4)->inRandomOrder()->limit(1)->get();
+}
+
+
+function pageSeoInfo($slug)
+{
+    return Page::where('slug', $slug)->firstOrFail();
+}
+
+
 
 
 ?>

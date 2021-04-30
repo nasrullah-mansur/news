@@ -17,8 +17,8 @@ class NewsService
             ->addIndexColumn()
             ->addColumn('action', function ($news){
                 return
-                '<a class="btn btn-secondary edit-btn" href="#"><i class="edit-btn ft-eye"></i></a>
-                <a class="btn btn-secondary edit-btn" href="'. route('admin.news.edit', $news->id) .'"><i class="edit-btn ft-edit"></i></a>
+                '<a target="_blank" class="btn btn-secondary edit-btn" href="'. route('single.news', $news->pl_slug) .'"><i class="edit-btn ft-eye"></i></a>
+                <a style="margin: 0 5px;" class="btn btn-secondary edit-btn" href="'. route('admin.news.edit', $news->id) .'"><i class="edit-btn ft-edit"></i></a>
                 <a class="btn btn-danger delete-btn" href="#" data-id="'.$news->id.'"><i data-id="'.$news->id.'" class="delete-btn ft-trash-2"></i></a>';
             })
             ->editColumn('created_at', function ($news) {
@@ -90,6 +90,7 @@ class NewsService
         // PL;
         $newsData['pl_headline'] = $request->pl_headline;
         $newsData['pl_slug'] = Str::slug($request->pl_headline , '-');
+        $newsData['pl_description'] = $request->pl_description;
         $newsData['pl_details'] = $request->pl_details;
         if($request->pl_seo_title == null) {
             $newsData['pl_seo_title'] = $request->pl_headline;
@@ -103,6 +104,7 @@ class NewsService
         // SL;
         $newsData['sl_headline'] = $request->sl_headline;
         $newsData['sl_slug'] = Str::slug($request->sl_headline , '-');
+        $newsData['sl_description'] = $request->sl_description;
         $newsData['sl_details'] = $request->sl_details;
 
         if($request->sl_headline != null) {
@@ -122,18 +124,18 @@ class NewsService
 
         $news = News::create($newsData);
 
-        $image = new Image();
-        $image->image_one = ResizeImageUpload($request->image, 'news/image_one/', null, 1110, 495);
-        $image->image_two = ResizeImageUpload($request->image, 'news/image_two/', null, 730, 575);
-        $image->image_three = ResizeImageUpload($request->image, 'news/image_three/', null, 340, 200);
-        $image->image_four = ResizeImageUpload($request->image, 'news/image_four/', null, 190, 160);
-        $image->image_five = ResizeImageUpload($request->image, 'news/image_five/', null, 350, 575);
+        if($request->has('image')) {
+            $image = new Image();
+            $image->image_one = ResizeImageUpload($request->image, 'news/image_one/', null, 1110, 495);
+            $image->image_two = ResizeImageUpload($request->image, 'news/image_two/', null, 730, 575);
+            $image->image_three = ResizeImageUpload($request->image, 'news/image_three/', null, 340, 200);
+            $image->image_four = ResizeImageUpload($request->image, 'news/image_four/', null, 190, 160);
+            $image->image_five = ResizeImageUpload($request->image, 'news/image_five/', null, 350, 575);
 
-        $image->image_alt = $request->image_alt;
-
-        $image->news_id = $news->id;
-
-        $image->save();
+            $image->image_alt = $request->image_alt;
+            $image->news_id = $news->id;
+            $image->save();
+        }
 
         $visitor = new Visitor();
         $visitor->news_id = $news->id;
@@ -159,6 +161,7 @@ class NewsService
         // PL;
         $newsData['pl_headline'] = $request->pl_headline;
         $newsData['pl_slug'] = Str::slug($request->pl_headline , '-');
+        $newsData['pl_description'] = $request->pl_description;
         $newsData['pl_details'] = $request->pl_details;
         if($request->pl_seo_title == null) {
             $newsData['pl_seo_title'] = $request->pl_headline;
@@ -172,6 +175,7 @@ class NewsService
         // SL;
         $newsData['sl_headline'] = $request->sl_headline;
         $newsData['sl_slug'] = Str::slug($request->sl_headline , '-');
+        $newsData['sl_description'] = $request->sl_description;
         $newsData['sl_details'] = $request->sl_details;
 
         if($request->sl_headline != null) {

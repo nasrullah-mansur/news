@@ -210,8 +210,8 @@
             id: EditModal.find('input[name="id"]')[0],
         }
     table[0].addEventListener("click", function (e){
-        e.preventDefault();
         if (e.target.classList.contains("edit-btn")) {
+        e.preventDefault();
             $('.invalid-feedback').text('');
             $('.is-invalid').removeClass('is-invalid');
             let editDataId = e.target.getAttribute("data-id");
@@ -270,8 +270,8 @@
 
     // DELETE DATA;
     table[0].addEventListener("click", function (e) {
-        e.preventDefault();
         if (e.target.classList.contains("delete-btn")) {
+        e.preventDefault();
             let delteteDataId = e.target.getAttribute("data-id");
             swal({
                 title: "Are you sure?",

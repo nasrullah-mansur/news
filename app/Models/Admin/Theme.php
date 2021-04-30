@@ -25,6 +25,7 @@ class Theme extends Model
         'sl_address',
         'sl_support_hour',
         'quick_contact',
+        'google_map_script',
     ];
 
 

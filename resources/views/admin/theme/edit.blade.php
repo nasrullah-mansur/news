@@ -125,17 +125,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-3 label-control" for="google_map">Google Map</label>
+                            <label class="col-md-3 label-control" for="google_map">Google Map API</label>
                             <div class="col-md-9">
-                              <textarea id="google_map" rows="5" class="form-control {{ $errors->has('google_map') ? 'is-invalid' : '' }}" name="google_map" placeholder="Google Map" value="{{ $theme->google_map }}">{{ $theme->google_map }}</textarea>
+                              <textarea id="google_map" rows="3" class="form-control {{ $errors->has('google_map') ? 'is-invalid' : '' }}" name="google_map" placeholder="Google Map" value="{{ $theme->google_map }}">{{ $theme->google_map }}</textarea>
                               @if($errors->has('google_map'))
                             <span class="text-danger"> - {{ $errors->first('google_map') }}</span>
                             @endif
                             </div>
                           </div>
 
+                        <div class="form-group row">
+                            <label class="col-md-3 label-control" for="google_map_script">Google Map API Script</label>
+                            <div class="col-md-9">
+                              <textarea id="google_map_script" rows="6" class="form-control {{ $errors->has('google_map_script') ? 'is-invalid' : '' }}" name="google_map_script" placeholder="Google Map" value="{{ $theme->google_map_script }}">{{ $theme->google_map_script }}</textarea>
+                              @if($errors->has('google_map_script'))
+                            <span class="text-danger"> - {{ $errors->first('google_map_script') }}</span>
+                            @endif
+                            </div>
+                          </div>
+
+
                           <div class="form-group row">
-                            <label class="col-md-3 label-control" for="pl_address">Address</label>
+                            <label class="col-md-3 label-control" for="pl_address">Address PL</label>
                             <div class="col-md-9">
                               <textarea type="text" id="pl_address" class="form-control summernote" name="pl_address" value="{{ $theme->pl_address }}">{{ $theme->pl_address }}</textarea>
                               @if($errors->has('pl_address'))

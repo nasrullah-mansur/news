@@ -5,10 +5,42 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{{ ThemeSetting()->theme_name }}</title>
-        <meta name="description" content="Newsly Responsive  HTML5 Template " />
-        <meta name="keywords" content="" />
-        <meta name="author" content="Newsly" />
+
+        @if (Route::is('front.index'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ pageSeoInfo('/')[active_lang().'_title'] }}</title>
+        <meta name="description" content="{{ pageSeoInfo('/')[active_lang().'_description'] }} " />
+        @elseif (Route::is('front.privacy'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ pageSeoInfo('privacy-policy')[active_lang().'_title'] }}</title>
+        <meta name="description" content="{{ pageSeoInfo('privacy-policy')[active_lang().'_description'] }} " />
+        @elseif (Route::is('front.cookies'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ pageSeoInfo('cookies')[active_lang().'_title'] }}</title>
+        <meta name="description" content="{{ pageSeoInfo('cookies')[active_lang().'_description'] }} " />
+        @elseif (Route::is('front.contact'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ pageSeoInfo('contact')[active_lang().'_title'] }}</title>
+        <meta name="description" content="{{ pageSeoInfo('contact')[active_lang().'_description'] }} " />
+        @elseif (Route::is('front.faq'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ pageSeoInfo('faq')[active_lang().'_title'] }}</title>
+        <meta name="description" content="{{ pageSeoInfo('faq')[active_lang().'_description'] }} " />
+        @elseif (Route::is('front.request.add'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ pageSeoInfo('request-add')[active_lang().'_title'] }}</title>
+        <meta name="description" content="{{ pageSeoInfo('request-add')[active_lang().'_description'] }} " />
+        @elseif (Route::is('front.category'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ $cat[active_lang().'_name'] }}</title>
+        <meta name="description" content="{{ ThemeSetting()->theme_name }}" />
+        @elseif (Route::is('search.result', 'search.result.*'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ $result }}</title>
+        <meta name="description" content="{{ ThemeSetting()->theme_name }}" />
+        @elseif (Route::is('single.news'))
+        <title>{{ ThemeSetting()->theme_name }} | {{ $news[active_lang().'_headline'] }}</title>
+        <meta name="description" content="{{ $news[active_lang().'_headline'] }}" />
+        <meta name="keywords" content="{{ $news[active_lang().'_tags'] }}" />
+        @else
+        <title>{{ ThemeSetting()->theme_name}}</title>
+        <meta name="description" content="{{ ThemeSetting()->theme_name }}" />
+        @endif
+
+
+        <meta name="author" content="{{ ThemeSetting()->theme_name }}" />
         <!-- Place favicon.ico in the root directory -->
         <link rel="shortcut icon" href="{{ asset(ThemeSetting()->favicon) }}" type="image/x-icon">
         <!-- fonts file -->
@@ -88,12 +120,138 @@
                                             <ul>
                                                 @if(active_lang() == 'sl')
                                                 @foreach (MainMenu() as $mainMenu)
-                                                <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->sl_label }}</a></li>
+                                                <li><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->sl_label }}</a></li>
                                                 @endforeach
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Pages
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      <a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a>
+                                                      <a class="dropdown-item" href="{{ url('/privacy-policy') }}">Privacy & Policy</a>
+                                                      <a class="dropdown-item" href="{{ url('/request-add') }}">Request For Add</a>
+                                                      <a class="dropdown-item" href="{{ url('/cookies') }}">Cookies</a>
+                                                      <a class="dropdown-item" href="{{ url('/faq') }}">Faq</a>
+                                                    </div>
+                                                  </li>
+                                                  <li class="current-menu-item has-mega-menu">
+                                                    <a href="javascript:void(0);">Megamenu <i class="fas fa-angle-down"></i></a>
+                                                    <div class="mega-menu">
+                                                        <div class="menu-left">
+                                                            <ul class="nav nav-tabs" id="megamenutab" role="tablist">
+                                                                @foreach (Categories() as $mega_category)
+                                                                <li class="nav-item" role="presentation">
+                                                                  <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}-tab" data-toggle="tab" href="#megaNews{{ $mega_category->id }}" role="tab" aria-controls="megaNews{{ $mega_category->id }}" aria-selected="false">{{ active_lang() == 'pl' ? $mega_category->pl_name : $mega_category->sl_name }}</a>
+                                                                </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                        <div class="menu-right">
+                                                            <div class="tab-content" id="megamenutabContent">
+                                                                @foreach (Categories() as $mega_category)
+                                                                <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}" role="tabpanel" aria-labelledby="megaNews{{ $mega_category->id }}-tab">
+                                                                    <div class="row">
+                                                                        @foreach ($mega_category->news as $megamenu_news)
+                                                                        @if($loop->iteration > 3) @continue @endif
+                                                                        <div class="col-lg-4 col-md-6">
+                                                                            <div class="single-grid-post">
+                                                                                <div class="post-thumbnail">
+                                                                                    <a href="{{ route('single.news', $megamenu_news->pl_slug) }}"><img src="{{ asset($megamenu_news->image->image_three) }}" alt="post" /></a>
+                                                                                </div>
+                                                                                @if (active_lang() == 'pl')
+                                                                                <div class="post-info">
+                                                                                    <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::words($megamenu_news->pl_headline, 6) }}</a></h3>
+                                                                                    <ul class="post-meta">
+                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                @else
+                                                                                <div class="post-info">
+                                                                                    <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::words($megamenu_news->sl_headline, 6) }}</a></h3>
+                                                                                    <ul class="post-meta">
+                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
                                                 @else
                                                 @foreach (MainMenu() as $mainMenu)
-                                                <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->pl_label }}</a></li>
+                                                <li><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->pl_label }}</a></li>
                                                 @endforeach
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Pages
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      <a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a>
+                                                      <a class="dropdown-item" href="{{ url('/privacy-policy') }}">Privacy & Policy</a>
+                                                      <a class="dropdown-item" href="{{ url('/request-add') }}">Request For Add</a>
+                                                      <a class="dropdown-item" href="{{ url('/cookies') }}">Cookies</a>
+                                                      <a class="dropdown-item" href="{{ url('/faq') }}">Faq</a>
+                                                    </div>
+                                                  </li>
+                                                  <li class="current-menu-item has-mega-menu">
+                                                    <a href="javascript:void(0);">Megamenu <i class="fas fa-angle-down"></i></a>
+                                                    <div class="mega-menu">
+                                                        <div class="menu-left">
+                                                            <ul class="nav nav-tabs" id="megamenutab" role="tablist">
+                                                                @foreach (Categories() as $mega_category)
+                                                                <li class="nav-item" role="presentation">
+                                                                  <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}-tab" data-toggle="tab" href="#megaNews{{ $mega_category->id }}" role="tab" aria-controls="megaNews{{ $mega_category->id }}" aria-selected="false">{{ active_lang() == 'pl' ? $mega_category->pl_name : $mega_category->sl_name }}</a>
+                                                                </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                        <div class="menu-right">
+                                                            <div class="tab-content" id="megamenutabContent">
+                                                                @foreach (Categories() as $mega_category)
+                                                                <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}" role="tabpanel" aria-labelledby="megaNews{{ $mega_category->id }}-tab">
+                                                                    <div class="row">
+                                                                        @foreach ($mega_category->news as $megamenu_news)
+                                                                        @if($loop->iteration > 3) @continue @endif
+                                                                        <div class="col-lg-4 col-md-6">
+                                                                            <div class="single-grid-post">
+                                                                                <div class="post-thumbnail">
+                                                                                    <a href="{{ route('single.news', $megamenu_news->pl_slug) }}"><img src="{{ asset($megamenu_news->image->image_three) }}" alt="post" /></a>
+                                                                                </div>
+                                                                                @if (active_lang() == 'pl')
+                                                                                <div class="post-info">
+                                                                                    <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::words($megamenu_news->pl_headline, 6) }}</a></h3>
+                                                                                    <ul class="post-meta">
+                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                @else
+                                                                                <div class="post-info">
+                                                                                    <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::words($megamenu_news->sl_headline, 6) }}</a></h3>
+                                                                                    <ul class="post-meta">
+                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                @endif
+                                                                            </div>
+                                                                        </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
                                                 @endif
                                             </ul>
                                         </nav>
@@ -230,8 +388,11 @@
                         </div>
                         <div class="col-sm-9 text-sm-right">
                             <ul class="social-media">
-                                @foreach (FooterMenu() as $footer_menu_item)
-                                <li><a href="{{ url($footer_menu_item->url) }}">{{ $footer_menu_item->pl_name }}</a></li>
+                                @foreach (SocialMedia() as $footer_menu_item)
+                                @if ($loop->iteration > 4)
+                                    @continue
+                                @endif
+                                <li><a href="{{ url($footer_menu_item->social_link) }}">{{ $footer_menu_item->social_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -250,7 +411,7 @@
                                     @foreach (DB::table('news')->where('id', $most_view->news_id)->orderBy('created_at', 'DESC')->get() as $nost_view_news)
                                     <li>
                                         <span class="date">{{ \Carbon\Carbon::parse($nost_view_news->created_at)->format('M d, Y') }}</span>
-                                        <a href="{{ route('single.news', $nost_view_news->pl_slug) }}">{{ $nost_view_news->pl_headline }}</a>
+                                        <a href="{{ route('single.news', $nost_view_news->pl_slug) }}">{{ Str::words($nost_view_news->pl_headline,5) }}</a>
                                     </li>
                                     @endforeach
                                     @endforeach
@@ -258,7 +419,7 @@
                                     @foreach (MostRecentPost(Footer()->wizard_one_count) as $most_recent_footer)
                                     <li>
                                         <span class="date">{{ \Carbon\Carbon::parse($most_recent_footer->created_at)->format('M d, Y') }}</span>
-                                        <a href="{{ route('single.news', $most_recent_footer->pl_slug) }}">{{ $most_recent_footer->pl_headline }}</a>
+                                        <a href="{{ route('single.news', $most_recent_footer->pl_slug) }}">{{ Str::words($most_recent_footer->pl_headline,5) }}</a>
                                     </li>
                                     @endforeach
                                     @endif
@@ -332,8 +493,11 @@
                         </div>
                         <div class="col-sm-9 text-sm-right">
                             <ul class="social-media">
-                                @foreach (FooterMenu() as $footer_menu_item)
-                                <li><a href="{{ $footer_menu_item->url }}">{{ $footer_menu_item->sl_name }}</a></li>
+                                @foreach (SocialMedia() as $footer_menu_item)
+                                @if ($loop->iteration > 4)
+                                    @continue
+                                @endif
+                                <li><a href="{{ url($footer_menu_item->social_link) }}">{{ $footer_menu_item->social_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -352,7 +516,7 @@
                                     @foreach (DB::table('news')->where('id', $most_view->news_id)->orderBy('created_at', 'DESC')->get() as $nost_view_news)
                                     <li>
                                         <span class="date">{{ \Carbon\Carbon::parse($nost_view_news->created_at)->format('M d, Y') }}</span>
-                                        <a href="{{ route('single.news', $nost_view_news->sl_slug) }}">{{ $nost_view_news->sl_headline }}</a>
+                                        <a href="{{ route('single.news', $nost_view_news->sl_slug) }}">{{ Str::words($nost_view_news->sl_headline,5) }}</a>
                                     </li>
                                     @endforeach
                                     @endforeach
@@ -360,7 +524,7 @@
                                     @foreach (MostRecentPost(Footer()->wizard_one_count) as $most_recent_footer)
                                     <li>
                                         <span class="date">{{ \Carbon\Carbon::parse($most_recent_footer->created_at)->format('M d, Y') }}</span>
-                                        <a href="{{ route('single.news', $most_recent_footer->sl_slug) }}">{{ $most_recent_footer->sl_headline }}</a>
+                                        <a href="{{ route('single.news', $most_recent_footer->sl_slug) }}">{{ Str::words($most_recent_footer->sl_headline,5) }}</a>
                                     </li>
                                     @endforeach
                                     @endif

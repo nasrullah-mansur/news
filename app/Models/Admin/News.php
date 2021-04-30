@@ -24,11 +24,13 @@ class News extends Model
         'pl_headline',
         'pl_slug',
         'pl_details',
+        'pl_description',
         'pl_seo_title',
 
         // SL;
         'sl_headline',
         'sl_slug',
+        'sl_description',
         'sl_details',
         'sl_seo_title',
 

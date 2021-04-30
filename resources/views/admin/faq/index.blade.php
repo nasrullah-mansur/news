@@ -28,22 +28,24 @@
                     <div class="card-body card-dashboard">
                         <div class="card collapse-icon accordion-icon-rotate left" id="faqSection">
                             @foreach ($faqs as $faq)
-                            <div id="headingCollapse{{ $faq->id }}" class="card-header">
-                              <a data-toggle="collapse" href="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}" class="card-title text-capitalize lead collapsed">{{ $faq->pl_question . ' / ' . $faq->sl_question }}</a>
-                            </div>
-                            <div id="collapse{{ $faq->id }}" role="tabpanel" aria-labelledby="headingCollapse{{ $faq->id }}" class="collapse" aria-expanded="false" style="height: 0px;">
-                              <div class="card-content">
-                                <div class="card-body">
-                                    <h4>Answer in PL</h4>
-                                    <p>{!! $faq->pl_answer !!}</p>
-                                    <h4>Answer in SL</h4>
-                                    <p>{!! $faq->sl_answer !!}</p>
-                                  <div>
-                                      <a href="{{ route('admin.faq.edit', $faq->id) }}" class="btn btn-secondary pl-1"><i class="edit-btn ft-edit"></i> edit</a>
-                                      <a href="javascript:void(0);" class="btn btn-danger pl-1 delete-btn" data-id="{{ $faq->id }}"><i class="delete-btn ft-trash-2"></i> delete</a>
+                            <div class="border mb-1">
+                                <div id="headingCollapse{{ $faq->id }}" class="card-header">
+                                    <a data-toggle="collapse" href="#collapse{{ $faq->id }}" aria-expanded="false" aria-controls="collapse{{ $faq->id }}" class="card-title text-capitalize lead collapsed">{{ $faq->pl_question . ' / ' . $faq->sl_question }}</a>
                                   </div>
-                                </div>
-                              </div>
+                                  <div id="collapse{{ $faq->id }}" role="tabpanel" aria-labelledby="headingCollapse{{ $faq->id }}" class="collapse" aria-expanded="false" style="height: 0px;">
+                                    <div class="card-content">
+                                      <div class="card-body">
+                                          <h4>Answer in PL</h4>
+                                          <p>{!! $faq->pl_answer !!}</p>
+                                          <h4>Answer in SL</h4>
+                                          <p>{!! $faq->sl_answer !!}</p>
+                                        <div>
+                                            <a href="{{ route('admin.faq.edit', $faq->id) }}" class="btn btn-secondary pl-1"><i class="edit-btn ft-edit"></i> edit</a>
+                                            <a href="javascript:void(0);" class="btn btn-danger pl-1 delete-btn" data-id="{{ $faq->id }}"><i class="delete-btn ft-trash-2"></i> delete</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                             </div>
                             @endforeach
                         </div>

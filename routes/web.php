@@ -1,29 +1,31 @@
 <?php
 
+use App\Models\Admin\Comment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddController;
-use App\Http\Controllers\Admin\BreakingNewsController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CommentController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\FooterController;
-use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PageController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\SocialController;
-use App\Http\Controllers\Admin\SubscriberController;
-use App\Http\Controllers\Admin\ThemeController;
-use App\Http\Controllers\Admin\TranslationController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\WizardController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Admin\FooterController;
+use App\Http\Controllers\Admin\SocialController;
+use App\Http\Controllers\Admin\WizardController;
 use App\Http\Controllers\Front\SearchController;
-use App\Models\Admin\Comment;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Front\AddPlaceController;
+use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\TranslationController;
+use App\Http\Controllers\Admin\BreakingNewsController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -37,16 +39,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::middleware('auth')->group(function (){
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 });
 
 require __DIR__.'/auth.php';
-
 
 // ADMIN ROUTES;
 Route::prefix('admin')->middleware('auth')->group(function (){
@@ -183,6 +180,14 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::post('/subscriber/subscriber/{id}/delete', [SubscriberController::class, 'destroy'])->name('subscriber.destroy');
     Route::post('/subscriber/section/update', [SubscriberController::class, 'section_update'])->name('subscriber.section.update');
 
+    // ADD;
+    Route::get('/add-place', [AddPlaceController::class, 'index'])->name('add.place.index');
+    Route::get('/add/place/all', [AddPlaceController::class, 'all_add'])->name('add.place.all');
+    Route::get('/add/place/create', [AddPlaceController::class, 'create'])->name('add.place.create');
+    Route::post('/add/place/store', [AddPlaceController::class, 'store'])->name('add.place.store');
+    Route::get('/add/place/{id}/edit', [AddPlaceController::class, 'edit'])->name('add.place.edit');
+    Route::post('/add/place/{id}/update', [AddPlaceController::class, 'update'])->name('add.place.update');
+    Route::post('/add/place/{id}/delete', [AddPlaceController::class, 'destroy'])->name('add.place.destroy');
 
 });
 

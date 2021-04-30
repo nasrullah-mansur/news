@@ -14,7 +14,7 @@ class CategoryService
             ->addIndexColumn()
             ->addColumn('action', function ($category){
                 return
-                '<a data-toggle="modal" data-target="#edit_category" class="btn btn-secondary edit-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="edit-btn ft-eye"></i></a>
+                '<a target="_blank" class="btn btn-secondary" href="'. route('front.category', $category->pl_slug) .'" ><i class=" ft-eye"></i></a>
                 <a data-toggle="modal" data-target="#edit_category" class="btn btn-secondary edit-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="edit-btn ft-edit"></i></a>
                 <a class="btn btn-danger delete-btn" href="#" data-id="'.$category->id.'"><i data-id="'.$category->id.'" class="delete-btn ft-trash-2"></i></a>';
             })

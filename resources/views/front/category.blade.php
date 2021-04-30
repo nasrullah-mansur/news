@@ -41,7 +41,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $slingle_news->category->pl_slug) }}" class="catagory">{{ $slingle_news->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $slingle_news->pl_slug) }}">{{ $slingle_news->pl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $slingle_news->pl_slug) }}">{{ Str::words($slingle_news->pl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($slingle_news->pl_description, 10) !!}</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $slingle_news->created_at->format('M d, Y') }}</span></li>
                                         <li><span><i class="far fa-comment"></i> Comment {{ $slingle_news->comment->count() }}</span></li>
@@ -59,7 +60,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $slingle_news->category->sl_slug) }}" class="catagory">{{ $slingle_news->category->sl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $slingle_news->sl_slug) }}">{{ $slingle_news->sl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $slingle_news->sl_slug) }}">{{ Str::words($slingle_news->sl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($slingle_news->sl_description, 10) !!}</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $slingle_news->created_at->format('M d, Y') }}</span></li>
                                         <li><span><i class="far fa-comment"></i> Comment {{ $slingle_news->comment->count() }}</span></li>
@@ -105,10 +107,10 @@
                                     </div>
                                     <div class="post-info">
                                         <a href="{{ route('front.category', $most_recent_side->category->pl_slug) }}" class="catagory">{{ $most_recent_side->category->pl_name }}</a>
-                                        <h3 class="post-title"><a href="{{ route('single.news', $most_recent_side->pl_slug) }}">{{ $most_recent_side->pl_headline }}</a></h3>
+                                        <h3 class="post-title"><a href="{{ route('single.news', $most_recent_side->pl_slug) }}">{{ Str::words($most_recent_side->pl_headline,6) }}</a></h3>
                                         <ul class="post-meta">
-                                            <li><span><i class="far fa-clock"></i>{{ $most_recent_side->created_at->format('M d, Y') }}</span></li>
-                                            <li><span><i class="far fa-comment"></i> Comment {{ $most_recent_side->comment->count() }}</span></li>
+                                            <li><span style="font-size: 12px;"><i class="far fa-clock"></i>{{ $most_recent_side->created_at->format('M d, Y') }}</span></li>
+                                            <li><span style="font-size: 12px;"><i class="far fa-comment"></i> Comment {{ $most_recent_side->comment->count() }}</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -118,9 +120,11 @@
                         </ul>
                     </div>
                     <div class="widget widget_add_banenr">
-                        <a href="#">
-                            <img src="{{ asset('front/images/widget-add-banner.png') }}" alt="widget-add-banner" />
+                        @foreach (sidebarAdd() as $indexOneAdd)
+                        <a href="{{ $indexOneAdd->url }}" target="_blank">
+                            <img src="{{ asset($indexOneAdd->image) }}" alt="{{ $indexOneAdd->url }}" />
                         </a>
+                        @endforeach
                     </div>
                 </aside>
             </div>
@@ -147,7 +151,7 @@
                     </div>
                     <div class="post-info">
                         <a href="{{ route('front.category', $nost_view_news_2->pl_cat_slug) }}" class="catagory">{{ $nost_view_news_2->pl_name }}</a>
-                        <h3 class="post-title"><a href="{{ route('single.news',  $nost_view_news_2->pl_slug) }}">{{ $nost_view_news_2->pl_headline }}</a></h3>
+                        <h3 class="post-title"><a href="{{ route('single.news',  $nost_view_news_2->pl_slug) }}">{{ Str::words($nost_view_news_2->pl_headline,6) }}</a></h3>
                         <ul class="post-meta">
                             <li><span><i class="far fa-clock"></i>{{ \Carbon\Carbon::parse($nost_view_news_2->created_at)->format('M d, Y') }}</span></li>
                             <li><span><i class="far fa-comment"></i> Comment {{ DB::table('comments')->where('news_id', $nost_view_news_2->id)->count() }}</span></li>

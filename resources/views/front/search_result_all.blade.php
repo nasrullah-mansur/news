@@ -54,6 +54,7 @@
                 </div>
             </div>
         </div>
+        @if (active_lang() == 'pl')
         <div class="tab-content">
             <div class="tab-pane fade show active">
                 <div class="post-list">
@@ -70,7 +71,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ $news_item->pl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ Str::words($news_item->pl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($news_item->pl_description, 10) !!}</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
                                         <li><span><i class="far fa-comment"></i> {{ $news_item->comment->count() }}</span></li>
@@ -88,7 +90,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ $news_item->pl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ Str::words($news_item->pl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($news_item->pl_description, 10) !!}</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
                                         <li><span><i class="far fa-comment"></i> {{ $news_item->comment->count() }}</span></li>
@@ -107,7 +110,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ $news_item->pl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ Str::words($news_item->pl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($news_item->pl_description, 10) !!}</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
                                         <li><span><i class="far fa-comment"></i> {{ $news_item->comment->count() }}</span></li>
@@ -121,6 +125,78 @@
                 </div>
             </div>
         </div>
+           @else
+           <div class="tab-content">
+            <div class="tab-pane fade show active">
+                <div class="post-list">
+                    <div class="row">
+                        @if(Route::is('search.result'))
+                        @foreach ($news as $news_item)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="{{ $news_item->video != null ? 'single-video-post' : 'single-grid-post' }}">
+                                <div class="post-thumbnail">
+                                    <a href="{{ route('single.news', $news_item->pl_slug) }}"><img src="{{ asset($news_item->image->image_three) }}" alt="{{ $news_item->image->image_alt }}" /></a>
+                                    @if ($news_item->video != null)
+                                    <a class="video-btn" href="{{ route('single.news', $news_item->sl_slug) }}"><i class="fas fa-play"></i></a>
+                                    @endif
+                                </div>
+                                <div class="post-info">
+                                    <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->sl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ Str::words($news_item->sl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($news_item->pl_description, 10) !!}</p>
+                                    <ul class="post-meta">
+                                        <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> {{ $news_item->comment->count() }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        @elseif(Route::is('search.result.image'))
+                        @foreach ($news as $news_item)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-grid-post">
+                                <div class="post-thumbnail">
+                                    <a href="{{ route('single.news', $news_item->pl_slug) }}"><img src="{{ asset($news_item->image->image_three) }}" alt="{{ $news_item->image->image_alt }}" /></a>
+                                </div>
+                                <div class="post-info">
+                                    <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->sl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ Str::words($news_item->sl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($news_item->pl_description, 10) !!}</p>
+                                    <ul class="post-meta">
+                                        <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> {{ $news_item->comment->count() }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        @elseif(Route::is('search.result.video'))
+                        @foreach ($news as $news_item)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-video-post">
+                                <div class="post-thumbnail">
+                                    <a href="{{ route('single.news', $news_item->pl_slug) }}"><img src="{{ asset($news_item->image->image_three) }}" alt="{{ $news_item->image->image_alt }}" /></a>
+                                    <a class="video-btn" href="{{ route('single.news', $news_item->sl_slug) }}"><i class="fas fa-play"></i></a>
+                                </div>
+                                <div class="post-info">
+                                    <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->sl_name }}</a>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $news_item->sl_slug) }}">{{ Str::words($news_item->sl_headline,8) }}</a></h3>
+                                    <p>{!! Str::words($news_item->pl_description, 10) !!}</p>
+                                    <ul class="post-meta">
+                                        <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
+                                        <li><span><i class="far fa-comment"></i> {{ $news_item->comment->count() }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
         <div class="pagination-area">
             <div class="row align-items-center">
                 <div class="col-md-6">

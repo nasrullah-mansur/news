@@ -30,6 +30,7 @@ class CreateThemesTable extends Migration
             $table->text('sl_support_hour');
             $table->text('quick_contact');
             $table->string('copyright');
+            $table->text('google_map_script');
             $table->timestamps();
         });
     }
