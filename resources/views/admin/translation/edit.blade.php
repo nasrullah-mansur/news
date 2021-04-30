@@ -508,7 +508,18 @@
                                                 </div>
                                             </td>
                                         </tr>
-
+                                        <tr class="d-none">
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('pl_forty') ? 'is-invalid' : '' }}" name="pl_forty" value="{{ $heading->pl_forty }}">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control {{ $errors->has('sl_forty') ? 'is-invalid' : '' }}" name="sl_forty" value="{{ $heading->sl_forty }}">
+                                                </div>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                     <tfoot>

@@ -9,7 +9,7 @@
                         <div class="breadcrumb-wrap text-center">
                             <h2 class="page-title">{{ active_lang() == 'pl' ? translate()->pl_fifteen : translate()->sl_fifteen }}</h2>
                             <ul class="breadcrumb-page ">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ url('/') }}">Home</a></li>
                                 <li>Business</li>
                             </ul>
                         </div>
@@ -22,7 +22,7 @@
         <section class="single-blog-page section">
             <div class="container">
                 <div class="single-post">
-                    <a href="#" class="post-catagory">{{ $news->category->pl_name }}</a>
+                    <a href="{{ route('front.category', $news->category[active_lang().'_slug']) }}" class="post-catagory">{{ $news->category[active_lang().'_name'] }}</a>
                     <h2 class="post-title">{{ $news->pl_headline }}</h2>
                     <div class="post-thumbnail">
                         <img  src="{{ asset($news->image->image_one) }}" alt="{{ $news->image->image_alt }}" />
@@ -227,7 +227,7 @@
                             </div>
                             <div class="post-info">
                                 <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->pl_name }}</a>
-                                <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ $news_item->pl_headline }}</a></h3>
+                                <h3 class="post-title"><a href="{{ route('single.news', $news_item->pl_slug) }}">{{ Str::substr($news_item->pl_headline, 0, 46) }}..</a></h3>
                                 <ul class="post-meta">
                                     <li><span><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</span></li>
                                     <li><span><i class="far fa-comment"></i> Comment {{ $news_item->comment->count() }}</span></li>
@@ -259,7 +259,7 @@
                             </div>
                             <div class="post-info">
                                 <a href="{{ route('front.category', $news_item->category->pl_slug) }}" class="catagory">{{ $news_item->category->sl_name }}</a>
-                                <h3 class="post-title"><a href="{{ route('single.news', $news_item->sl_slug) }}">{{ $news_item->sl_headline }}</a></h3>
+                                <h3 class="post-title"><a href="{{ route('single.news', $news_item->sl_slug) }}">{{ Str::substr($news_item->sl_headline, 0, 46) }}..</a></h3>
                                 <ul class="post-meta">
                                     <li><a href="#"><i class="far fa-clock"></i> {{ $news_item->created_at->format('M d, Y') }}</a></li>
                                     <li><a href="#"><i class="far fa-comment"></i> Comment {{ $news_item->comment->count() }}</a></li>

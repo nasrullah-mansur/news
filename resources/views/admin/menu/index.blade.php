@@ -36,7 +36,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">1</th>
+                  <th scope="row">2</th>
                   <td>Footer Menu</td>
                   <td style="margin-left: auto;">
                     <a class="btn btn-secondary edit-btn" href="{{ route('menu.footerMenu.edit') }}"><i class="edit-btn ft-edit"></i> Edit</a>

@@ -9,7 +9,7 @@
                 <div class="breadcrumb-wrap text-center">
                     <h2 class="page-title">{{ $result }}</h2>
                     <ul class="breadcrumb-page ">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ url('/') }}">Home</a></li>
                         <li>Search Result</li>
                     </ul>
                 </div>

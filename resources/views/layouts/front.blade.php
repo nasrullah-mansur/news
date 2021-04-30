@@ -79,7 +79,7 @@
                         <div class="col-md-3 text-md-right">
                             <div class="dropdown language-dropdown">
                                 <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
-                                   <img class="flag" src="{{ active_lang() == 'pl' ? asset(ThemeSetting()->	pl_flag) : asset(ThemeSetting()->sl_flag) }}" alt="flag" /> <span>{{ active_lang() == 'pl' ? ThemeSetting()->pl_name : ThemeSetting()->sl_name }}</span>
+                                   <img class="flag" src="{{ active_lang() == 'pl' ? asset(ThemeSetting()->pl_flag) : asset(ThemeSetting()->sl_flag) }}" alt="flag" /> <span>{{ active_lang() == 'pl' ? ThemeSetting()->pl_name : ThemeSetting()->sl_name }}</span>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{{ route('lang.forgot') }}">{{ ThemeSetting()->pl_name }}</a>
@@ -100,7 +100,7 @@
                                     <div class="catagory-area">
                                         <ul class="catagory-menu">
                                             <li>
-                                                <a href="#"><img class="icon" src="{{ asset('front/images/line-bar.png') }}" alt="line bar" /> {{ active_lang() == 'pl' ? translate()->pl_two :  translate()->sl_two}}</a>
+                                                <a href="javascript:void(0);"><img class="icon" src="{{ asset('front/images/line-bar.png') }}" alt="line bar" /> {{ active_lang() == 'pl' ? translate()->pl_two :  translate()->sl_two}}</a>
                                                 <ul class="catagory-list">
                                                     @if(active_lang() == 'sl')
                                                     @foreach (Categories() as $category)
@@ -228,7 +228,7 @@
                                                                                 @if (active_lang() == 'pl')
                                                                                 <div class="post-info">
                                                                                     <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::words($megamenu_news->pl_headline, 6) }}</a></h3>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::substr($megamenu_news->pl_headline, 0, 30) }}..</a></h3>
                                                                                     <ul class="post-meta">
                                                                                         <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
                                                                                     </ul>
@@ -266,7 +266,7 @@
                                         @if ($loop->iteration > 4)
                                             @continue
                                         @endif
-                                        <li><a href="{{ $social_small->social_link }}"><i class="{{ $social_small->icon_class }}"></i></a></li>
+                                        <li><a target="_blank" href="{{ $social_small->social_link }}"><i class="{{ $social_small->icon_class }}"></i></a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -383,7 +383,7 @@
                     <div class="row align-content-center">
                         <div class="col-sm-3">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{ asset(ThemeSetting()->footer_logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
+                                <a href="{{ url('/') }}"><img src="{{ asset(ThemeSetting()->footer_logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
                             </div>
                         </div>
                         <div class="col-sm-9 text-sm-right">
@@ -392,7 +392,7 @@
                                 @if ($loop->iteration > 4)
                                     @continue
                                 @endif
-                                <li><a href="{{ url($footer_menu_item->social_link) }}">{{ $footer_menu_item->social_name }}</a></li>
+                                <li><a target="_blank" href="{{ url($footer_menu_item->social_link) }}">{{ $footer_menu_item->social_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -488,7 +488,7 @@
                     <div class="row align-content-center">
                         <div class="col-sm-3">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="{{ asset(ThemeSetting()->footer_logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
+                                <a href="{{ url('/') }}"><img src="{{ asset(ThemeSetting()->footer_logo) }}" alt="{{ ThemeSetting()->theme_name }}" /></a>
                             </div>
                         </div>
                         <div class="col-sm-9 text-sm-right">
@@ -497,7 +497,7 @@
                                 @if ($loop->iteration > 4)
                                     @continue
                                 @endif
-                                <li><a href="{{ url($footer_menu_item->social_link) }}">{{ $footer_menu_item->social_name }}</a></li>
+                                <li><a target="_blank" href="{{ url($footer_menu_item->social_link) }}">{{ $footer_menu_item->social_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>

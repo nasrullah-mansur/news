@@ -9,7 +9,7 @@
                         <div class="breadcrumb-wrap text-center">
                             <h2 class="page-title">{!! active_lang() == 'pl' ? HeadingStyle(translate()->pl_twenty_nine) : HeadingStyle(translate()->sl_twenty_nine) !!}</h2>
                             <ul class="breadcrumb-page ">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ url('/') }}">Home</a></li>
                                 <li>Privacy policy </li>
                             </ul>
                         </div>

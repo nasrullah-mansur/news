@@ -43,8 +43,8 @@
                             </div>
                             <div class="post-info">
                                 <a class="post-catagory" href="{{ route('front.category', $top_news[0]->news->category->pl_slug) }}">{{ $top_news[0]->news->category->pl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ $top_news[0]->news->pl_headline }}</a></h2>
-                                <p class="text-white">{!! Str::words($top_news[0]->news->pl_description, 30) !!}</p>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ Str::substr($top_news[0]->news->pl_headline, 0, 40) }}..</a></h2>
+                                <p class="text-white">{!! Str::words($top_news[0]->news->pl_description, 34) !!}</p>
                                 <a class="hero-post-btn" href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ translate()->pl_fourteen }}</a>
                             </div>
                         </div>
@@ -58,8 +58,8 @@
                             </div>
                             <div class="post-info">
                                 <a class="post-catagory" href="{{ route('front.category', $top_news[1]->news->category->pl_slug) }}">{{ $top_news[1]->news->category->pl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ $top_news[1]->news->pl_headline }}</a></h2>
-                                <p style="color: white;">{!! Str::words($top_news[1]->news->pl_description, 10) !!}</p>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ Str::words($top_news[1]->news->pl_headline, 6) }}</a></h2>
+                                <p style="color: white;">{!! Str::words($top_news[1]->news->pl_description, 14) !!}</p>
                                 <a class="hero-post-btn" href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ translate()->pl_fourteen }}</a>
                             </div>
                         </div>
@@ -80,8 +80,8 @@
                             </div>
                             <div class="post-info">
                                 <a class="post-catagory" href="{{ route('front.category', $top_news[0]->news->category->sl_slug) }}">{{ $top_news[0]->news->category->sl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ $top_news[0]->news->sl_headline }}</a></h2>
-                                <p class="text-white">{!! Str::words($top_news[0]->news->sl_description, 30) !!}</p>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ Str::substr($top_news[0]->news->sl_headline,0,40) }}..</a></h2>
+                                <p class="text-white">{!! Str::words($top_news[0]->news->sl_description, 34) !!}</p>
                                 <a class="hero-post-btn" href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ translate()->sl_fourteen }}</a>
                             </div>
                         </div>
@@ -95,8 +95,8 @@
                             </div>
                             <div class="post-info">
                                 <a class="post-catagory" href="{{ route('front.category', $top_news[1]->news->category->sl_slug) }}">{{ $top_news[1]->news->category->sl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ $top_news[1]->news->sl_headline }}</a></h2>
-                                <p style="color: white;">{!! Str::words($top_news[1]->news->pl_description, 10) !!}</p>
+                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ Str::words($top_news[1]->news->sl_headline,6) }}</a></h2>
+                                <p style="color: white;">{!! Str::words($top_news[1]->news->sl_description, 14) !!}</p>
                                 <a class="hero-post-btn" href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ translate()->sl_fourteen }}</a>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                     <div class="row">
                         @foreach (SocialMedia() as $socaial_media)
                         <div class="col-lg-3 col-md-4 col-sm-6 ">
-                            <a class="single-follower {{ $socaial_media->social_name }}-follower" href="{{ $socaial_media->social_link }}"> <i class="icon {{ $socaial_media->icon_class }}"></i> <span class="text">{{ $socaial_media->followers }} Follower</span></a>
+                            <a target="_blank" class="single-follower {{ $socaial_media->social_name }}-follower" href="{{ $socaial_media->social_link }}"> <i class="icon {{ $socaial_media->icon_class }}"></i> <span class="text">{{ $socaial_media->followers }} Follower</span></a>
                         </div>
                         @endforeach
                     </div>
@@ -186,7 +186,7 @@
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $tranding_news_tab_list->category->pl_slug) }}" class="catagory">{{ $tranding_news_tab_list->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->pl_slug) }}">{{ $tranding_news_tab_list->pl_headline }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->pl_slug) }}">{{ substr($tranding_news_tab_list->pl_headline,0,40) }}..</a></h3>
                                             <p>{!! Str::words($tranding_news_tab_list->pl_description, 10) !!}</p>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</span></li>
@@ -211,7 +211,7 @@
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $tranding_news_item->category->pl_slug) }}" class="catagory">{{ $tranding_news_item->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->pl_slug) }}">{{ $tranding_news_item->pl_headline }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->pl_slug) }}">{{ Str::substr($tranding_news_item->pl_headline, 0, 40) }}..</a></h3>
                                             <p>{!! Str::words($tranding_news_item->pl_description, 10) !!}</p>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</span></li>
@@ -264,7 +264,7 @@
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $tranding_news_tab_list->category->sl_slug) }}" class="catagory">{{ $tranding_news_tab_list->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->sl_slug) }}">{{ $tranding_news_tab_list->sl_headline }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->sl_slug) }}">{{ Str::substr($tranding_news_tab_list->sl_headline, 0, 40) }}..</a></h3>
                                             <p>{!! Str::words($tranding_news_tab_list->pl_description, 10) !!}</p>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</span></li>
@@ -289,7 +289,7 @@
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $tranding_news_item->category->sl_slug) }}" class="catagory">{{ $tranding_news_item->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->sl_slug) }}">{{ $tranding_news_item->sl_headline }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->sl_slug) }}">{{ Str::substr($tranding_news_item->sl_headline, 0, 40) }}..</a></h3>
                                             <p>{!! Str::words($tranding_news_item->pl_description, 10) !!}</p>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</span></li>
@@ -554,7 +554,7 @@
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $wNewsByCat->category->sl_slug) }}" class="catagory">{{ $wNewsByCat->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->sl_slug) }}">{{ Str::words($wNewsByCat->sl_headline, 6) }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->sl_slug) }}">{{ Str::words($wNewsByCat->sl_headline, 6) }}..</a></h3>
                                             <ul class="post-meta">
                                                 <li><span style="font-size: 12px;"><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
                                                 <li><span style="font-size: 12px;"><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
@@ -628,9 +628,9 @@
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $sportNewsItem->category->pl_slug) }}" class="catagory">{{ $sportNewsItem->category->pl_name }}</a>
                                     @if ($loop->first)
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ $sportNewsItem->pl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->pl_headline, 0, 80) }}..</a></h3>
                                     @else
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::words($sportNewsItem->pl_headline, 6) }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->pl_headline, 0, 46) }}..</a></h3>
                                     @endif
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
@@ -638,7 +638,7 @@
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
-                                        {!! Str::words($sportNewsItem->pl_description, 18) !!}
+                                        {!! Str::substr($sportNewsItem->pl_description, 0, 96) !!}..
                                     </p>
 
                                     <a class="read-btn" href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
@@ -663,9 +663,9 @@
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $sportNewsItem->category->pl_slug) }}" class="catagory">{{ $sportNewsItem->category->pl_name }}</a>
                                     @if ($loop->first)
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ $sportNewsItem->pl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->pl_headline, 0, 80) }}..</a></h3>
                                     @else
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::words($sportNewsItem->pl_headline, 6) }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->pl_headline, 0, 46) }}..</a></h3>
                                     @endif
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
@@ -673,7 +673,7 @@
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
-                                        {!! Str::words($sportNewsItem->pl_description, 18) !!}
+                                        {!! Str::substr($sportNewsItem->pl_description, 0, 96) !!}..
                                     </p>
 
                                     <a class="read-btn" href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
@@ -707,9 +707,9 @@
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $sportNewsItem->category->sl_slug) }}" class="catagory">{{ $sportNewsItem->category->sl_name }}</a>
                                     @if ($loop->first)
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ $sportNewsItem->sl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->sl_headline,0, 80) }}..</a></h3>
                                     @else
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::words($sportNewsItem->sl_headline, 6) }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->sl_headline, 0, 46) }}..</a></h3>
                                     @endif
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
@@ -717,7 +717,7 @@
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
-                                        {!! Str::words($sportNewsItem->sl_description, 18) !!}
+                                        {!! Str::substr($sportNewsItem->sl_description, 0, 96) !!}..
                                     </p>
 
                                     <a class="read-btn" href="{{ route('single.news', $sportNewsItem->sl_slug) }}">{{ translate()->sl_fourteen }}<i class="fas fa-arrow-right"></i></a>
@@ -742,9 +742,9 @@
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $sportNewsItem->category->sl_slug) }}" class="catagory">{{ $sportNewsItem->category->sl_name }}</a>
                                     @if ($loop->first)
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ $sportNewsItem->sl_headline }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->sl_headline, 0,80) }}..</a></h3>
                                     @else
-                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::words($sportNewsItem->sl_headline, 6) }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $sportNewsItem->pl_slug) }}">{{ Str::substr($sportNewsItem->sl_headline, 0, 46) }}</a></h3>
                                     @endif
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $sportNewsItem->created_at->format('M d, Y') }}</span></li>
@@ -752,7 +752,7 @@
                                     </ul>
                                     @if ($loop->first)
                                     <p class="post-content">
-                                        {!! Str::words($sportNewsItem->sl_description, 18) !!}
+                                        {!! Str::substr($sportNewsItem->sl_description, 0, 96) !!}..
                                     </p>
 
                                     <a class="read-btn" href="{{ route('single.news', $sportNewsItem->sl_slug) }}">{{ translate()->sl_fourteen }}<i class="fas fa-arrow-right"></i></a>
@@ -817,8 +817,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $VideoNewsItem->category->pl_slug) }}" class="catagory">{{ $VideoNewsItem->category->pl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $VideoNewsItem->pl_slug) }}">{{ Str::words($VideoNewsItem->pl_headline, 8) }}</a></h3>
-                                    <p>{!! Str::words($VideoNewsItem->pl_description, 10) !!}</p>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $VideoNewsItem->pl_slug) }}">{{ Str::substr($VideoNewsItem->pl_headline,0, 46) }}..</a></h3>
+                                    <p>{!! Str::substr($VideoNewsItem->pl_description, 0, 60) !!}..</p>
 
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $VideoNewsItem->created_at->format('M d, Y') }}</span></li>
@@ -853,8 +853,8 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $VideoNewsItem->category->sl_slug) }}" class="catagory">{{ $VideoNewsItem->category->sl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $VideoNewsItem->sl_slug) }}">{{ Str::words($VideoNewsItem->sl_headline,8) }}</a></h3>
-                                    <p>{!! Str::words($VideoNewsItem->sl_description, 10) !!}</p>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $VideoNewsItem->sl_slug) }}">{{ Str::substr($VideoNewsItem->sl_headline,0, 46) }}..</a></h3>
+                                    <p>{!! Str::substr($VideoNewsItem->sl_description, 0, 60) !!}..</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $VideoNewsItem->created_at->format('M d, Y') }}</span></li>
                                         <li><span><i class="far fa-comment"></i> Comment 123</span></li>

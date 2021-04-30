@@ -10,7 +10,7 @@
                     <h2 class="page-title">{{ active_lang() == 'pl' ? translate()->pl_twenty_four : translate()->sl_twenty_four }}</h2>
                     <ul class="breadcrumb-page ">
                         <li><a href="index.html">Home</a></li>
-                        <li>Bussiness</li>
+                        <li>Category News</li>
                     </ul>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="{{ route('front.category', $slingle_news->category->sl_slug) }}" class="catagory">{{ $slingle_news->category->sl_name }}</a>
-                                    <h3 class="post-title"><a href="{{ route('single.news', $slingle_news->sl_slug) }}">{{ Str::words($slingle_news->sl_headline,8) }}</a></h3>
+                                    <h3 class="post-title"><a href="{{ route('single.news', $slingle_news->sl_slug) }}">{{ Str::substr($slingle_news->sl_headline,0,46) }}..</a></h3>
                                     <p>{!! Str::words($slingle_news->sl_description, 10) !!}</p>
                                     <ul class="post-meta">
                                         <li><span><i class="far fa-clock"></i> {{ $slingle_news->created_at->format('M d, Y') }}</span></li>
@@ -87,7 +87,7 @@
             <div class="col-lg-4">
                 <aside class="sidebar-widget">
                     <div class="widget widget_connected">
-                        <h3 class="widget-title">{!! HeadingStyle(translate()->pl_twenty_six) !!}</h3>
+                        <h3 class="widget-title">{!! HeadingStyle(translate()[active_lang().'_twenty_six']) !!}</h3>
                         <ul>
                             @foreach (SocialMedia() as $socaial_media)
                             <li>
@@ -97,8 +97,9 @@
                         </ul>
                     </div>
                     <div class="widget widget_recent_news">
-                        <h3 class="widget-title">{!! HeadingStyle(translate()->pl_twenty_seven) !!}</h3>
+                        <h3 class="widget-title">{!! HeadingStyle(translate()[active_lang().'_twenty_seven']) !!}</h3>
                         <ul>
+                            @if (active_lang() == 'pl')
                             @foreach (MostRecentPost(newsCount()->recent_news_count) as $most_recent_side)
                             <li>
                                 <div class="single-list-post ">
@@ -107,7 +108,7 @@
                                     </div>
                                     <div class="post-info">
                                         <a href="{{ route('front.category', $most_recent_side->category->pl_slug) }}" class="catagory">{{ $most_recent_side->category->pl_name }}</a>
-                                        <h3 class="post-title"><a href="{{ route('single.news', $most_recent_side->pl_slug) }}">{{ Str::words($most_recent_side->pl_headline,6) }}</a></h3>
+                                        <h3 class="post-title"><a href="{{ route('single.news', $most_recent_side->pl_slug) }}">{{ Str::substr($most_recent_side->pl_headline,0,40) }}</a></h3>
                                         <ul class="post-meta">
                                             <li><span style="font-size: 12px;"><i class="far fa-clock"></i>{{ $most_recent_side->created_at->format('M d, Y') }}</span></li>
                                             <li><span style="font-size: 12px;"><i class="far fa-comment"></i> Comment {{ $most_recent_side->comment->count() }}</span></li>
@@ -115,8 +116,26 @@
                                     </div>
                                 </div>
                             </li>
-
                             @endforeach
+                            @else
+                            @foreach (MostRecentPost(newsCount()->recent_news_count) as $most_recent_side)
+                            <li>
+                                <div class="single-list-post ">
+                                    <div class="post-thumbnail">
+                                        <a href="{{ route('single.news', $most_recent_side->sl_slug) }}"><img src="{{ asset($most_recent_side->image->image_four) }}" alt="{{ $most_recent_side->image->image_alt }}" /></a>
+                                    </div>
+                                    <div class="post-info">
+                                        <a href="{{ route('front.category', $most_recent_side->category->sl_slug) }}" class="catagory">{{ $most_recent_side->category->sl_name }}</a>
+                                        <h3 class="post-title"><a href="{{ route('single.news', $most_recent_side->sl_slug) }}">{{ Str::substr($most_recent_side->sl_headline,0,40) }}</a></h3>
+                                        <ul class="post-meta">
+                                            <li><span style="font-size: 12px;"><i class="far fa-clock"></i>{{ $most_recent_side->created_at->format('M d, Y') }}</span></li>
+                                            <li><span style="font-size: 12px;"><i class="far fa-comment"></i> Comment {{ $most_recent_side->comment->count() }}</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div class="widget widget_add_banenr">
@@ -138,11 +157,12 @@
         <div class="section-header">
             <div class="row aling-items-center">
                 <div class="col-md-5">
-                    <h2 class="section-title">{!! HeadingStyle(translate()->pl_twenty_five) !!}</span></h2>
+                    <h2 class="section-title">{!! HeadingStyle(translate()[active_lang().'_twenty_five']) !!}</span></h2>
                 </div>
             </div>
         </div>
         <div class="row">
+            @if (active_lang() == 'pl')
             @foreach ($most_visited_news as $nost_view_news_2)
             <div class="col-lg-6">
                 <div class="single-list-post ">
@@ -151,7 +171,7 @@
                     </div>
                     <div class="post-info">
                         <a href="{{ route('front.category', $nost_view_news_2->pl_cat_slug) }}" class="catagory">{{ $nost_view_news_2->pl_name }}</a>
-                        <h3 class="post-title"><a href="{{ route('single.news',  $nost_view_news_2->pl_slug) }}">{{ Str::words($nost_view_news_2->pl_headline,6) }}</a></h3>
+                        <h3 class="post-title"><a href="{{ route('single.news',  $nost_view_news_2->pl_slug) }}">{{ Str::substr($nost_view_news_2->pl_headline,0,46) }}..</a></h3>
                         <ul class="post-meta">
                             <li><span><i class="far fa-clock"></i>{{ \Carbon\Carbon::parse($nost_view_news_2->created_at)->format('M d, Y') }}</span></li>
                             <li><span><i class="far fa-comment"></i> Comment {{ DB::table('comments')->where('news_id', $nost_view_news_2->id)->count() }}</span></li>
@@ -160,6 +180,25 @@
                 </div>
             </div>
             @endforeach
+               @else
+               @foreach ($most_visited_news as $nost_view_news_2)
+               <div class="col-lg-6">
+                   <div class="single-list-post ">
+                       <div class="post-thumbnail">
+                           <a href="{{ route('single.news',  $nost_view_news_2->sl_slug) }}"><img src="{{ asset($nost_view_news_2->image_four) }}" alt="{{ $nost_view_news_2->image_alt }}" /></a>
+                       </div>
+                       <div class="post-info">
+                           <a href="{{ route('front.category', $nost_view_news_2->sl_cat_slug) }}" class="catagory">{{ $nost_view_news_2->sl_name }}</a>
+                           <h3 class="post-title"><a href="{{ route('single.news',  $nost_view_news_2->sl_slug) }}">{{ Str::substr($nost_view_news_2->sl_headline,0,46) }}..</a></h3>
+                           <ul class="post-meta">
+                               <li><span><i class="far fa-clock"></i>{{ \Carbon\Carbon::parse($nost_view_news_2->created_at)->format('M d, Y') }}</span></li>
+                               <li><span><i class="far fa-comment"></i> Comment {{ DB::table('comments')->where('news_id', $nost_view_news_2->id)->count() }}</span></li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               @endforeach
+            @endif
         </div>
     </div>
 </div>
