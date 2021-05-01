@@ -161,7 +161,7 @@
                                                                                 @if (active_lang() == 'pl')
                                                                                 <div class="post-info">
                                                                                     <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::words($megamenu_news->pl_headline, 6) }}</a></h3>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::substr($megamenu_news->pl_headline, 0, 30) }}..</a></h3>
                                                                                     <ul class="post-meta">
                                                                                         <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
                                                                                     </ul>
@@ -169,7 +169,7 @@
                                                                                 @else
                                                                                 <div class="post-info">
                                                                                     <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::words($megamenu_news->sl_headline, 6) }}</a></h3>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::substr($megamenu_news->sl_headline, 0, 30) }}..</a></h3>
                                                                                     <ul class="post-meta">
                                                                                         <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
                                                                                     </ul>
@@ -236,7 +236,7 @@
                                                                                 @else
                                                                                 <div class="post-info">
                                                                                     <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::words($megamenu_news->sl_headline, 6) }}</a></h3>
+                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::substr($megamenu_news->sl_headline, 0, 30) }}..</a></h3>
                                                                                     <ul class="post-meta">
                                                                                         <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
                                                                                     </ul>

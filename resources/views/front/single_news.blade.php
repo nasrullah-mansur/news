@@ -46,9 +46,9 @@
                     <div class="post-share d-flex align-items-center">
                         <span class="share-title"><i class="fas fa-share"></i> Share</span>
                         <ul class="share-list">
-                            <li class="facebook"><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                            <li class="twiter"><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                            <li class="instagram"><a href="#"><i class="fab fa-instagram"></i> instagram</a></li>
+                            <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{route('single.news', $news[active_lang().'_slug'])}}&display=popup"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                            <li class="twiter"><a href="https://twitter.com/intent/tweet?url={{route('single.news', $news[active_lang().'_slug'])}}&text={{$news[active_lang().'_headline']}}"><i class="fab fa-twitter"></i> Twitter</a></li>
+                            <li class="instagram"><a href="https://www.instagram.com/?{{route('single.news', $news[active_lang().'_slug'])}}"><i class="fab fa-instagram"></i> instagram</a></li>
                         </ul>
                     </div>
                     <div class="post-content">

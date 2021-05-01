@@ -4006,4 +4006,26 @@ Version: 1.0
       margin-right: 1rem;
     }
   }
+
+
+
+  /* Custom css */
+  .dropdown-toggle::after {
+        display: inline-block;
+        margin-left: .255em;
+        vertical-align: .255em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f107";
+        border: 0;
+        position: relative;
+        top: 4px;
+    }
+
+    .main-menu .nav-link {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+
   /*# sourceMappingURL=style.css.map */
