@@ -1,0 +1,225 @@
+html {
+    direction:rtl;
+    text-align: right;
+}
+.text-right {
+    text-align: left!important;
+}
+.text-left {
+    text-align: right!important;
+}
+.text-sm-right {
+    text-align: left!important;
+}
+.text-md-right {
+    text-align: left!important;
+}
+.header-area .header-top .header-search .form-group .search-btn {
+    left: 0;
+    right: auto;
+    border-radius: 5px 0 0 5px;
+}
+.logo-area {
+    text-align: right;
+}
+.dropdown.language-dropdown {
+    text-align: left;
+}
+.header-area .header-bottom .follow-area ul {
+    text-align: left;
+}
+.header-area .topbar-area .today-date {
+    text-align: left;
+}
+.header-area .header-bottom .catagory-area .catagory-menu li .catagory-list li a {
+   text-align: right;
+   padding-right: 20px;
+   padding-left: 0;
+}
+.header-area .header-bottom .catagory-area .catagory-menu li .catagory-list li a .catagory-count {
+    float: left;
+}
+.header-area .header-bottom .catagory-area .catagory-menu li .catagory-list li a:before {
+    left: auto;
+    right: 0;
+}
+.hero-section .hero-post .post-info {
+    text-align: right;
+}
+.follow-area .single-follower .icon {
+    margin-right: 0;
+    margin-left: 15px;
+}
+.section-title {
+    padding-left: 0;
+    padding-right: 20px;
+    text-align: right;
+}
+.section-title:before {
+    left: auto;
+    right: 0;
+}
+.single-grid-post .post-info {
+    text-align: right;
+}
+.single-list-post .post-info {
+    text-align: right;
+}
+.newsletter-area .newsletter-text {
+    text-align: right;
+}
+.single-video-post .post-info {
+    text-align: right;
+}
+.footer-area .footer-top .social-media li {
+    margin-left: 0;
+    margin-right: 30px;
+}
+.footer-logo {
+    text-align: right;
+}
+.footer-area .widget-area .single-widget {
+    text-align: right;
+}
+.tab-menu .nav-tabs .nav-item {
+    margin-left: 0;
+    margin-right: 15px;
+}
+.sidebar-widget .widget_connected ul li a .icon {
+    margin-right: 0;
+    margin-left: 6px;
+}
+.pagination li {
+    margin-left: 0;
+    margin-right: 5px;
+}
+.contact-form .contact-form-title {
+    text-align: right;
+}
+.contact-page .contact-info .contact-info-top {
+    text-align: right;
+}
+.contact-page .contact-info .contact-info-list .single-info {
+    text-align: right;
+}
+.breadcrumb-area .breadcrumb-page li:last-child:before {
+    display: block;
+}
+.breadcrumb-area .breadcrumb-page li:first-child:before {
+    display: none;
+}
+.cookies-list {
+    text-align: right;
+}
+.cookies-page .single-cookies {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 45px;
+}
+.cookies-page .single-cookies:before {
+    left: auto;
+    right: 0;
+}
+.accordion .card .card-header .btn-link:before {
+    right: auto;
+    left: 20px;
+}
+.accordion .card .card-header .btn-link .qicon {
+    left: auto;
+    right: 20px;
+    margin-right: 0;
+    margin-left: 15px;
+}
+.accordion .card .card-header .btn-link {
+    padding-left: 20px;
+    padding-right: 80px;
+}
+.accordion .card .card-body .anser-text .ans-icon {
+    margin-right: 0;
+    margin-left: 15px;
+    left: auto;
+    right: 0;
+}
+.accordion .card .card-body .anser-text {
+    padding-left: 0;
+    padding-right: 60px;
+}
+.accordion .card .card-body {
+    text-align: right;
+}
+.policy-lsit {
+    text-align: right;
+}
+.privacy-policy-page .policy-lsit .single-policy ul li {
+    padding-left: 0;
+    padding-right: 30px;
+}
+.privacy-policy-page .policy-lsit .single-policy ul li:before {
+    left: auto;
+    right: 0;
+}
+.request-add-form {
+    text-align: right;
+}
+.search-page-form .form-group .search-btn {
+    right: auto;
+    left: 35px;
+}
+.comments {
+    text-align: right;
+}
+.comment-post .comments-list .single-comment {
+    text-align: right;
+}
+.comment-post .comments-list .single-comment .comments-avatar {
+    margin-right: 0;
+    margin-left: 30px;
+}
+.single-blog-page .single-post .post-share .share-list li {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+.single-blog-page .single-post .post-share .share-title {
+    margin-right: 0;
+    margin-left: 35px;
+}
+.single-blog-page .single-post .post-share .share-title i {
+    margin-right: 0;
+    padding-right: 0;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-right: none;
+    border-left: 1px solid #B5B5B5;
+}
+.single-blog-page .single-post .post-share .share-list li a i {
+    margin-right: 0;
+    margin-left: 5px;
+}
+.single-blog-page .single-post .post-meta .author .author-image {
+    margin-right: 0;
+    margin-left: 1.5rem;
+}
+.single-blog-page .single-post .post-meta .post-time {
+    margin-left: 0;
+    margin-right: 3rem;
+}
+.single-blog-page .single-post {
+    text-align: right;
+}
+@media (min-width: 768px) {
+    .mr-md-4, .mx-md-4 {
+         margin-left: 1.5rem!important;
+         margin-right: 0 !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .text-sm-left {
+         text-align: right!important;
+    }
+}
+@media (min-width: 768px) {
+    .text-md-left {
+         text-align: right!important;
+    }
+}

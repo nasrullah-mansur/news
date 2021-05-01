@@ -17,20 +17,29 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+
+            AddSeeder::class,
+            AddPlaceSeeder::class,
+            BreakingNewsSeeder::class,
             CategorySeeder::class,
-            WizardSeeder::class,
+            CommentSeeder::class,
+            ContactSeeder::class,
+            FaqSeeder::class,
             FooterSeeder::class,
-            TranslationSeeder::class,
-            ThemeSeeder::class,
-            ProfileSeeder::class,
-            PageSeeder::class,
-            MainMenuSeeder::class,
             FooterMenuSeeder::class,
+            MainMenuSeeder::class,
+            PageSeeder::class,
+            ProfileSeeder::class,
             SocialSeeder::class,
-            ImageSeeder::class,
-            BreakingNews::class,
-            VisitorSeeder::class,
+            SubscriberSeeder::class,
             SubscriberSectionSeeder::class,
+            ThemeSeeder::class,
+            TranslationSeeder::class,
+            VisitorSeeder::class,
+            WizardSeeder::class,
+
+            NewsSeeder::class,
+            ImageSeeder::class,
         ]);
     }
 }

@@ -15,11 +15,11 @@ class FooterSeeder extends Seeder
     public function run()
     {
         Footer::create([
-            'wizard_one_by' => 1,
+            'wizard_one_by' => 2,
             'wizard_one_count' => 3,
-            'quick_link_count' => 5,
-            'categories' => 5,
-            'images_from' => 1,
+            'quick_link_count' => 3,
+            'categories' => '1,2,3,4',
+            'images_from' => 4,
             'image_by' => 1,
             'image_count' => 4,
         ]);

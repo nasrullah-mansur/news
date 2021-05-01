@@ -15,7 +15,12 @@ class ProfileSeeder extends Seeder
     public function run()
     {
         Profile::create([
-            'user_id' => 1
+            'user_id' => 1,
+            'facebook' => '#',
+            'twitter' => '#',
+            'linkedin' => '#',
+            'profile' => null,
+            'banner' => null,
         ]);
     }
 }

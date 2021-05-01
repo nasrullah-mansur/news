@@ -1140,7 +1140,7 @@ Version: 1.0
   }
 
   .hero-section .hero-post .post-info .post-title a:hover {
-    color: var(--primary-color);
+    color: inherit;
   }
 
   .hero-section .hero-post .post-info .post-content {
@@ -1174,14 +1174,11 @@ Version: 1.0
 
   .hero-section .hero-post-medium .post-info .post-catagory {
     margin-bottom: 15px;
-    padding: 0;
-    background: transparent;
+    padding: 5px 10px;
+    background: var(--primary-color);
+    color: var(--white);
   }
 
-  .hero-section .hero-post-medium .post-info .post-catagory:hover {
-    background: transparent;
-    color: var(--primary-color);
-  }
 
   .hero-section .hero-post-medium .post-info .post-title {
     font-size: 24px;
@@ -1467,7 +1464,7 @@ Version: 1.0
 
   .tab-menu .nav-tabs .nav-item {
     border: none;
-    margin-left: 15px;
+    margin-left: 20px;
   }
 
   .tab-menu .nav-tabs .nav-item:first-child {

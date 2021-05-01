@@ -49,6 +49,8 @@
         <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('front/css/style_rtl.css') }}"> --}}
+
         <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
         <script src="{{ asset('front/js/modernizr-3.11.2.min.js') }}"></script>
     </head>

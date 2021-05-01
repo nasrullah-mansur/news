@@ -15,7 +15,7 @@ class WizardSeeder extends Seeder
     public function run()
     {
         Wizard::create([
-            'trending_news_count' => 6,
+            'trending_news_count' => 4,
             'world_news_count' => 4,
             'sport_news_count' => 3,
             'entertainment_news_count' => 3,

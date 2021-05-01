@@ -66,6 +66,9 @@ class News extends Model
         return $this->hasMany(Comment::class);
     }
 
+
+
+
     protected static function boot()
     {
         parent::boot();

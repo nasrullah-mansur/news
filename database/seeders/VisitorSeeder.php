@@ -78,5 +78,10 @@ class VisitorSeeder extends Seeder
             'news_id' => 13,
             'visitor' => 0,
         ]);
+
+        Visitor::create([
+            'news_id' => 14,
+            'visitor' => 0,
+        ]);
     }
 }

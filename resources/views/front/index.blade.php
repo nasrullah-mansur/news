@@ -29,6 +29,7 @@
 @endsection
 
 @section('content')
+        @if ($top_news->count() >= 2)
         <!-- hero-section start here  -->
         @if(active_lang() == 'pl')
         <section class="hero-section">
@@ -106,7 +107,7 @@
         </section>
         @endif
         <!-- hero-section end here  -->
-
+        @endif
         <!-- Follow Us area start here  -->
         <section class="follow-area section-top pb-90">
             <div class="container">
@@ -135,7 +136,7 @@
                     <div class="row">
                         @foreach (SocialMedia() as $socaial_media)
                         <div class="col-lg-3 col-md-4 col-sm-6 ">
-                            <a target="_blank" class="single-follower {{ $socaial_media->social_name }}-follower" href="{{ $socaial_media->social_link }}"> <i class="icon {{ $socaial_media->icon_class }}"></i> <span class="text">{{ $socaial_media->followers }} Follower</span></a>
+                            <a target="_blank" class="single-follower {{ $socaial_media->social_name }}-follower" href="{{ $socaial_media->social_link }}"> <i class="icon {{ $socaial_media->icon_class }}"></i> <span class="text">{{ $socaial_media->followers }} {{ translate()[active_lang(). '_forty'] }}</span></a>
                         </div>
                         @endforeach
                     </div>

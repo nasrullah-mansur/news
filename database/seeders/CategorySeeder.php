@@ -18,30 +18,37 @@ class CategorySeeder extends Seeder
         Auth::loginUsingId(1);
         Category::create([
             'pl_name' => 'Business',
-            'sl_name' => 'ব্যাবসা',
+            'sl_name' => 'Negocio',
             'pl_slug' => 'business',
-            'sl_slug' => 'ব্যাবসা',
+            'sl_slug' => 'Negocio',
         ]);
 
         Category::create([
             'pl_name' => 'Life Style',
-            'sl_name' => 'জীবনের সৈন্দর্য্য',
+            'sl_name' => 'Estilo Vida',
             'pl_slug' => 'life-style',
-            'sl_slug' => 'জীবনের-সৌন্দর্য্য',
+            'sl_slug' => 'Estilo Vida',
         ]);
 
         Category::create([
-            'pl_name' => 'health',
-            'sl_name' => 'স্বাস্থ',
-            'pl_slug' => 'health',
-            'sl_slug' => 'স্বাস্থ',
+            'pl_name' => 'Health',
+            'sl_name' => 'salud',
+            'pl_slug' => 'Health',
+            'sl_slug' => 'salud',
         ]);
 
         Category::create([
-            'pl_name' => 'sports',
-            'sl_name' => 'খেলাধুলা',
+            'pl_name' => 'Sports',
+            'sl_name' => 'deportes',
             'pl_slug' => 'sports',
-            'sl_slug' => 'খেলাধুলা',
+            'sl_slug' => 'deportes',
+        ]);
+
+        Category::create([
+            'pl_name' => 'Entertainment',
+            'sl_name' => 'entretenimiento',
+            'pl_slug' => 'Entertainment',
+            'sl_slug' => 'entretenimiento',
         ]);
 
 

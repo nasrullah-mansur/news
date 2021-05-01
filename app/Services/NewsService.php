@@ -114,7 +114,13 @@ class NewsService
                 $newsData['sl_seo_title'] = $request->sl_seo_title;
             }
         }
-        $newsData['sl_seo_tag'] = $request->sl_seo_tag;
+
+        if($request->sl_seo_tag){
+            $newsData['sl_seo_tag'] = $request->sl_seo_tag;
+        } else {
+            $newsData['sl_seo_tag'] = implode(',' ,$request->tag);
+        }
+
         $newsData['sl_seo_description'] = $request->sl_seo_description;
 
         $newsData['category_id'] = $request->category;
@@ -185,6 +191,13 @@ class NewsService
                 $newsData['sl_seo_title'] = $request->sl_seo_title;
             }
         }
+
+        if($request->sl_seo_tag){
+            $newsData['sl_seo_tag'] = $request->sl_seo_tag;
+        } else {
+            $newsData['sl_seo_tag'] = implode(',' ,$request->tag);
+        }
+
         $newsData['sl_seo_tag'] = $request->sl_seo_tag;
         $newsData['sl_seo_description'] = $request->sl_seo_description;
 

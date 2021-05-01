@@ -17,7 +17,7 @@ class FooterMenuSeeder extends Seeder
         FooterMenu::create([
             'menu_id' => 2,
             'pl_label' => 'Contact Us',
-            'sl_label' => 'Contact Us SL',
+            'sl_label' => 'Contacto',
             'url' => '/contact',
             'ordering' => 1
         ]);
@@ -25,7 +25,7 @@ class FooterMenuSeeder extends Seeder
         FooterMenu::create([
             'menu_id' => 2,
             'pl_label' => 'Privacy & Policy',
-            'sl_label' => 'Privacy & Policy SL',
+            'sl_label' => 'Política de privacidad',
             'url' => '/privacy-policy',
             'ordering' => 2
         ]);
@@ -33,7 +33,7 @@ class FooterMenuSeeder extends Seeder
         FooterMenu::create([
             'menu_id' => 2,
             'pl_label' => 'Request For Add',
-            'sl_label' => 'Request For Add SL',
+            'sl_label' => 'Solicitud para agregar',
             'url' => '/request-add',
             'ordering' => 3
         ]);
@@ -41,7 +41,7 @@ class FooterMenuSeeder extends Seeder
         FooterMenu::create([
             'menu_id' => 2,
             'pl_label' => 'Cookies',
-            'sl_label' => 'Cookies SL',
+            'sl_label' => 'Galletas',
             'url' => '/cookies',
             'ordering' => 4
         ]);
@@ -49,7 +49,7 @@ class FooterMenuSeeder extends Seeder
         FooterMenu::create([
             'menu_id' => 2,
             'pl_label' => 'Faq',
-            'sl_label' => 'Faq SL',
+            'sl_label' => 'Faq',
             'url' => '/faq',
             'ordering' => 5
         ]);
