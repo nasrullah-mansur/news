@@ -20,6 +20,7 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,5 +45,11 @@ class Admin extends Authenticatable
     public function getNameAttribute($value)
     {
         return ucwords($value);
+    }
+
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

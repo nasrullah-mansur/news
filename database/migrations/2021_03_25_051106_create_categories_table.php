@@ -17,12 +17,13 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->integer('p_id');
 
             $table->string('pl_name');
             $table->string('pl_slug');
 
-            $table->string('sl_name')->nullable();
-            $table->string('sl_slug')->nullable();
+            $table->string('sl_name');
+            $table->string('sl_slug');
             $table->timestamps();
         });
     }

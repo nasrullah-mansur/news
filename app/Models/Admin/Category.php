@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Models\User;
 use App\Models\Admin\News;
+use App\Models\Admin\SubCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,7 +18,9 @@ class Category extends Model
         'pl_slug',
 
         'sl_name',
-        'sl_slug'
+        'sl_slug',
+
+        'p_id'
     ];
 
     protected static function boot()
@@ -60,5 +63,11 @@ class Category extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function subCategory()
+    {
+        return $this->HasMany(Category::class, 'p_id');
+    }
+
 
 }

@@ -120,9 +120,69 @@
                                     <div class="menu-area">
                                         <nav class="main-menu">
                                             <ul>
-                                                @if(active_lang() == 'sl')
                                                 @foreach (MainMenu() as $mainMenu)
-                                                <li><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->sl_label }}</a></li>
+                                                @foreach (Categories() as $menuCat)
+                                                    @if ($menuCat->id != $mainMenu->category_id)
+                                                        @continue
+                                                    @endif
+
+                                                    <li class="has-mega-menu">
+                                                        <a href="#">{{ $menuCat[active_lang() . '_name'] }} @if($menuCat->subCategory->count() > 0) <i class="fas fa-angle-down"></i> @endif </a>
+                                                        @if ($menuCat->subCategory->count() > 0)
+                                                        <div class="mega-menu">
+                                                            <div class="menu-left">
+                                                                <ul class="nav nav-tabs" id="megamenutab" role="tablist">
+                                                                    @foreach ($menuCat->subCategory as $mega_category)
+                                                                    @if (subCatNews($mega_category->id)->count() == 0 )
+                                                                        @continue
+                                                                    @endif
+                                                                    <li class="nav-item" role="presentation">
+                                                                      <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}-tab" data-toggle="tab" href="#megaNews{{ $mega_category->id }}" role="tab" aria-controls="megaNews{{ $mega_category->id }}" aria-selected="false">{{ active_lang() == 'pl' ? $mega_category->pl_name : $mega_category->sl_name }}</a>
+                                                                    </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                            <div class="menu-right">
+                                                                <div class="tab-content" id="megamenutabContent">
+                                                                    @foreach ($menuCat->subCategory as $mega_category)
+                                                                    <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}" role="tabpanel" aria-labelledby="megaNews{{ $mega_category->id }}-tab">
+                                                                        <div class="row">
+                                                                            @foreach (subCatNews($mega_category->id) as $megamenu_news)
+                                                                            @if($loop->iteration > 3) @continue @endif
+                                                                            <div class="col-lg-4 col-md-6">
+                                                                                <div class="single-grid-post">
+                                                                                    <div class="post-thumbnail">
+                                                                                        <a href="{{ route('single.news', $megamenu_news->pl_slug) }}"><img src="{{ asset($megamenu_news->image->image_three) }}" alt="post" /></a>
+                                                                                    </div>
+                                                                                    @if (active_lang() == 'pl')
+                                                                                    <div class="post-info">
+                                                                                        <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
+                                                                                        <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::substr($megamenu_news->pl_headline, 0, 30) }}..</a></h3>
+                                                                                        <ul class="post-meta">
+                                                                                            <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    @else
+                                                                                    <div class="post-info">
+                                                                                        <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
+                                                                                        <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::substr($megamenu_news->sl_headline, 0, 30) }}..</a></h3>
+                                                                                        <ul class="post-meta">
+                                                                                            <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
+                                                                            @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
                                                 @endforeach
                                                 <li class="nav-item dropdown">
                                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -135,126 +195,8 @@
                                                       <a class="dropdown-item" href="{{ url('/cookies') }}">Cookies</a>
                                                       <a class="dropdown-item" href="{{ url('/faq') }}">Faq</a>
                                                     </div>
-                                                  </li>
-                                                  <li class="current-menu-item has-mega-menu">
-                                                    <a href="javascript:void(0);">Megamenu <i class="fas fa-angle-down"></i></a>
-                                                    <div class="mega-menu">
-                                                        <div class="menu-left">
-                                                            <ul class="nav nav-tabs" id="megamenutab" role="tablist">
-                                                                @foreach (Categories() as $mega_category)
-                                                                <li class="nav-item" role="presentation">
-                                                                  <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}-tab" data-toggle="tab" href="#megaNews{{ $mega_category->id }}" role="tab" aria-controls="megaNews{{ $mega_category->id }}" aria-selected="false">{{ active_lang() == 'pl' ? $mega_category->pl_name : $mega_category->sl_name }}</a>
-                                                                </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                        <div class="menu-right">
-                                                            <div class="tab-content" id="megamenutabContent">
-                                                                @foreach (Categories() as $mega_category)
-                                                                <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}" role="tabpanel" aria-labelledby="megaNews{{ $mega_category->id }}-tab">
-                                                                    <div class="row">
-                                                                        @foreach ($mega_category->news as $megamenu_news)
-                                                                        @if($loop->iteration > 3) @continue @endif
-                                                                        <div class="col-lg-4 col-md-6">
-                                                                            <div class="single-grid-post">
-                                                                                <div class="post-thumbnail">
-                                                                                    <a href="{{ route('single.news', $megamenu_news->pl_slug) }}"><img src="{{ asset($megamenu_news->image->image_three) }}" alt="post" /></a>
-                                                                                </div>
-                                                                                @if (active_lang() == 'pl')
-                                                                                <div class="post-info">
-                                                                                    <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::substr($megamenu_news->pl_headline, 0, 30) }}..</a></h3>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                @else
-                                                                                <div class="post-info">
-                                                                                    <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::substr($megamenu_news->sl_headline, 0, 30) }}..</a></h3>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </li>
-                                                @else
-                                                @foreach (MainMenu() as $mainMenu)
-                                                <li><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->pl_label }}</a></li>
-                                                @endforeach
-                                                <li class="nav-item dropdown">
-                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                      Pages
-                                                    </a>
-                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                      <a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a>
-                                                      <a class="dropdown-item" href="{{ url('/privacy-policy') }}">Privacy & Policy</a>
-                                                      <a class="dropdown-item" href="{{ url('/request-add') }}">Request For Add</a>
-                                                      <a class="dropdown-item" href="{{ url('/cookies') }}">Cookies</a>
-                                                      <a class="dropdown-item" href="{{ url('/faq') }}">Faq</a>
-                                                    </div>
-                                                  </li>
-                                                  <li class="current-menu-item has-mega-menu">
-                                                    <a href="javascript:void(0);">Megamenu <i class="fas fa-angle-down"></i></a>
-                                                    <div class="mega-menu">
-                                                        <div class="menu-left">
-                                                            <ul class="nav nav-tabs" id="megamenutab" role="tablist">
-                                                                @foreach (Categories() as $mega_category)
-                                                                <li class="nav-item" role="presentation">
-                                                                  <a class="nav-link {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}-tab" data-toggle="tab" href="#megaNews{{ $mega_category->id }}" role="tab" aria-controls="megaNews{{ $mega_category->id }}" aria-selected="false">{{ active_lang() == 'pl' ? $mega_category->pl_name : $mega_category->sl_name }}</a>
-                                                                </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                        <div class="menu-right">
-                                                            <div class="tab-content" id="megamenutabContent">
-                                                                @foreach (Categories() as $mega_category)
-                                                                <div class="tab-pane fade show {{ $loop->first ? 'active' : '' }}" id="megaNews{{ $mega_category->id }}" role="tabpanel" aria-labelledby="megaNews{{ $mega_category->id }}-tab">
-                                                                    <div class="row">
-                                                                        @foreach ($mega_category->news as $megamenu_news)
-                                                                        @if($loop->iteration > 3) @continue @endif
-                                                                        <div class="col-lg-4 col-md-6">
-                                                                            <div class="single-grid-post">
-                                                                                <div class="post-thumbnail">
-                                                                                    <a href="{{ route('single.news', $megamenu_news->pl_slug) }}"><img src="{{ asset($megamenu_news->image->image_three) }}" alt="post" /></a>
-                                                                                </div>
-                                                                                @if (active_lang() == 'pl')
-                                                                                <div class="post-info">
-                                                                                    <a href="{{ route('front.category', $megamenu_news->category->pl_slug) }}" class="catagory">{{ $megamenu_news->category->pl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->pl_slug) }}">{{ Str::substr($megamenu_news->pl_headline, 0, 30) }}..</a></h3>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                @else
-                                                                                <div class="post-info">
-                                                                                    <a href="{{ route('front.category', $megamenu_news->category->sl_slug) }}" class="catagory">{{ $megamenu_news->category->sl_name }}</a>
-                                                                                    <h3 class="post-title"><a href="{{ route('single.news', $megamenu_news->sl_slug) }}">{{ Str::substr($megamenu_news->sl_headline, 0, 30) }}..</a></h3>
-                                                                                    <ul class="post-meta">
-                                                                                        <li><i class="far fa-clock"></i> {{ $megamenu_news->created_at->format('M d, Y') }}</li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                        @endforeach
-                                                                    </div>
-                                                                </div>
-                                                                @endforeach
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                @endif
+
                                             </ul>
                                         </nav>
                                     </div>
@@ -313,7 +255,7 @@
         <!-- mobile header area htart here  -->
 
         <!-- sidebar area start here  -->
-        <aside class="sidebar-area">
+        {{-- <aside class="sidebar-area">
             <div class="dropdown language-dropdown">
                 <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
                     <img class="flag" src="{{ active_lang() == 'pl' ? asset(ThemeSetting()->pl_flag) : asset(ThemeSetting()->sl_flag) }}" alt="flag" /> <span>{{ active_lang() == 'pl' ? ThemeSetting()->pl_name : ThemeSetting()->sl_name }}</span>
@@ -372,7 +314,7 @@
                     </ul>
                 </div>
             </div>
-        </aside>
+        </aside> --}}
         <!-- sidebar area end here  -->
         @yield('content')
 
@@ -443,7 +385,7 @@
                                 <h3 class="widget-title">{!! HeadingStyle(translate()->pl_thirteen) !!}</h3>
                                 <ul>
                                     @foreach (explode(',', Footer()->categories) as $footer_cat_count)
-                                    @foreach (AllCategories() as $FooterCat)
+                                    @foreach (Categories() as $FooterCat)
                                     @if ($FooterCat->id == $footer_cat_count)
                                     <li><a href="{{ route('front.category', $FooterCat->pl_slug) }}">{{ $FooterCat->pl_name }}</a></li>
                                     @endif
@@ -548,7 +490,7 @@
                                 <h3 class="widget-title">{!! HeadingStyle(translate()->sl_thirteen) !!}</h3>
                                 <ul>
                                     @foreach (explode(',', Footer()->categories) as $footer_cat_count)
-                                    @foreach (AllCategories() as $FooterCat)
+                                    @foreach (Categories() as $FooterCat)
                                     @if ($FooterCat->id == $footer_cat_count)
                                     <li><a href="{{ route('front.category', $FooterCat->sl_slug) }}">{{ $FooterCat->sl_name }}</a></li>
                                     @endif

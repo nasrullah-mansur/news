@@ -46,7 +46,7 @@ class CategoryRequest extends FormRequest
             } else {
                 return [
                     'pl_name' => 'required|unique:categories',
-                    'sl_name' => 'required|unique:categories'
+                    'sl_name' => 'required'
                 ];
             }
 

@@ -16,7 +16,7 @@ class AddPlaceSeeder extends Seeder
     {
 
         AddPlace::create([
-            'image' => 'adds/1619761763_add-two.png',
+            'image' => '1619761763_add-two.png',
             'type' => 1,
             'url' => '#',
             'name' => 'Home Page Small Add',
@@ -26,7 +26,7 @@ class AddPlaceSeeder extends Seeder
         ]);
 
         AddPlace::create([
-            'image' => 'adds/1619760807_add-one.png',
+            'image' => '1619760807_add-one.png',
             'type' => 2,
             'url' => '#',
             'name' => 'Home Page Big Add',
@@ -36,7 +36,7 @@ class AddPlaceSeeder extends Seeder
         ]);
 
         AddPlace::create([
-            'image' => 'adds/1619760928_big-add-banner.png',
+            'image' => '1619760928_big-add-banner.png',
             'type' => 3,
             'url' => '#',
             'name' => 'Single News Page Add',
@@ -46,7 +46,7 @@ class AddPlaceSeeder extends Seeder
         ]);
 
         AddPlace::create([
-            'image' => 'adds/1619760967_widget-add-banner.png',
+            'image' => '1619760967_widget-add-banner.png',
             'type' => 4,
             'url' => '#',
             'name' => 'Sidebar Add',

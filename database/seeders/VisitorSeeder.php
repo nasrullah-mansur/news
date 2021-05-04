@@ -16,17 +16,17 @@ class VisitorSeeder extends Seeder
     {
         Visitor::create([
             'news_id' => 1,
-            'visitor' => 0,
+            'visitor' => 2,
         ]);
 
         Visitor::create([
             'news_id' => 2,
-            'visitor' => 0,
+            'visitor' => 1,
         ]);
 
         Visitor::create([
             'news_id' => 3,
-            'visitor' => 0,
+            'visitor' => 3,
         ]);
 
         Visitor::create([

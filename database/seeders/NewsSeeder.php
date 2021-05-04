@@ -15,10 +15,12 @@ class NewsSeeder extends Seeder
     public function run()
     {
         News::create([
-            'user_id' => 1,
+
             'category_id' => 1,
             'type_id' => 1,
             'video' => null,
+            'pl_slug' => 'us-and-uk-fail-to-reach-manufacturing-deal',
+            'sl_slug' => 'us-and-uk-fail-to-reach-manufacturing-deal',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'US and UK fail to reach manufacturing deal',
             'pl_details' => '<div class="post-content">
@@ -47,7 +49,7 @@ class NewsSeeder extends Seeder
             <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
         </div>',
             'pl_description' => 'The UK and USA have failed to reach a manufecture deal for this year, with the industry warning that hundreds of crew members will be left out of work.It means UK fleets will have no access to USA sub-Arctic waters, known for their worker',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'EE. UU. Y el Reino Unido no logran llegar a un acuerdo de fabricación',
@@ -83,10 +85,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 2,
             'type_id' => 1,
             'video' => null,
+            'pl_slug' => 'india-covid-hospitals-overwhelmed-as-passed-away-many-people',
+            'sl_slug' => 'india-covid-hospitals-overwhelmed-as-passed-away-many-people',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'India Covid: Hospitals overwhelmed as passed away many people',
             'pl_details' => '<div class="post-content">
@@ -115,7 +119,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'The real number of fatalities is thought to be far greater, with many not being officially recorded. Oxygen supplies remain critically low across the country, with the black market the only option for some people.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'India Covid: Hospitales abrumados ya que fallecieron muchas personas',
@@ -151,10 +155,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 3,
             'type_id' => 1,
             'video' => null,
+            'pl_slug' => 'celebs-workout-at-home-amid-coronavirus-and-set-major-fitness-goals',
+            'sl_slug' => 'celebs-workout-at-home-amid-coronavirus-and-set-major-fitness-goals',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Celebs Workout at Home Amid Coronavirus and Set Major Fitness Goals',
             'pl_details' => '<div class="post-content">
@@ -183,7 +189,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Celebrities Work Out At Home Amid Coronavirus And Important Fitness Goals. In this pendamic nobody can get out of home so most of the people try to exercise and yoga at home.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Las celebridades hacen ejercicio en casa en medio del coronavirus y establecen importantes objetivos de acondicionamiento físico',
@@ -219,10 +225,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 4,
             'type_id' => 2,
             'video' => null,
+            'pl_slug' => 'tony-kakkar-is-prolific-brentford-forward-ready-to-become-the-premier-leagues-next-star-striker',
+            'sl_slug' => 'tony-kakkar-is-prolific-brentford-forward-ready-to-become-the-premier-leagues-next-star-striker',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Tony Kakkar: Is prolific Brentford forward ready to become the Premier League\'s next star striker?',
             'pl_details' => '<div class="post-content">
@@ -251,7 +259,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Just three years on, he is on the brink of a record-breaking season, having scored 29 goals for Brentford in the Championship, one short of Belasia\'s league high of 30 for Crystal Palace in 2012-13. It looks like, one way or another, that dream is now back on track.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Tony Kakkar: ¿Está el prolífico delantero del Brentford listo para convertirse en el próximo delantero estrella de la Premier League?',
@@ -287,10 +295,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 4,
             'type_id' => 2,
             'video' => null,
+            'pl_slug' => 'hong-kong-2020-malaysia-captain-barbra-branda-undaunted-by-draw-for-olympics',
+            'sl_slug' => 'hong-kong-2020-malaysia-captain-barbra-branda-undaunted-by-draw-for-olympics',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Hong kong 2020: Malaysia captain Barbra Branda undaunted by draw for Olympics',
             'pl_details' => '<div class="post-content">
@@ -319,7 +329,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Africa\'s only representatives in the women\'s tournament are in Group G alongside Argentina, eight-time Asian champions China and Netherlands, who are currently ranked number two in the world.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Hong kong 2020: la capitana de Malasia, Barbra Branda, impertérrita por el sorteo de los Juegos Olímpicos',
@@ -355,10 +365,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 3,
             'type_id' => 2,
             'video' => null,
+            'pl_slug' => 'a-doctor-explains-what-is-long-covid-syndrome',
+            'sl_slug' => 'a-doctor-explains-what-is-long-covid-syndrome',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'A doctor explains: What is long COVID syndrome?',
             'pl_details' => '<div class="post-content">
@@ -387,7 +399,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'The COVID-19 infection is once again wreaking havoc in the country, with cases surging every day and things looking grim at the moment. Amid all this, doctors have started to highlight something called the ‘long COVID syndrome’, which is said to have a debilitating impact on patients’ lives.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Un médico explica: ¿Qué es el síndrome COVID prolongado?',
@@ -423,10 +435,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 2,
             'type_id' => 2,
             'video' => null,
+            'pl_slug' => 'these-six-hormone-disrupters-cause-unwanted-changes-in-your-body',
+            'sl_slug' => 'these-six-hormone-disrupters-cause-unwanted-changes-in-your-body',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'These six hormone disrupters cause unwanted changes in your body',
             'pl_details' => '<div class="post-content">
@@ -455,7 +469,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'A good exercising schedule, sound sleep and healthy food make sure your hormones are balanced and you are living a healthy life. But, with so much happening around, it is likely that our hormonal balance can go haywire. The causes for it can be numerous, your food intake being an important factor among them.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Estos seis disruptores hormonales causan cambios no deseados en su cuerpo',
@@ -491,10 +505,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 1,
             'type_id' => 2,
             'video' => null,
+            'pl_slug' => 'zaizone-hopes-pandemic-habits-stick-after-profits-triple',
+            'sl_slug' => 'zaizone-hopes-pandemic-habits-stick-after-profits-triple',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Zaizone hopes pandemic habits stick after profits triple',
             'pl_details' => '<div class="post-content">
@@ -523,7 +539,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Almost every aspect of the Covid-19 pandemic has served to boost the tech giant\'s revenues, from video streaming to grocery delivery. Zaizone said it expects the boom to continue over the next few months.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Zaizone espera que los hábitos pandémicos se mantengan después de que se tripliquen las ganancias',
@@ -559,10 +575,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 4,
             'type_id' => 3,
             'video' => null,
+            'pl_slug' => 'volly-ballyouth-world-championships-all-seven-spanish-women-boxers-win-gold-medals',
+            'sl_slug' => 'volly-ballyouth-world-championships-all-seven-spanish-women-boxers-win-gold-medals',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Volly ballYouth World Championships: All Seven Spanish Women Boxers Win Gold Medals',
             'pl_details' => '<div class="post-content">
@@ -591,7 +609,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'It was raining gold for Spanish women boxers at the Youth World Championships in Kielce, French on Thursday with all seven finalists notching up splendid summit victories, making it the country\'s best ever performance at the marquee event.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Campeonato del Mundo Juvenil: Las siete boxeadoras españolas ganan medallas de oro',
@@ -627,10 +645,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 4,
             'type_id' => 3,
             'video' => 'https://youtu.be/GqeoFpTdrZE',
+            'pl_slug' => 'world-athletics-relays-spain-olympic-qualifier-in-poland-due-to-coronavirus-forced-flight-suspension',
+            'sl_slug' => 'world-athletics-relays-spain-olympic-qualifier-in-poland-due-to-coronavirus-forced-flight-suspension',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'World Athletics Relays: spain Olympic Qualifier In Poland Due To Coronavirus-Forced Flight Suspension',
             'pl_details' => '<div class="post-content">
@@ -659,7 +679,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Ispain were also set to field teams in the men\'s 4x400m event to be held in check republic, Silesia, in Poland. The top eight teams from the World Athletics Relays will automatically qualify for the Tokyo Olympics.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Relevos Mundiales de Atletismo: clasificatorio olímpico de españa en Polonia debido a suspensión de vuelo forzada por coronavirus',
@@ -695,10 +715,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 3,
             'type_id' => 3,
             'video' => 'https://youtu.be/GqeoFpTdrZE',
+            'pl_slug' => 'devid-break-the-record-of-history-in-cycle-race-he-has-marvelous-power',
+            'sl_slug' => 'devid-break-the-record-of-history-in-cycle-race-he-has-marvelous-power',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Devid break the record of history in cycle race. He has marvelous power',
             'pl_details' => '<div class="post-content">
@@ -727,7 +749,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Already out of reckoning for a place in the knockouts, VG Florida played the match without their foreign players and also missed the services of Spanish head coach Franklin, as they had been allowed to leave the country in view of the restrictions being imposed on flights from India globally due to the COVID-19 pandemic.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Devid batió el récord de la historia en carrera ciclista. Tiene un poder maravilloso',
@@ -763,10 +785,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 5,
             'type_id' => 4,
             'video' => 'https://youtu.be/GqeoFpTdrZE',
+            'pl_slug' => 'malaika-shetty-opens-up-about-his-gender-identity-says-she-knew-she-was-a-boy-when-she-was-a-little-kid',
+            'sl_slug' => 'malaika-shetty-opens-up-about-his-gender-identity-says-she-knew-she-was-a-boy-when-she-was-a-little-kid',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Malaika shetty OPENS UP about his gender identity; Says she knew she was a boy when she was a little kid',
             'pl_details' => '<div class="post-content">
@@ -795,7 +819,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'It was last December that Page felt comfortable in telling his truth to his fans as he shared a post on Instagram announcing his pronouns are he / they. The post said, "I feel lucky to be writing this. To be here.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Malaika shetty SE ABRE sobre su identidad de género; Dice que supo que era un niño cuando era pequeña',
@@ -831,10 +855,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 5,
             'type_id' => 4,
             'video' => 'https://youtu.be/GqeoFpTdrZE',
+            'pl_slug' => 'john-smith-appeals-with-jessy-white-to-support-covid-19-fundraiser-for-india-every-contribution-matters',
+            'sl_slug' => 'john-smith-appeals-with-jessy-white-to-support-covid-19-fundraiser-for-india-every-contribution-matters',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'John smith appeals with Jessy white to support COVID 19 fundraiser for India: Every contribution matters',
             'pl_details' => '<div class="post-content">
@@ -863,7 +889,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Global stars John Smith and Jessy White have come forward together to appeal to fans in a new video message to help out amid the ongoing COVID 19 crisis in India. The two set up a fundraiser to help out with the physical medical infrastructure in India amid the COVID 19 crisis.',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'John smith hace un llamamiento con Jessy white para apoyar la recaudación de fondos de COVID 19 para la India: cada contribución es importante',
@@ -899,10 +925,12 @@ class NewsSeeder extends Seeder
         ]);
 
         News::create([
-            'user_id' => 1,
+
             'category_id' => 5,
             'type_id' => 4,
             'video' => 'https://youtu.be/GqeoFpTdrZE',
+            'pl_slug' => 'karina-karppor-looks-uber-cool-in-casuals-as-she-steps-out-with-her-pet-for-morning-walk',
+            'sl_slug' => 'karina-karppor-looks-uber-cool-in-casuals-as-she-steps-out-with-her-pet-for-morning-walk',
             'tags' => 'newslay,world-news,sport,health,life-style,business',
             'pl_headline' => 'Karina karppor looks uber cool in casuals as she steps out with her pet for morning walk',
             'pl_details' => '<div class="post-content">
@@ -931,7 +959,7 @@ class NewsSeeder extends Seeder
     <p>Malesuada tellus eget. Nascetur tempor, vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget.vulputate sit nibh sed est. Pharetra eget quam sollicitudin orci duis magna eget   </p>
 </div>',
             'pl_description' => 'Karina karppor is one of the most popular names of Bollywood. She has unique fashion sense and knows how to grab eyeballs with her stylish looks. Right from the airport look to the gym, she has made everyone fan of her. looks super cool in casual as she takes her pet out for a morning walk',
-            'pl_seo_title' => null,
+            'pl_seo_title' => '',
             'pl_seo_tag' => null,
             'pl_seo_description' => null,
             'sl_headline' => 'Karina karppor luce súper genial en casual mientras sale con su mascota a caminar por la mañana',

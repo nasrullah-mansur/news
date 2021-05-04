@@ -19,8 +19,8 @@ class ProfileSeeder extends Seeder
             'facebook' => '#',
             'twitter' => '#',
             'linkedin' => '#',
-            'profile' => null,
-            'banner' => null,
+            'profile' => 'avatar-s-1.png',
+            'banner' => '22.jpg',
         ]);
     }
 }

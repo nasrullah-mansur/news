@@ -15,11 +15,9 @@ class CreateMainMenusTable extends Migration
     {
         Schema::create('main_menus', function (Blueprint $table) {
             $table->id();
-            $table->integer('menu_id');
-            $table->text('pl_label');
-            $table->text('sl_label');
-            $table->text('url');
+            $table->integer('category_id');
             $table->integer('ordering');
+            $table->integer('menu_id');
             $table->timestamps();
         });
     }

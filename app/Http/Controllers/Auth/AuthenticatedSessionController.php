@@ -20,6 +20,11 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function create_admin()
+    {
+        return view('auth.admin');
+    }
+
     /**
      * Handle an incoming authentication request.
      *
@@ -28,7 +33,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $guard = $request->guard;
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard($guard)->attempt($credentials)) {
+            // if success login
+
+            return redirect()->route('dashboard');
+
+            //return redirect()->intended('/details');
+        }
+
+
+
+        $request->authenticate($guard);
 
         $request->session()->regenerate();
 

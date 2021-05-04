@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin\Category;
 use App\Services\CategoryService;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 
@@ -46,5 +47,11 @@ class CategoryController extends Controller
     public function delete($id){
         $category = $this->categoryService->delete($id);
         return $category;
+    }
+
+
+    public function getCategoriesMain()
+    {
+        return $categories_main = Category::where('p_id', 0)->orderBy('created_at', 'DESC')->get();
     }
 }

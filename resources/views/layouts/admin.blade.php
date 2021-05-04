@@ -1,4 +1,4 @@
-@if (Route::is('login', 'password.request', 'password.reset'))
+@if (Route::is('login', 'password.request', 'password.reset', 'login.admins'))
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -44,6 +44,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 
 @else
 
+{{ Auth::user() }}
 
 
 

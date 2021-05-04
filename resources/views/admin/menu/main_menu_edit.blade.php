@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('css_plugin')
+@include('components.select_2_css')
+@endsection
 
 @section('content')
 <section id="form-repeater">
@@ -30,25 +33,47 @@
                 @endif
 
                 <div data-repeater-list="main_menu">
+
+
+                    @if ($menu_items->count() == 0)
+                    <div data-repeater-item>
+                        <div class="form row">
+                          <div class="form-group mb-1 col-sm-12 col-md-8">
+                            <label>Select Menu Item</label>
+                            <select class="form-control select2" name="category_id">
+                                <option selected disabled>Select Category</option>
+                                @foreach (Categories() as $category)
+                                    <option value="{{ $category->id }}">{{ $category->pl_name . ' / ' . $category->sl_name }}</option>
+                                @endforeach
+                            </select>
+                          </div>
+
+                          <div class="form-group mb-1 col-sm-12 col-md-1">
+                            <label>Ordaring By</label>
+                            <input type="number" name="ordering" class="form-control" placeholder="Ordaring" value="">
+
+                          </div>
+
+                          <div class="form-group col-sm-12 col-md-2 text-center mt-2">
+                            <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+
+                    @else
+
+
                     @foreach ($menu_items as $menu_item)
                     <div data-repeater-item>
                       <div class="form row">
-                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                          <label>PL Label</label>
-                          <input type="text" name="pl_label" class="form-control" placeholder="PL Label" value="{{ $menu_item->pl_label }}">
-
-                        </div>
-
-                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                          <label>SL Label</label>
-                          <input type="text" name="sl_label" class="form-control" placeholder="SL Label" value="{{ $menu_item->sl_label }}">
-
-                        </div>
-
-                        <div class="form-group mb-1 col-sm-12 col-md-3">
-                          <label>URL</label>
-                          <input type="text" name="url" class="form-control" placeholder="SL Label" value="{{ $menu_item->url }}">
-
+                        <div class="form-group mb-1 col-sm-12 col-md-8">
+                          <label>Select Menu Item</label>
+                          <select class="form-control select2" name="category_id">
+                            @foreach (Categories() as $category)
+                                <option {{ $menu_item->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->pl_name . ' / ' . $category->sl_name }}</option>
+                            @endforeach
+                          </select>
                         </div>
 
                         <div class="form-group mb-1 col-sm-12 col-md-1">
@@ -64,6 +89,7 @@
                       <hr>
                     </div>
                     @endforeach
+                    @endif
                 </div>
 
                 <div class="form-group overflow-hidden">
@@ -85,8 +111,14 @@
 
 @section('js_plugin')
 <script src="{{ asset('admin/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
+@include('components.select_2_js')
 @endsection
 
 @section('custom_js')
 <script src="{{ asset('admin/js/scripts/forms/form-repeater.js') }}" type="text/javascript"></script>
+{{-- <script>
+     $(".select2").select2({
+        placeholder: "Select Category",
+    });
+</script> --}}
 @endsection

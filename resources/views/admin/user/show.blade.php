@@ -121,7 +121,7 @@
             { data: "action" },
         ],
         createdRow: function (row) {
-            $("td", row).eq(-1).addClass("text-center");
+            $("td", row).eq(-1).addClass("d-flex");
         },
     });
 

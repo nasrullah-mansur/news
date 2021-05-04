@@ -10,10 +10,8 @@ class MainMenu extends Model
     use HasFactory;
 
     protected $fillable = [
-        'menu_id',
-        'pl_label',
-        'sl_label',
-        'url',
+        'category_id',
         'ordering',
+        'menu_id',
     ];
 }

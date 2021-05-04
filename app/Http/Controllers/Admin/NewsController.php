@@ -29,8 +29,8 @@ class NewsController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('admin.news.create', compact('categories'));
+        $subCategories = Category::where('p_id', '!=', 0)->get();
+        return view('admin.news.create', compact('subCategories'));
     }
 
     public function store(NewsRequest $request)
@@ -44,9 +44,9 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        $categories = Category::all();
+        $subCategories = Category::where('p_id', '!=', 0)->get();
         $news = News::where('id', $id)->firstOrFail();
-        return view('admin.news.edit', compact('news', 'categories'));
+        return view('admin.news.edit', compact('news', 'subCategories'));
     }
 
     public function update(NewsRequest $request, $id)

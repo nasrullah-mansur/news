@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('css_plugin')
 @include('components.datatable_css')
+@include('components.select_2_css')
 @endsection
 @section('content')
 <section>
@@ -80,6 +81,12 @@
                 <input name="sl_name" type="text" class="form-control" id="sl_name" placeholder="Category Name (SL)">
                 <div class="invalid-feedback"></div>
             </fieldset>
+            <fieldset class="form-group floating-label-form-group">
+                <label for="sl_name">Category Under</label>
+                <select class="select2 form-control" name="p_id">
+
+                  </select>
+            </fieldset>
             <br>
             </div>
             <div class="modal-footer">
@@ -114,7 +121,13 @@
                 <input name="sl_name" type="text" class="form-control" id="sl_name_update" placeholder="Category Name (SL)">
                 <div class="invalid-feedback"></div>
             </fieldset>
+
             <br>
+            <fieldset class="form-group floating-label-form-group">
+                <label for="sl_name">Category Under</label>
+                <select class="form-control select2" name="p_id">
+                </select>
+            </fieldset>
             <fieldset class="form-group floating-label-form-group">
                 <input type="hidden" name="id" value="">
                 <div class="invalid-feedback"></div>
@@ -134,10 +147,40 @@
 
 @section('js_plugin')
 @include('components.datatable_js')
+@include('components.select_2_js')
 @endsection
 
 @section('custom_js')
+@section('custom_js')
 <script>
+    $(".select2").select2({
+        placeholder: "Select Category",
+        allowClear: true
+    });
+</script>
+<script>
+
+
+    // Get Categories;
+    $.ajax({
+        type: "GET",
+        url: "{{ route('categories.get.main') }}",
+        data: FormData,
+        success: function (data) {
+            let pId = $('select[name="p_id"]');
+            data.forEach(function(dataId) {
+                let Options = `<option value="${dataId.id}">${dataId.pl_name} / ${dataId.sl_name}</option> `;
+                pId.append(Options);
+            })
+        },
+        error: function (error) {
+
+        },
+    });
+
+
+
+
     // INDEX DATA;
     let table = $(".datatable");
     table.DataTable({
@@ -166,10 +209,12 @@
         let FormElements = {
             pl_name: AddCategoryModal.find('input[name="pl_name"]')[0],
             sl_name: AddCategoryModal.find('input[name="sl_name"]')[0],
+            p_id: AddCategoryModal.find('select[name="p_id"]')[0],
         }
         let FormData = {
             pl_name: FormElements.pl_name.value,
             sl_name: FormElements.sl_name.value,
+            p_id: FormElements.p_id.value,
         };
         let DataErrors = {
             pl_name: FormElements.pl_name.nextElementSibling,
@@ -205,10 +250,11 @@
     // EDIT DATA;
     let EditModal = $('#edit_category');
     let EditFormElements = {
-            pl_name: EditModal.find('input[name="pl_name"]')[0],
-            sl_name: EditModal.find('input[name="sl_name"]')[0],
-            id: EditModal.find('input[name="id"]')[0],
-        }
+        pl_name: EditModal.find('input[name="pl_name"]')[0],
+        sl_name: EditModal.find('input[name="sl_name"]')[0],
+        p_id: EditModal.find('select[name="p_id"]')[0],
+        id: EditModal.find('input[name="id"]')[0],
+    }
     table[0].addEventListener("click", function (e){
         if (e.target.classList.contains("edit-btn")) {
         e.preventDefault();
@@ -222,6 +268,14 @@
                     EditFormElements.pl_name.value = data.pl_name;
                     EditFormElements.sl_name.value = data.sl_name;
                     EditFormElements.id.value = data.id;
+
+
+                    EditFormElements.p_id.value = data.p_id;
+
+                   $('#edit_category .select2').val(data.p_id);
+                     $('#edit_category .select2').select2().trigger('change');
+
+
                 }
             });
         }
@@ -233,6 +287,7 @@
         let UpdateFormData = {
             pl_name: EditFormElements.pl_name.value,
             sl_name: EditFormElements.sl_name.value,
+            p_id: EditFormElements.p_id.value,
             id: EditFormElements.id.value,
         };
         let UpdateDataErrors = {

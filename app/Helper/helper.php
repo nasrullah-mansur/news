@@ -57,7 +57,7 @@ function ResizeImageUpload($new_file, $path, $old_image, $w, $h) {
     }
 
     Image::make($new_file)
-    ->resize($w, $h)
+    ->fit($w, $h)
     ->save($destinationPath . $file_name);
 
     return $file_name;
@@ -82,7 +82,13 @@ function AuthUserProfileInfo()
 
 function Categories()
 {
-    return Category::with('news')->get();
+    return Category::with('news', 'subCategory')->where('p_id', 0)->get();
+}
+
+
+function subCatNews($id)
+{
+    return News::where('sub_category_id', $id)->get();
 }
 
 
@@ -138,11 +144,6 @@ function ThemeSetting()
 function Footer()
 {
    return Footer::first();
-}
-
-function AllCategories()
-{
-    return Category::with('news')->get();
 }
 
 function FooterGallery()

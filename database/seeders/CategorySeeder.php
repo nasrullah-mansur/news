@@ -17,6 +17,7 @@ class CategorySeeder extends Seeder
     {
         Auth::loginUsingId(1);
         Category::create([
+            'p_id' => 0,
             'pl_name' => 'Business',
             'sl_name' => 'Negocio',
             'pl_slug' => 'business',
@@ -24,6 +25,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'p_id' => 0,
             'pl_name' => 'Life Style',
             'sl_name' => 'Estilo Vida',
             'pl_slug' => 'life-style',
@@ -31,6 +33,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'p_id' => 0,
             'pl_name' => 'Health',
             'sl_name' => 'salud',
             'pl_slug' => 'Health',
@@ -38,6 +41,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'p_id' => 0,
             'pl_name' => 'Sports',
             'sl_name' => 'deportes',
             'pl_slug' => 'sports',
@@ -45,6 +49,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
+            'p_id' => 0,
             'pl_name' => 'Entertainment',
             'sl_name' => 'entretenimiento',
             'pl_slug' => 'Entertainment',

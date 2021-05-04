@@ -151,19 +151,6 @@
                     <div class="form-body">
 
                         <div class="form-group">
-                            <label>Select Category</label>
-                            <select class="select2 form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category" >
-                                <option></option>
-                                @foreach ($categories as $category )
-                                    <option value="{{ $category->id }}">{{ $category->pl_name . ' / ' . $category->sl_name }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('category'))
-                                <div class="invalid-feedback d-block">{{ $errors->first('category') }}</div>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
                             <label>Select Type</label>
                             <select class="type form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" >
                                 <option></option>
@@ -175,6 +162,32 @@
                             </select>
                             @if ($errors->has('type'))
                                 <div class="invalid-feedback d-block">{{ $errors->first('type') }}</div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select Category</label>
+                            <select class="select2 form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category" >
+                                <option></option>
+                                @foreach (Categories() as $category )
+                                    <option value="{{ $category->id }}">{{ $category->pl_name . ' / ' . $category->sl_name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('category'))
+                                <div class="invalid-feedback d-block">{{ $errors->first('category') }}</div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select Sub Category</label>
+                            <select class="select2sub form-control {{ $errors->has('category') ? 'is-invalid' : '' }}" name="sub_category_id" >
+                                <option></option>
+                                @foreach ($subCategories as $category )
+                                    <option value="{{ $category->id }}">{{ $category->pl_name . ' / ' . $category->sl_name }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('category'))
+                                <div class="invalid-feedback d-block">{{ $errors->first('category') }}</div>
                             @endif
                         </div>
 
@@ -251,6 +264,11 @@
 <script>
     $(".select2").select2({
         placeholder: "Select Category",
+        allowClear: true
+    });
+
+    $(".select2sub").select2({
+        placeholder: "Select Sub Category",
         allowClear: true
     });
 

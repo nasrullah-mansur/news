@@ -9,7 +9,7 @@ class CategoryService
 {
 
     public function GetAllData() {
-        $categories = Category::get()->reverse();
+        $categories = Category::with('user')->orderBy('created_at', 'DESC')->get();
         return datatables($categories)
             ->addIndexColumn()
             ->addColumn('action', function ($category){
@@ -53,7 +53,18 @@ class CategoryService
         $cateData['pl_slug'] = Str::slug($request->pl_name , '-');
         $cateData['sl_name'] = $request->sl_name;
         $cateData['sl_slug'] = Str::slug($request->sl_name , '-');
+
+        if($request->p_id) {
+            $cateData['p_id'] = $request->p_id;
+        } else {
+            $cateData['p_id'] = 0;
+        }
+
+
+
         $category = Category::create($cateData);
+
+
         if ($category) {
             $data['success'] = true;
             $data['message'] = __('Category Successfully added');
@@ -71,6 +82,13 @@ class CategoryService
         $cateData['pl_slug'] = Str::slug($request->pl_name , '-');
         $cateData['sl_name'] = $request->sl_name;
         $cateData['sl_slug'] = Str::slug($request->sl_name , '-');
+
+        if($request->p_id) {
+            $cateData['p_id'] = $request->p_id;
+        } else {
+            $cateData['p_id'] = 0;
+        }
+
         $category->fill($cateData)->save();
         if ($category) {
             $data['success'] = true;

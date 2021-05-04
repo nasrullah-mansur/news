@@ -21,6 +21,10 @@ Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');
 
+Route::get('/login/{guard}', [AuthenticatedSessionController::class, 'create_admin'])
+                ->middleware('guest')
+                ->name('login.admins');
+
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
 

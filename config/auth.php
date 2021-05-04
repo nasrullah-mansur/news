@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\User;
+use App\Models\Admin\Admin;
+use App\Models\Admin\Owner;
+
 return [
 
     /*
@@ -41,15 +45,21 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
-        ],
 
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+
+        'owner' => [
+            'driver' => 'session',
+            'provider' => 'owners',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
         ],
     ],
 
@@ -82,10 +92,10 @@ return [
             'model' => App\Models\Admin\Admin::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'owners' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin\Owner::class,
+        ],
     ],
 
     /*
@@ -111,9 +121,15 @@ return [
             'throttle' => 60,
         ],
 
-
-
         'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+
+        'owners' => [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,

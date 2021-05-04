@@ -22,6 +22,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619683721_22.jpg',
             'image_four' => '1619683721_22.jpg',
             'image_five' => '1619683721_22.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -31,6 +32,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619770169_11.jpg',
             'image_four' => '1619770169_11.jpg',
             'image_five' => '1619770169_11.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -40,6 +42,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619684632_25.jpg',
             'image_four' => '1619684632_25.jpg',
             'image_five' => '1619684632_25.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -49,6 +52,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619684967_21.jpg',
             'image_four' => '1619684967_21.jpg',
             'image_five' => '1619684967_21.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -58,6 +62,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619685162_13.jpg',
             'image_four' => '1619685162_13.jpg',
             'image_five' => '1619685162_13.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -67,6 +72,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619685331_23.jpg',
             'image_four' => '1619685331_23.jpg',
             'image_five' => '1619685331_23.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -76,6 +82,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619685427_15.jpg',
             'image_four' => '1619685427_15.jpg',
             'image_five' => '1619685427_15.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -85,6 +92,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619685607_1.jpg',
             'image_four' => '1619685607_1.jpg',
             'image_five' => '1619685607_1.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -94,6 +102,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619686746_24.jpg',
             'image_four' => '1619686746_24.jpg',
             'image_five' => '1619686746_24.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -103,6 +112,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619686934_20.jpg',
             'image_four' => '1619686934_20.jpg',
             'image_five' => '1619686934_20.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -112,6 +122,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619687060_19.jpg',
             'image_four' => '1619687060_19.jpg',
             'image_five' => '1619687060_19.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -121,6 +132,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619687244_16.jpg',
             'image_four' => '1619687244_16.jpg',
             'image_five' => '1619687244_16.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -130,6 +142,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619770220_9.jpg',
             'image_four' => '1619770220_9.jpg',
             'image_five' => '1619770220_9.jpg',
+            'image_alt' => '',
         ]);
         Image::create([
             'user_id' => 1,
@@ -139,6 +152,7 @@ class ImageSeeder extends Seeder
             'image_three' => '1619687477_17.jpg',
             'image_four' => '1619687477_17.jpg',
             'image_five' => '1619687477_17.jpg',
+            'image_alt' => '',
         ]);
     }
 }

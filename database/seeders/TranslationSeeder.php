@@ -24,7 +24,7 @@ class TranslationSeeder extends Seeder
             'pl_four' => 'Join 456k Followers',
             'sl_four' => 'Únete a 456k Followers',
             'pl_five' => 'All News',
-            'sl_five' => 'Todas las noticias',
+            'sl_five' => 'All News',
             'pl_six' => 'Trending News',
             'sl_six' => 'Noticias de actualidad',
             'pl_seven' => 'World News',

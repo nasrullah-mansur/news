@@ -18,7 +18,7 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $categories = Category::with('news')->get();
+        $categories = Category::with('news')->where('p_id', 0)->get();
         $breakingNews = BreakingNews::latest()->get();
         $trendingNews = News::with('image', 'user', 'category','comment')->where('type_id', 1)->limit(newsCount()->trending_news_count)->get()->reverse();
         $worldNews = News::with('image', 'user', 'category', 'comment')->where('type_id', 2)->limit(newsCount()->world_news_count)->get()->reverse();

@@ -53,7 +53,7 @@ class NewsService
             ->addColumn('action', function ($news){
                 return
                 '<a class="btn btn-secondary edit-btn" href="#"><i class="edit-btn ft-eye"></i></a>
-                <a class="btn btn-secondary edit-btn" href="'. route('admin.news.edit', $news->id) .'"><i class="edit-btn ft-edit"></i></a>
+                <a class="btn btn-secondary edit-btn" style="margin: 0 5px;" href="'. route('admin.news.edit', $news->id) .'"><i class="edit-btn ft-edit"></i></a>
                 <a class="btn btn-danger delete-btn" href="#" data-id="'.$news->id.'"><i data-id="'.$news->id.'" class="delete-btn ft-trash-2"></i></a>';
             })
             ->editColumn('created_at', function ($news) {
@@ -124,6 +124,7 @@ class NewsService
         $newsData['sl_seo_description'] = $request->sl_seo_description;
 
         $newsData['category_id'] = $request->category;
+        $newsData['sub_category_id'] = $request->sub_category_id;
         $newsData['type_id'] = $request->type;
         $newsData['video'] = $request->video;
         $newsData['tags'] = implode(',' ,$request->tag);
@@ -202,6 +203,7 @@ class NewsService
         $newsData['sl_seo_description'] = $request->sl_seo_description;
 
         $newsData['category_id'] = $request->category;
+        $newsData['sub_category_id'] = $request->sub_category_id;
         $newsData['type_id'] = $request->type;
         $newsData['video'] = $request->video;
         $newsData['tags'] = implode(',' ,$request->tag);

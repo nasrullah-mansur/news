@@ -16,26 +16,21 @@ class MainMenuSeeder extends Seeder
     {
 
         MainMenu::create([
-            'menu_id' => 1,
-            'pl_label' => 'Sports',
-            'sl_label' => 'Deportes',
-            'url' => '/news/category/sports',
-            'ordering' => 2
-        ]);
-        MainMenu::create([
-            'menu_id' => 1,
-            'pl_label' => 'Health',
-            'sl_label' => 'Salud',
-            'url' => '/news/category/health',
-            'ordering' => 3
+            'category_id' => 1,
+            'ordering' => 1,
+            'menu_id' => 1
         ]);
 
         MainMenu::create([
-            'menu_id' => 1,
-            'pl_label' => 'Business',
-            'sl_label' => 'Negocio',
-            'url' => '/news/category/business',
-            'ordering' => 5
+            'category_id' => 2,
+            'ordering' => 2,
+            'menu_id' => 1
+        ]);
+
+        MainMenu::create([
+            'category_id' => 4,
+            'ordering' => 3,
+            'menu_id' => 1
         ]);
     }
 }

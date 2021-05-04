@@ -28,9 +28,9 @@ class ThemeSeeder extends Seeder
             'copyright' => '&copy; All right reserved.',
 
             'pl_flag' => 'flag.png',
-            'sl_flag' => 'flag.png',
+            'sl_flag' => 'sl_flag.png',
             'pl_name' => 'English',
-            'sl_name' => 'Bangla',
+            'sl_name' => 'Spanish',
 
             'google_map' => '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4RM7zOgOKq6n2fv407hX28xiL-M6vLdY"></script>',
             'google_map_script' =>
