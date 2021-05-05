@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            AdminSeeder::class,
+            OwnerSeeder::class,
 
             AddSeeder::class,
             AddPlaceSeeder::class,
@@ -30,6 +32,8 @@ class DatabaseSeeder extends Seeder
             MainMenuSeeder::class,
             PageSeeder::class,
             ProfileSeeder::class,
+            AdminProfileSeeder::class,
+            OwnerProfileSeeder::class,
             SocialSeeder::class,
             SubscriberSeeder::class,
             SubscriberSectionSeeder::class,

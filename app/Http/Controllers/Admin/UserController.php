@@ -42,6 +42,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -53,9 +54,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $user = User::where('id', $id)->firstOrFail();
+        $user = User::where('id', $request->id)->firstOrFail();
         $user->delete();
     }
+
 }

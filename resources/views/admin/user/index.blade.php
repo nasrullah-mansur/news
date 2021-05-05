@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-right">
-                <a href="#" data-toggle="modal" data-target="#add_user" class="btn add-user btn-primary btn-min-width mr-1 mb-1">Add User</a>
+                <a href="#" data-toggle="modal" data-target="#add_user" class="btn add-user btn-primary btn-min-width mr-1 mb-1">Add Author</a>
             </div>
             <div class="card">
                 <div class="card-header">
@@ -59,7 +59,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header bg-primary white">
-            <h3 class="modal-title" id="add_user_area"> Add New User</h3>
+            <h3 class="modal-title" id="add_user_area"> Add New Author</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -90,7 +90,7 @@
             </div>
             <div class="modal-footer">
             <input type="reset" class="btn btn-outline-secondary btn-lg" value="Reset">
-            <button type="button" id="add_user_btn" class="btn btn-outline-primary btn-lg add-category">Add Category</button>
+            <button type="button" id="add_user_btn" class="btn btn-outline-primary btn-lg add-category">Save Author</button>
             </div>
         </form>
         </div>
@@ -208,7 +208,10 @@
                 if (isConfirm) {
                     $.ajax({
                         type: "POST",
-                        url: `/admin/user/${delteteDataId}/delete`,
+                        url: `/admin/user/delete`,
+                        data: {
+                            'id': delteteDataId,
+                        },
                         success: function(){
                             swal({
                                 icon: "success",

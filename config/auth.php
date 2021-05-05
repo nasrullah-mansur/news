@@ -86,7 +86,6 @@ return [
             'model' => App\Models\User::class,
         ],
 
-
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin\Admin::class,
@@ -130,7 +129,7 @@ return [
 
 
         'owners' => [
-            'provider' => 'admins',
+            'provider' => 'owners',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

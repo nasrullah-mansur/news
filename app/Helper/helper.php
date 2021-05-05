@@ -1,22 +1,23 @@
 <?php
 
 use App\Models\Admin\News;
+use App\Models\Admin\Page;
 use App\Models\Admin\Theme;
 use Illuminate\Support\Str;
 use App\Models\Admin\Footer;
+use App\Models\Admin\Social;
 use App\Models\Admin\Wizard;
 use App\Models\Admin\Profile;
+use App\Models\Admin\Visitor;
 use App\Models\Admin\Category;
 use App\Models\Admin\MainMenu;
-use App\Models\Admin\FooterMenu;
-use App\Models\Admin\Page;
-use App\Models\Admin\Social;
-use App\Models\Admin\Translation;
-use App\Models\Admin\Visitor;
 use App\Models\Front\AddPlace;
+use App\Models\Admin\FooterMenu;
+use App\Models\Admin\Translation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Session;
 
 
 function ImageUpload($new_file, $path, $old_image) {
@@ -72,7 +73,7 @@ function user_name_slug($user_name)
 
 function AuthUserProfileInfo()
 {
-   return $AuthUserProfileInfo = Profile::where('user_id', Auth::user()->id)->firstOrFail();
+   return $AuthUserProfileInfo = Profile::where('user_id', Auth::guard(Session::get('role'))->user()->id)->firstOrFail();
 }
 
 
@@ -90,12 +91,6 @@ function subCatNews($id)
 {
     return News::where('sub_category_id', $id)->get();
 }
-
-
-
-
-
-
 
 function MainMenu()
 {

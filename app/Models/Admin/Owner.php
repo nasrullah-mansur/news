@@ -2,11 +2,13 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Admin\OwnerProfile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Owner extends Model
+class Owner extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -49,6 +51,7 @@ class Owner extends Model
 
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(OwnerProfile::class);
     }
+
 }

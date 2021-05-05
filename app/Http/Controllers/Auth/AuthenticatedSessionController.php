@@ -20,11 +20,6 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    public function create_admin()
-    {
-        return view('auth.admin');
-    }
-
     /**
      * Handle an incoming authentication request.
      *
@@ -33,22 +28,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $guard = $request->guard;
-        $credentials = $request->only('email', 'password');
+        $request->authenticate('web');
 
-        if (Auth::guard($guard)->attempt($credentials)) {
-            // if success login
-
-            return redirect()->route('dashboard');
-
-            //return redirect()->intended('/details');
+        if(Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password]))
+        {
+            session(['role' => 'web']);
+            return redirect(RouteServiceProvider::HOME);
         }
-
-
-
-        $request->authenticate($guard);
-
-        $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

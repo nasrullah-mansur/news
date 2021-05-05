@@ -8,13 +8,14 @@
             <div class="card-title text-center">
 
             </div>
+            <h2 class="text-center text-primary text-bold-700">Admin</h2>
             <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
               <span>Login with Newsly</span>
             </h6>
           </div>
           <div class="card-content">
             <div class="card-body">
-              <form class="form-horizontal form-simple" method="POST" action="{{ route('login') }}">
+              <form class="form-horizontal form-simple" method="POST" action="{{ url('/login/admins') }}">
                 @csrf
                 <fieldset class="form-group position-relative has-icon-left mb-0">
                   <input type="text" class="form-control form-control-lg {{ $errors->has('email') || $errors->has('password') ? 'is-invalid' : '' }}" name="email" placeholder="Your Email" required>
@@ -32,7 +33,6 @@
                     <small class="text-danger"> - Email or Password does'nt match.</small>
                 @endif
                 </fieldset>
-                <input type="text" name="guard" value="admin">
 
                 <div class="form-group row">
                   <div class="col-md-6 col-12 text-center text-md-left">

@@ -6,20 +6,31 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Admin\Profile;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Admin;
+use App\Models\Admin\Owner;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
     public function profile()
     {
-        $user = User::where('id', Auth::user()->id)->with('profile')->firstOrFail();
+
+        $role = Session::get('role');
+        if($role == 'owner') {
+            $user = Owner::where('id', Auth::guard('owner')->user()->id)->with('profile')->firstOrFail();
+        } elseif($role == 'admin') {
+            $user = Admin::where('id', Auth::guard('admin')->user()->id)->with('profile')->firstOrFail();
+        } else {
+            $user = User::where('id', Auth::guard('web')->user()->id)->with('profile')->firstOrFail();
+        }
         return view('admin.user.show', compact('user'));
     }
 
     public function password_reset()
     {
-        $user = Auth::user();
+        $user = Auth::guard(Session::get('role'))->user();
         return view('admin.user.password', compact('user'));
     }
 
@@ -31,7 +42,7 @@ class ProfileController extends Controller
             'password_confirmation' => 'required|same:new_password',
         ]);
 
-        $user = Auth::user();
+        $user = Auth::guard(Session::get('role'))->user();
 
         if (!Hash::check($request->current_password, $user->password)) {
             return redirect()->back()->with('error', 'Current password does not match');
@@ -41,7 +52,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        Auth::guard('web')->logout();
+        Auth::guard(Session::get('role'))->logout();
 
         $request->session()->invalidate();
 
@@ -71,8 +82,8 @@ class ProfileController extends Controller
             'linkedin' => 'required',
         ]);
 
-        $user = User::where('id', Auth::user()->id )->firstOrFail();
-        $profile = Profile::where('user_id', Auth::user()->id )->firstOrFail();
+        $user = User::where('id', Auth::guard(Session::get('role'))->user()->id )->firstOrFail();
+        $profile = Profile::where('user_id', Auth::guard(Session::get('role'))->user()->id )->firstOrFail();
 
         $user->update([
             'name' => $request->name,
@@ -83,10 +94,10 @@ class ProfileController extends Controller
         $profile->linkedin = $request->linkedin;
 
         if($request->has('profile')) {
-            $profile->profile = ResizeImageUpload($request->profile, 'user/profile/', $profile->profile, 110, 110);
+            $profile->profile = ResizeImageUpload($request->profile, 'user/profile/', '', 110, 110);
         }
         if($request->has('banner')) {
-            $profile->banner = ResizeImageUpload($request->banner, 'user/profile/', $profile->banner, 800, 600);
+            $profile->banner = ResizeImageUpload($request->banner, 'user/profile/', '', 800, 600);
         }
 
         $profile->save();

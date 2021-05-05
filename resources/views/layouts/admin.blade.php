@@ -1,4 +1,4 @@
-@if (Route::is('login', 'password.request', 'password.reset', 'login.admins'))
+@if (Route::is('login', 'password.request', 'password.reset', 'login.admins', 'login.owners'))
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
@@ -43,12 +43,6 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
 </html>
 
 @else
-
-{{ Auth::user() }}
-
-
-
-
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
     <head>
@@ -121,11 +115,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <li class="dropdown dropdown-user nav-item">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false">
                                   <span class="avatar avatar-online">
-                                    <img src="{{ AuthUserProfileInfo()->profile == null ? asset('admin/images/portrait/small/avatar-s-1.png') : asset(AuthUserProfileInfo()->profile) }}" alt="avatar"><i></i></span>
-                                  <span class="user-name">{{ auth()->user()->name }}</span>
+                                    <img src="{{ AuthUserProfileInfo()->profile == null ? asset('admin/images/portrait/small/avatar-s-1.png') : asset(Auth::guard(Session::get('role'))->user()->profile->profile) }}" alt="avatar"><i></i></span>
+                                  <span class="user-name">{{ Auth::guard(Session::get('role'))->user()->name }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                  <a class="dropdown-item" href="{{ route('view.profile', user_name_slug(Auth::user()->name) ) }}"><i class="ft-user"></i> My Profile</a>
+                                  <a class="dropdown-item" href="{{ route('view.profile', user_name_slug(Auth::guard(Session::get('role'))->user()->name) ) }}"><i class="ft-user"></i> My Profile</a>
                                   <form action="{{ route('logout') }}" method="POST">
                                       @csrf
                                       <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();"><i class="ft-power"></i> Logout</a>
@@ -170,7 +164,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item {{ Route::is('contact.index', 'admin.comment.index') }}">
+                    <li class="nav-item {{ Route::is('contact.index', 'admin.comment.index') ? 'open' : '' }}">
                         <a href="#"><i class="ft-message-square"></i><span class="menu-title">Contact</span></a>
                         <ul class="menu-content">
                             <li class="{{ Route::is('contact.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('contact.index') }}">Contact form</a></li>
@@ -182,7 +176,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     <li class="nav-item {{ Route::is('view.profile') ? 'open' : '' }}">
                         <a href="#"><i class="ft-unlock"></i><span class="menu-title">Authentication</span></a>
                         <ul class="menu-content">
-                            <li class="{{ Route::is('view.profile') ? 'active' : '' }}"><a class="menu-item" href="{{ route('view.profile', user_name_slug(Auth::user()->name) ) }}">My Profile</a></li>
+                            <li class="{{ Route::is('view.profile') ? 'active' : '' }}"><a class="menu-item" href="{{ route('view.profile', user_name_slug(Auth::guard(Session::get('role'))->user()->name) ) }}">My Profile</a></li>
                             <li class="{{ Route::is('my.password.reset') ? 'active' : '' }}"><a class="menu-item" href="{{ route('my.password.reset') }}">Change Password</a></li>
                         </ul>
                     </li>
@@ -195,10 +189,11 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item {{ Route::is('users', 'users.*', 'user.*') ? 'open' : '' }}">
+                    <li class="nav-item {{ Route::is('users', 'users.*', 'user.*', 'admins.index') ? 'open' : '' }}">
                         <a href="#"><i class="ft-user"></i><span class="menu-title">Users</span></a>
                         <ul class="menu-content">
-                            <li class="{{ Route::is('users') ? 'active' : '' }}"><a class="menu-item" href="{{ route('users') }}">All users</a></li>
+                            <li class="{{ Route::is('users') ? 'active' : '' }}"><a class="menu-item" href="{{ route('users') }}">All Authors</a></li>
+                            <li class="{{ Route::is('admins.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admins.index') }}">All Admins</a></li>
                         </ul>
                     </li>
 

@@ -45,6 +45,7 @@
         </nav>
       </div>
 
+      @if(Session::get('role') == 'web')
       <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -94,9 +95,13 @@
             </div>
         </div>
       </div>
+      @endif
     </div>
   </div>
 @endsection
+
+@if(Session::get('role') == 'web')
+
 @section('js_plugin')
 @include('components.datatable_js')
 @endsection
@@ -182,3 +187,5 @@
     });
 </script>
 @endsection
+
+@endif

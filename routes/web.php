@@ -4,6 +4,7 @@ use App\Models\Admin\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
@@ -60,6 +61,13 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.show');
     Route::post('/users/store', [UserController::class, 'store'])->name('new.user.store');
     Route::post('/user/delete', [UserController::class, 'destroy'])->name('user.delete');
+
+    // ADMIN;
+    Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
+    Route::get('/admins/get-admins', [AdminController::class, 'getAll'])->name('admins.get.all');
+    Route::get('/admins/{id}', [AdminController::class, 'show'])->name('admin.show');
+    Route::post('/admin/store', [AdminController::class, 'store'])->name('new.admin.store');
+    Route::POST('/admin/delete', [AdminController::class, 'destroy'])->name('admin.destroy');
 
     // PROFILE;
     Route::get('/profile/{name}',[ProfileController::class, 'profile'])->name('view.profile');

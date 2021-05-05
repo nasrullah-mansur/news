@@ -127,7 +127,7 @@
                                                     @endif
 
                                                     <li class="has-mega-menu">
-                                                        <a href="#">{{ $menuCat[active_lang() . '_name'] }} @if($menuCat->subCategory->count() > 0) <i class="fas fa-angle-down"></i> @endif </a>
+                                                        <a href="{{ route('front.category', $menuCat[active_lang().'_slug']) }}">{{ $menuCat[active_lang() . '_name'] }} @if($menuCat->subCategory->count() > 0) <i class="fas fa-angle-down"></i> @endif </a>
                                                         @if ($menuCat->subCategory->count() > 0)
                                                         <div class="mega-menu">
                                                             <div class="menu-left">

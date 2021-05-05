@@ -7,7 +7,7 @@ class UserService
 {
     public function GetUsers()
     {
-        $users = User::get();
+        $users = User::orderBy('created_at', 'DESC')->get();
 
         return datatables($users)
         ->addIndexColumn()

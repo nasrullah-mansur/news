@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -17,13 +18,34 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/register', [RegisteredUserController::class, 'store'])
 //                 ->middleware('guest');
 
+
+
+// Admin Login;
+Route::get('/login/admins', [LoginController::class, 'admin_create'])
+                ->middleware('guest')
+                ->name('login.admins');
+
+Route::post('/login/admins', [LoginController::class, 'admin_login'])
+                ->middleware('guest');
+
+Route::get('/login/owners', [LoginController::class, 'owner_create'])
+                ->middleware('guest')
+                ->name('login.owners');
+
+Route::post('/login/owners', [LoginController::class, 'owner_login'])
+                ->middleware('guest');
+
+
+
+
+
+
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
                 ->name('login');
 
-Route::get('/login/{guard}', [AuthenticatedSessionController::class, 'create_admin'])
-                ->middleware('guest')
-                ->name('login.admins');
+
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');
