@@ -9,6 +9,7 @@ use App\Models\Admin\Visitor;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class News extends Model
@@ -74,11 +75,11 @@ class News extends Model
     {
         parent::boot();
         static::creating(function ($news) {
-            $news->user_id = Auth::user()->id;
+            $news->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
 
         static::updating(function ($news) {
-            $news->user_id = Auth::user()->id;
+            $news->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
 
     }

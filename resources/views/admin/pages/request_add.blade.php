@@ -39,18 +39,6 @@
                 @endif
             </div>
 
-            <div class="form-group">
-                <label for="pl_content">Page Content (PL)</label>
-                <textarea id="pl_content" rows="5" class="form-control summernote " name="pl_content" placeholder="Page Content">{{ $page->pl_content }}</textarea>
-
-            </div>
-
-            <div class="form-group">
-                <label for="sl_content">Page Content (SL)</label>
-                <textarea id="sl_content" rows="5" class="form-control summernote" name="sl_content" placeholder="Page Content">{{ $page->sl_content }}</textarea>
-
-            </div>
-
             <div class="form-actions">
                 <button type="reset" class="btn btn-warning mr-1"><i class="ft-x"></i> Reset </button>
                 <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save </button>

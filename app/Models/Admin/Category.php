@@ -7,6 +7,7 @@ use App\Models\Admin\News;
 use App\Models\Admin\SubCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,10 +28,10 @@ class Category extends Model
     {
         parent::boot();
         static::creating(function ($category) {
-            $category->user_id = Auth::user()->id;
+            $category->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
         static::updating(function ($category) {
-            $category->user_id = Auth::user()->id;
+            $category->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
     }
 

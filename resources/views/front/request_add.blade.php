@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group">
-                            <textarea class="form-control description-box" id="description" name="description" placeholder="Write a short description . . . "></textarea>
+                            <textarea class="form-control description-box" rows="6" id="description" name="description" placeholder="Write a short description . . . "></textarea>
                             @if ($errors->has('description'))
                                 <span class="text-danger"> - {{ $errors->first('description') }}</span>
                             @endif
@@ -88,4 +88,12 @@
     </div>
 </section>
 <!-- request-add area end here  -->
+@endsection
+
+@section('custom_js')
+@if ($errors->any())
+<script>
+    toastr.warning("Something Wrong!", "SORRY");
+</script>
+@endif
 @endsection

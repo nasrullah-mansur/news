@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Social extends Model
@@ -28,11 +29,11 @@ class Social extends Model
     {
         parent::boot();
         static::creating(function ($social) {
-            $social->user_id = Auth::user()->id;
+            $social->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
 
         static::updating(function ($social) {
-            $social->user_id = Auth::user()->id;
+            $social->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
 
     }

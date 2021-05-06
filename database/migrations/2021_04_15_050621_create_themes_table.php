@@ -31,6 +31,7 @@ class CreateThemesTable extends Migration
             $table->text('quick_contact');
             $table->string('copyright');
             $table->text('google_map_script');
+            $table->string('layout')->default('ltr');
             $table->timestamps();
         });
     }

@@ -64,7 +64,7 @@ class AddController extends Controller
 
         $add_request->save();
 
-        return redirect()->route('front.request.add');
+        return redirect()->route('front.request.add')->with('store', "Submitted Successfully, Please wait for return email");
 
 
     }

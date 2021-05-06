@@ -44,7 +44,7 @@ class SubscriberController extends Controller
 
         $subscriber->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('store', "Subscription Successful");
     }
 
 

@@ -281,5 +281,11 @@
     $('.reply').on('click', function(e) {
         $('input[name="p_id"]').val(e.target.getAttribute('data-id'))
     })
+
 </script>
+@if ($errors->any())
+<script>
+    toastr.warning("Something Wrong!", "SORRY");
+</script>
+@endif
 @endsection

@@ -26,7 +26,9 @@
                     <a href="{{ $user->profile->facebook }}" target="_blank" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-facebook-f"></i> <span class="d-none d-lg-inline-block">Facebook</span></a>
                     <a href="{{ $user->profile->twitter }}" target="_blank" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-twitter"></i> <span class="d-none d-lg-inline-block">Twitter</span></a>
                     <a href="{{ $user->profile->linkedin }}" target="_blank" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-linkedin"></i> <span class="d-none d-lg-inline-block">Linkedin</span></a>
+                    @if(Auth::guard(Session::get('role'))->user()->id == $user->id && Auth::guard(Session::get('role'))->user()->role == $user->role )
                     <a href="{{ route('my.profile.edit', $user->id ) }}" class="btn btn-success" style="margin-left: 5px;"><i class="fa fa-edit"></i></a>
+                    @endif
                   </div>
                 </div>
               </div>

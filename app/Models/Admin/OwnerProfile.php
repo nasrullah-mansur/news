@@ -25,11 +25,11 @@ class OwnerProfile extends Model
 
     public function setProfileAttribute($value)
     {
-        $this->attributes['profile'] = 'owner/profile/' . $value;
+        $this->attributes['profile'] = 'owners/profile/' . $value;
     }
 
     public function setBannerAttribute($value)
     {
-        $this->attributes['banner'] = 'owner/profile/' . $value;
+        $this->attributes['banner'] = 'owners/profile/' . $value;
     }
 }

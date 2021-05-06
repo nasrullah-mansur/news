@@ -39,6 +39,8 @@ class ThemeController extends Controller
 
         $theme->theme_name = $request->theme_name;
 
+        $theme->layout = $request->layout;
+
         // return $request->favicon->getClientOriginalName();
         if($request->has('logo')) {
             $theme->logo = ImageUpload($request->logo, 'front/images/', $theme->logo);

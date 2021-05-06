@@ -87,3 +87,10 @@ body {
 .select2-container {
     width: 100% !important;
 }
+
+
+/* Dashboard */
+.dashboard h5:last-child {
+    font-size: 32px;
+    font-weight: 700;
+}

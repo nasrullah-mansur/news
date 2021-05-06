@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Admin\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Image extends Model
@@ -57,11 +58,11 @@ class Image extends Model
     {
         parent::boot();
         static::creating(function ($image) {
-            $image->user_id = Auth::user()->id;
+            $image->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
 
         static::updating(function ($image) {
-            $image->user_id = Auth::user()->id;
+            $image->user_id = Auth::guard(Session::get('role'))->user()->id;
         });
 
     }

@@ -8,7 +8,7 @@
   <meta name="description" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
   <meta name="keywords" content="{{ ThemeSetting()->theme_name }} Newspaper Website" />
   <meta name="author" content="{{ ThemeSetting()->theme_name }}" />
-  <title>{{ ThemeSetting()->theme_name }} Dashboard</title>
+  <title>{{ ThemeSetting()->theme_name }}</title>
 <link rel="apple-touch-icon" href="{{ asset(ThemeSetting()->favicon) }}" />
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset(ThemeSetting()->favicon) }}" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
@@ -86,7 +86,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" target="_blank" href="{{ url('/') }}">
                                 <img style="max-width: 25px" class="brand-logo" alt="stack admin logo" src="{{ asset(ThemeSetting()->favicon) }}" />
                                 <h2 class="brand-text">{{ ThemeSetting()->theme_name }}</h2>
                             </a>
@@ -139,6 +139,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         <a href="{{ route('dashboard') }}"><i class="ft-home"></i><span class="menu-title">Dashboard</span></a>
                     </li>
 
+                    @if (Auth::guard('admin')->user() || Auth::guard('owner')->user())
                     <li class="nav-item {{ Route::is('admin.page', 'page.*') ? 'active' : '' }}">
                         <a href="{{ route('admin.page') }}"><i class="ft-file"></i><span class="menu-title">Pages</span></a>
                     </li>
@@ -146,6 +147,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     <li class="nav-item {{ Route::is('add.place.*') ? 'active' : '' }}">
                         <a href="{{ route('add.place.index') }}"><i class="ft-monitor"></i><span class="menu-title">Adds</span></a>
                     </li>
+                    @endif
+
 
                     <li class="nav-item {{ Route::is('admin.news.*', 'admin.category.*', 'admin.breaking.*') ? 'open' : '' }}">
                         <a href="index.html"><i class="ft-airplay"></i><span class="menu-title">News</span></a>
@@ -164,14 +167,18 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
+                    @if (Auth::guard('admin')->user() || Auth::guard('owner')->user())
+
                     <li class="nav-item {{ Route::is('contact.index', 'admin.comment.index') ? 'open' : '' }}">
-                        <a href="#"><i class="ft-message-square"></i><span class="menu-title">Contact</span></a>
+                        <a href="#"><i class="ft-message-square"></i><span class="menu-title">CRM</span></a>
                         <ul class="menu-content">
-                            <li class="{{ Route::is('contact.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('contact.index') }}">Contact form</a></li>
+                            <li class="{{ Route::is('contact.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('contact.index') }}">Contact</a></li>
                             <li class="{{ Route::is('admin.comment.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.comment.index') }}">Comment</a></li>
                             <li class="{{ Route::is('admin.add.*') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admin.add.index') }}">Add Request</a></li>
                         </ul>
                     </li>
+
+                    @endif
 
                     <li class="nav-item {{ Route::is('view.profile') ? 'open' : '' }}">
                         <a href="#"><i class="ft-unlock"></i><span class="menu-title">Authentication</span></a>
@@ -181,6 +188,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
+                    @if (Auth::guard('admin')->user() || Auth::guard('owner')->user())
+
                     <li class="nav-item {{ Route::is('admin.socials', 'menu.*') ? 'open' : '' }}">
                         <a href="#"><i class="ft-feather"></i><span class="menu-title">Appearance</span></a>
                         <ul class="menu-content">
@@ -189,13 +198,19 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
+
+
                     <li class="nav-item {{ Route::is('users', 'users.*', 'user.*', 'admins.index') ? 'open' : '' }}">
                         <a href="#"><i class="ft-user"></i><span class="menu-title">Users</span></a>
                         <ul class="menu-content">
                             <li class="{{ Route::is('users') ? 'active' : '' }}"><a class="menu-item" href="{{ route('users') }}">All Authors</a></li>
+                            @if (Auth::guard('owner')->user())
                             <li class="{{ Route::is('admins.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admins.index') }}">All Admins</a></li>
+                            @endif
                         </ul>
                     </li>
+
+
 
                     <li class="nav-item {{ Route::is('admin.wizard.*', 'admin.footer.*', 'admin.translation.edit') ? 'open' : '' }}">
                         <a href="#"><i class="ft-settings"></i><span class="menu-title">Sections</span></a>
@@ -214,6 +229,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <li class="{{ Route::is('theme.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('theme.edit') }}">Theme Setting</a></li>
                         </ul>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>

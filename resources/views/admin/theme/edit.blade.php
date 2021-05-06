@@ -2,6 +2,8 @@
 
 @section('css_plugin')
 @include('components.summernote_css')
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/css/plugins/forms/checkboxes-radios.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/css/forms/icheck/icheck.css') }}">
 @endsection
 
 @section('content')
@@ -12,6 +14,7 @@
             <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
+                    <h4 class="card-title">Theme Info Setting</h4>
                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -26,7 +29,6 @@
 
                 <div class="card-body">
                     <div class="form-body">
-                        <h4 class="form-section">Theme Info</h4>
                         <div class="form-group row">
                           <label class="col-md-3 label-control" for="theme_name">Theme Name</label>
                           <div class="col-md-9">
@@ -121,6 +123,20 @@
                                 <input id="favicon_input" name="favicon" type="file" class="d-none" value="{{ $theme->favicon }}">
                                 <span class="file-custom btn btn-info">Change favicon</span>
                               </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row skin skin-square">
+                            <label for="layout" class="col-md-3 label-controll">Theme Layout</label>
+                            <div class="col-md-9">
+                                <fieldset>
+                                    <input type="radio" name="layout" value="ltr" id="input-radio-11" {{ $theme->layout == 'ltr' ? 'checked' : '' }}>
+                                    <label for="input-radio-11">Left To Right</label>
+                                  </fieldset>
+                                  <fieldset>
+                                    <input type="radio" name="layout" value="rtl" id="input-radio-12" {{ $theme->layout == 'rtl' ? 'checked' : '' }}>
+                                    <label for="input-radio-12">Right To Left</label>
+                                  </fieldset>
                             </div>
                         </div>
 
@@ -227,6 +243,7 @@
 
 @section('js_plugin')
 @include('components.summernote_js')
+<script src="{{ asset('admin/vendors/js/forms/icheck/icheck.min.js') }}" type="text/javascript"></script>
 @endsection
 
 @section('custom_js')
@@ -250,5 +267,7 @@
  $("#favicon_input").change(function() {
     readURL(this, $('#favicon_img'));
 });
+
 </script>
+<script src="{{ asset('admin/js/scripts/forms/checkbox-radio.js') }}" type="text/javascript"></script>
 @endsection

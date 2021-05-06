@@ -8,7 +8,7 @@
             <div class="card-title text-center">
 
             </div>
-            <h2 class="text-center text-primary text-bold-700">Author</h2>
+            <h2 class="text-center text-primary text-bold-700">Reporter</h2>
             <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
               <span>Login with Newsly</span>
             </h6>

@@ -345,18 +345,18 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('single.news', $worldNews->first()->pl_slug) }}"><img style="max-height: 295px;" src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $worldNews->first()->pl_slug) }}"><img  src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $worldNews->first()->category->pl_slug) }}" class="catagory">{{ $worldNews->first()->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $worldNews->first()->pl_slug) }}">{{ $worldNews->first()->pl_headline }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $worldNews->first()->pl_slug) }}">{{ Str::substr($worldNews->first()->pl_headline, 0, 85) }}..</a></h3>
 
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> J{{ $worldNews->first()->created_at->format('M d, Y') }}</span></li>
                                                 <li><span><i class="far fa-comment"></i> Comment {{ $worldNews->first()->comment->count() }}</span></li>
                                             </ul>
                                             <p class="post-content">
-                                                {!! Str::words($worldNews->first()->pl_description, 18) !!}
+                                                {!! Str::substr($worldNews->first()->pl_description, 0, 120) !!} ..
                                             </p>
                                             <a class="read-btn" href="{{ route('single.news', $worldNews->first()->pl_slug) }}">{{ translate()->pl_fourteen }}<i class="fas fa-arrow-right"></i></a>
                                         </div>
@@ -370,11 +370,11 @@
                                     @endif
                                     <div class="single-list-post ">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('single.news', $wNews->pl_slug) }}"><img style="max-height: 295px;" src="{{ $wNews->image->image_four }}" alt="{{ $wNews->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNews->pl_slug) }}"><img  src="{{ $wNews->image->image_four }}" alt="{{ $wNews->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $wNews->category->pl_slug) }}" class="catagory">{{ $wNews->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $wNews->pl_slug) }}">{{ Str::words($wNews->pl_headline, 6) }} </a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNews->pl_slug) }}">{{ Str::substr($wNews->pl_headline, 0, 35) }} .. </a></h3>
                                             <ul class="post-meta">
                                                 <li><span style="font-size: 14px;"><i class="far fa-clock"></i> {{ $wNews->created_at->format('M d, Y') }}</span></li>
                                                 <li><span style="font-size: 14px;"><i class="far fa-comment"></i> Comment {{ $wNews->comment->count() }}</span></li>
@@ -398,11 +398,11 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('single.news', $wNewsByCat->pl_slug) }}"><img style="max-height: 295px;" src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->pl_slug) }}"><img  src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $wNewsByCat->first()->category->pl_slug) }}" class="catagory">{{ $wNewsByCat->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ Str::words($wNewsByCat->pl_headline, 6) }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ Str::substr($wNewsByCat->pl_headline, 0, 85) }} ..</a></h3>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
                                                 <li><span><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
@@ -422,11 +422,11 @@
                                     @endif
                                     <div class="single-list-post ">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('single.news', $wNewsByCat->pl_slug) }}"><img style="max-height: 295px;" src="{{ $wNewsByCat->image->image_four }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->pl_slug) }}"><img  src="{{ $wNewsByCat->image->image_four }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $wNewsByCat->category->pl_slug) }}" class="catagory">{{ $wNewsByCat->category->pl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ Str::words($wNewsByCat->pl_headline, 6) }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNewsByCat->pl_slug) }}">{{ Str::substr($wNewsByCat->pl_headline, 0, 35) }} ..</a></h3>
                                             <ul class="post-meta">
                                                 <li><span style="font-size: 12px;"><i class="far fa-clock"></i> {{ $wNewsByCat->created_at->format('M d, Y') }}</span></li>
                                                 <li><span style="font-size: 12px;"><i class="far fa-comment"></i> Comment {{ $wNewsByCat->comment->count() }}</span></li>
@@ -475,11 +475,11 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('single.news', $worldNews->first()->sl_slug) }}"><img style="max-height: 295px;" src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $worldNews->first()->sl_slug) }}"><img  src="{{ $worldNews->first()->image->image_three }}" alt="{{ $worldNews->first()->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $worldNews->first()->category->sl_slug) }}" class="catagory">{{ $worldNews->first()->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $worldNews->first()->sl_slug) }}">{{ $worldNews->first()->sl_headline }}</a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $worldNews->first()->sl_slug) }}">{{ Str::substr($worldNews->first()->sl_headline, 0, 85) }} ..</a></h3>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> J{{ $worldNews->first()->created_at->format('M d, Y') }}</span></li>
                                                 <li><span><i class="far fa-comment"></i> Comment {{ $worldNews->first()->comment->count() }}</span></li>
@@ -503,7 +503,7 @@
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $wNews->category->sl_slug) }}" class="catagory">{{ $wNews->category->sl_name }}</a>
-                                            <h3 class="post-title"><a href="{{ route('single.news', $wNews->sl_slug) }}">{{ Str::words($wNews->sl_headline, 6) }} </a></h3>
+                                            <h3 class="post-title"><a href="{{ route('single.news', $wNews->sl_slug) }}">{{ Str::substr($wNews->sl_headline, 0, 35) }} .. </a></h3>
                                             <ul class="post-meta">
                                                 <li><span style="font-size: 12px;"><i class="far fa-clock"></i> {{ $wNews->created_at->format('M d, Y') }}</span></li>
                                                 <li><span style="font-size: 12px;"><i class="far fa-comment"></i> Comment {{ $wNews->comment->count() }}</span></li>
@@ -527,7 +527,7 @@
                                 <div class="col-xl-7 col-lg-6">
                                     <div class="single-grid-post">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('single.news', $wNewsByCat->sl_slug) }}"><img src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
+                                            <a href="{{ route('single.news', $wNewsByCat->sl_slug) }}"><img  src="{{ $wNewsByCat->image->image_three }}" alt="{{ $wNewsByCat->image->image_alt }}" /></a>
                                         </div>
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $wNewsByCat->first()->category->sl_slug) }}" class="catagory">{{ $wNewsByCat->category->sl_name }}</a>

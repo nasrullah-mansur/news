@@ -31,6 +31,7 @@ class ThemeSeeder extends Seeder
             'sl_flag' => 'sl_flag.png',
             'pl_name' => 'English',
             'sl_name' => 'Spanish',
+            'layout' => 'ltr',
 
             'google_map' => '<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4RM7zOgOKq6n2fv407hX28xiL-M6vLdY"></script>',
             'google_map_script' =>

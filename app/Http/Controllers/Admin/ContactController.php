@@ -54,7 +54,7 @@ class ContactController extends Controller
 
         $contact->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('store', "Submitted Successful");
 
     }
 

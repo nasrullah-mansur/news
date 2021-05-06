@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-12">
             <div class="text-right">
-                <a href="#" data-toggle="modal" data-target="#add_user" class="btn add-user btn-primary btn-min-width mr-1 mb-1">Add Author</a>
+                <a href="#" data-toggle="modal" data-target="#add_user" class="btn add-user btn-primary btn-min-width mr-1 mb-1">Add Reporter</a>
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User</h4>
+                    <h4 class="card-title">Reporters</h4>
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -59,7 +59,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header bg-primary white">
-            <h3 class="modal-title" id="add_user_area"> Add New Author</h3>
+            <h3 class="modal-title" id="add_user_area"> Add New Reporter</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>

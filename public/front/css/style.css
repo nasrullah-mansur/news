@@ -1551,6 +1551,10 @@ Version: 1.0
   .single-grid-post .post-thumbnail img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
+    max-height: 295px;
+    object-position: top center;
+    object-fit: cover;
   }
 
   .single-grid-post .post-info {
@@ -1702,6 +1706,7 @@ Version: 1.0
   .single-list-post .post-thumbnail img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
   }
 
   .single-list-post .post-info {
@@ -1845,6 +1850,7 @@ Version: 1.0
   .single-video-post .post-thumbnail img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
   }
 
   .single-video-post .post-thumbnail .video-btn {
@@ -3325,6 +3331,10 @@ Version: 1.0
     color: #B5B5B5;
   }
 
+  .request-add-form .form-group .form-control#description {
+      height: inherit;
+  }
+
   .request-add-form .form-group .message-box {
     padding: 15px;
     height: 150px;
@@ -4004,8 +4014,6 @@ Version: 1.0
     }
   }
 
-
-
   /* Custom css */
   .dropdown-toggle::after {
         display: inline-block;
@@ -4022,6 +4030,15 @@ Version: 1.0
     .main-menu .nav-link {
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    .toast-title {
+        font-size: 18px;
+    }
+
+    .toast-message {
+        font-size: 14px;
+        line-height: 24px;
     }
 
 

@@ -107,4 +107,10 @@
 <script src="{{ asset('front/js/gmaps.js') }}"></script>
 
 {!! ThemeSetting()->google_map_script !!}
+
+@if ($errors->any())
+<script>
+    toastr.warning("Something Wrong!", "SORRY");
+</script>
+@endif
 @endsection

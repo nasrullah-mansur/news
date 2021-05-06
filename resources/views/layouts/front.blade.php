@@ -48,8 +48,12 @@
         <!-- css file  -->
         <link rel="stylesheet" href="{{ asset('front/css/plugins.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/plugins/extensions/toastr.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('admin/vendors/css/extensions/toastr.css') }}">
         <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
-        {{-- <link rel="stylesheet" href="{{ asset('front/css/style_rtl.css') }}"> --}}
+        @if (ThemeSetting()->layout == 'rtl')
+        <link rel="stylesheet" href="{{ asset('front/css/style_rtl.css') }}">
+        @endif
 
         <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
         <script src="{{ asset('front/js/modernizr-3.11.2.min.js') }}"></script>
@@ -535,7 +539,24 @@
         <script src="{{ asset('front/js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('front/js/plugins.js') }}"></script>
+        @if(Route::is('front.request.add', 'single.news', 'front.contact', 'front.index'))
+        <script src="{{ asset('admin/vendors/js/extensions/toastr.min.js') }}" type="text/javascript"></script>
+        @endif
         <script src="{{ asset('front/js/main.js') }}"></script>
         @yield('custom_js')
+
+        @if(Session::has('store'))
+        <script>
+            toastr.success("{{ Session::get('store') }}", "WELL DONE");
+        </script>
+        @elseif(Session::has('update'))
+        <script>
+            toastr.success("{{ Session::get('update') }}", "WELL DONE");
+        </script>
+        @elseif(Session::has('error'))
+        <script>
+            toastr.success("{{ Session::get('error') }}", "SORRY");
+        </script>
+        @endif
     </body>
 </html>

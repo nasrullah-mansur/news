@@ -25,7 +25,7 @@ class NewsService
                 return $news->created_at->format('d-m-Y');
             })
             ->addColumn('image', function($news) {
-                return '<img style="max-width: 80px" src="'. asset($news->image->image_four) . '" alt="{{ $news->image->image_alt }}">';
+                return '<img style="max-width: 80px" src="'. asset($news->image->image_four) . '" alt="'. $news->image->image_alt. '">';
             })
             ->addColumn('category', function($news) {
                 return $news->category->pl_name . '<br>' . $news->category->sl_name;
@@ -60,7 +60,7 @@ class NewsService
                 return $news->created_at->format('d-m-Y');
             })
             ->addColumn('image', function($news) {
-                return '<img style="max-width: 80px" src="'. asset($news->image->image_four) . '" alt="{{ $news->image->image_alt }}">';
+                return '<img style="max-width: 80px" src="'. asset($news->image->image_four) . '" alt="'. $news->image->image_alt .'">';
             })
             ->addColumn('category', function($news) {
                 return $news->category->pl_name . '<br>' . $news->category->sl_name;

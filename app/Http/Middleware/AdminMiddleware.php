@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminMiddleware
 {
@@ -16,6 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(Session::get('role') == 'admin' || Session::get('role') == 'owner') {
+            return $next($request);
+        } else {
+            abort(404);
+        }
     }
 }

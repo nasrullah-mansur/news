@@ -24,8 +24,18 @@ class CategoryService
             ->editColumn('sl_name', function ($category) {
                 if($category->sl_name == '') {
                     return 'NULL';
+                } elseif($category->p_id != 0) {
+                    return '- ' . $category->sl_name;
                 } else {
                     return $category->sl_name;
+                }
+            })
+
+            ->editColumn('pl_name', function($category) {
+                if($category->p_id != 0) {
+                    return '- ' . $category->pl_name;
+                } else {
+                    return $category->pl_name;
                 }
             })
 
