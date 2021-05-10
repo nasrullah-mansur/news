@@ -91,7 +91,7 @@
                         <ul>
                             @foreach (SocialMedia() as $socaial_media)
                             <li>
-                                <a class="single-follower {{ $socaial_media->social_name }}-follower" href="{{ $socaial_media->social_link }}"> <i class="icon {{ $socaial_media->icon_class }}"></i> <span class="text">{{ $socaial_media->followers }} Follower</span></a>
+                                <a target="_blank" class="single-follower {{ $socaial_media->social_name }}-follower" href="{{ $socaial_media->social_link }}"> <i class="icon {{ $socaial_media->icon_class }}"></i> <span class="text">{{ $socaial_media->followers }} Follower</span></a>
                             </li>
                             @endforeach
                         </ul>

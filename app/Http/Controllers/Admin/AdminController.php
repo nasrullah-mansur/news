@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Services\AdminService;
-use App\Http\Controllers\Controller;
 use App\Models\Admin\AdminProfile;
+use App\Http\Controllers\Controller;
+use App\Notifications\AddAdmin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Notification;
 
 class AdminController extends Controller
 {
@@ -46,6 +50,11 @@ class AdminController extends Controller
         AdminProfile::create([
             'admin_id' => $user->id
         ]);
+
+
+        $user = Auth::guard(Session::get('role'))->user();
+
+        Notification::send($user, new AddAdmin($user));
     }
 
     public function show($id)

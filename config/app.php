@@ -169,7 +169,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
-        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+       // RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
 
         /*
          * Application Service Providers...

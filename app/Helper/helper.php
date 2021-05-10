@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use App\Models\Admin\News;
 use App\Models\Admin\Page;
 use App\Models\Admin\Theme;
@@ -7,17 +8,21 @@ use Illuminate\Support\Str;
 use App\Models\Admin\Footer;
 use App\Models\Admin\Social;
 use App\Models\Admin\Wizard;
+use App\Models\Notification;
 use App\Models\Admin\Profile;
 use App\Models\Admin\Visitor;
 use App\Models\Admin\Category;
+use App\Models\Admin\CustomCode;
 use App\Models\Admin\MainMenu;
 use App\Models\Front\AddPlace;
 use App\Models\Admin\FooterMenu;
 use App\Models\Admin\Translation;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
+
 
 
 function ImageUpload($new_file, $path, $old_image) {
@@ -40,6 +45,13 @@ function ImageUpload($new_file, $path, $old_image) {
     return $file_name;
 
 };
+
+
+function allNotifications()
+{
+    return Notification::whereDate('created_at', Carbon::today())->orderBy('created_at', 'DESC')->get();
+}
+
 
 function ResizeImageUpload($new_file, $path, $old_image, $w, $h) {
     if (!file_exists(public_path($path))) {
@@ -76,16 +88,10 @@ function AuthUserProfileInfo()
    return $AuthUserProfileInfo = Profile::where('user_id', Auth::guard(Session::get('role'))->user()->id)->firstOrFail();
 }
 
-
-
-// echo Session::get('active_language');
-
-
 function Categories()
 {
     return Category::with('news', 'subCategory')->where('p_id', 0)->get();
 }
-
 
 function subCatNews($id)
 {
@@ -103,11 +109,6 @@ function FooterMenu()
 }
 
 
-
-
-
-
-
 function active_lang()
 {
     if(session()->exists('active_language')) {
@@ -117,14 +118,12 @@ function active_lang()
     }
 
     return $active_lang;
-
 }
 
 function translate()
 {
     return Translation::first();
 }
-
 
 function newsCount()
 {
@@ -202,6 +201,15 @@ function pageSeoInfo($slug)
 }
 
 
+function customCSS()
+{
+    return CustomCode::first()->css;
+}
+
+function customJS()
+{
+    return CustomCode::first()->js;
+}
 
 
 ?>

@@ -29,85 +29,61 @@
 @endsection
 
 @section('content')
-        @if ($top_news->count() >= 2)
+
         <!-- hero-section start here  -->
-        @if(active_lang() == 'pl')
         <section class="hero-section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
+                        <div class="hero-slider1">
+                        @foreach ($top_news as $topNewsBig)
+                        @if ($loop->iteration <= 3)
+                        @if ($topNewsBig->news)
                         <div class="hero-post">
                             <div class="post-thumbnial">
-                                <a href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">
-                                    <img src="{{ asset($top_news[0]->news->image->image_two) }}" alt="{{ $top_news[0]->news->image->image_alt }}" />
+                                <a href="{{ route('single.news', $topNewsBig->news[active_lang().'_slug']) }}">
+                                    <img src="{{ asset($topNewsBig->news->image->image_two) }}" alt="{{ $topNewsBig->news->image->image_alt }}" />
                                 </a>
                             </div>
                             <div class="post-info">
-                                <a class="post-catagory" href="{{ route('front.category', $top_news[0]->news->category->pl_slug) }}">{{ $top_news[0]->news->category->pl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ Str::substr($top_news[0]->news->pl_headline, 0, 40) }}..</a></h2>
-                                <p class="text-white">{!! Str::words($top_news[0]->news->pl_description, 34) !!}</p>
-                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[0]->news->pl_slug) }}">{{ translate()->pl_fourteen }}</a>
+                                <a class="post-catagory" href="{{ route('front.category', $topNewsBig->news->category[active_lang().'_slug']) }}">{{ $topNewsBig->news->category[active_lang().'_name'] }}</a>
+                                <h2 class="post-title"><a href="{{ route('single.news', $topNewsBig->news[active_lang().'_slug']) }}">{{ Str::substr($topNewsBig->news[active_lang().'_headline'], 0, 40) }}..</a></h2>
+                                <p class="text-white">{!! Str::words($topNewsBig->news[active_lang().'_description'], 34) !!}</p>
+                                <a class="hero-post-btn" href="{{ route('single.news', $topNewsBig->news->pl_slug) }}">{{ translate()[active_lang().'_fourteen'] }}</a>
                             </div>
                         </div>
+                        @endif
+                        @endif
+                        @endforeach
+                    </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="hero-post hero-post-medium" style="height: calc(100% - 30px)">
-                            <div class="post-thumbnial h-100">
-                                <a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">
-                                    <img style="width: auto; height: 100%; max-width: unset;" src="{{ asset($top_news[1]->news->image->image_two) }}" alt="{{ $top_news[1]->news->image->image_alt }}" />
-                                </a>
+                        <div class="hero-slider2">
+                            @foreach ($top_news as $topNewsSmall)
+                            @if ($loop->iteration > 3)
+                            @if ($topNewsBig->news)
+                            <div class="hero-post hero-post-medium" style="height: calc(100% - 30px)">
+                                <div class="post-thumbnial h-100">
+                                    <a href="{{ route('single.news', $topNewsSmall->news[active_lang().'_slug']) }}">
+                                        <img style="width: auto; height: 100%; max-width: unset;" src="{{ asset($topNewsSmall->news->image->image_two) }}" alt="{{ $topNewsSmall->news->image->image_alt }}" />
+                                    </a>
+                                </div>
+                                <div class="post-info">
+                                    <a class="post-catagory" href="{{ route('front.category', $topNewsSmall->news->category[active_lang().'_slug']) }}">{{ $topNewsSmall->news->category[active_lang().'_name'] }}</a>
+                                    <h2 class="post-title"><a href="{{ route('single.news', $topNewsSmall->news[active_lang().'_slug']) }}">{{ Str::words($topNewsSmall->news[active_lang().'_headline'], 6) }}</a></h2>
+                                    <p style="color: white;">{!! Str::words($topNewsSmall->news[active_lang().'_description'], 14) !!}</p>
+                                    <a class="hero-post-btn" href="{{ route('single.news', $topNewsSmall->news->pl_slug) }}">{{ translate()[active_lang().'_fourteen'] }}</a>
+                                </div>
                             </div>
-                            <div class="post-info">
-                                <a class="post-catagory" href="{{ route('front.category', $top_news[1]->news->category->pl_slug) }}">{{ $top_news[1]->news->category->pl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ Str::words($top_news[1]->news->pl_headline, 6) }}</a></h2>
-                                <p style="color: white;">{!! Str::words($top_news[1]->news->pl_description, 14) !!}</p>
-                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[1]->news->pl_slug) }}">{{ translate()->pl_fourteen }}</a>
-                            </div>
-                        </div>
+                        @endif
+                        @endif
+                        @endforeach
+                    </div>
                     </div>
                 </div>
             </div>
         </section>
-        @else
-        <section class="hero-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="hero-post">
-                            <div class="post-thumbnial">
-                                <a href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">
-                                    <img src="{{ asset($top_news[0]->news->image->image_two) }}" alt="{{ asset($top_news[0]->news->image->image_alt) }}" />
-                                </a>
-                            </div>
-                            <div class="post-info">
-                                <a class="post-catagory" href="{{ route('front.category', $top_news[0]->news->category->sl_slug) }}">{{ $top_news[0]->news->category->sl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ Str::substr($top_news[0]->news->sl_headline,0,40) }}..</a></h2>
-                                <p class="text-white">{!! Str::words($top_news[0]->news->sl_description, 34) !!}</p>
-                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[0]->news->sl_slug) }}">{{ translate()->sl_fourteen }}</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="hero-post hero-post-medium" style="height: calc(100% - 30px)">
-                            <div class="post-thumbnial h-100">
-                                <a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">
-                                    <img style="width: auto; height: 100%; max-width: unset;" src="{{ asset($top_news[1]->news->image->image_two) }}" alt="{{ asset($top_news[1]->news->image->image_alt) }}" />
-                                </a>
-                            </div>
-                            <div class="post-info">
-                                <a class="post-catagory" href="{{ route('front.category', $top_news[1]->news->category->sl_slug) }}">{{ $top_news[1]->news->category->sl_name }}</a>
-                                <h2 class="post-title"><a href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ Str::words($top_news[1]->news->sl_headline,6) }}</a></h2>
-                                <p style="color: white;">{!! Str::words($top_news[1]->news->sl_description, 14) !!}</p>
-                                <a class="hero-post-btn" href="{{ route('single.news', $top_news[1]->news->sl_slug) }}">{{ translate()->sl_fourteen }}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
-        <!-- hero-section end here  -->
-        @endif
+
         <!-- Follow Us area start here  -->
         <section class="follow-area section-top pb-90">
             <div class="container">
@@ -266,7 +242,7 @@
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $tranding_news_tab_list->category->sl_slug) }}" class="catagory">{{ $tranding_news_tab_list->category->sl_name }}</a>
                                             <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_tab_list->sl_slug) }}">{{ Str::substr($tranding_news_tab_list->sl_headline, 0, 40) }}..</a></h3>
-                                            <p>{!! Str::words($tranding_news_tab_list->pl_description, 10) !!}</p>
+                                            <p>{!! Str::words($tranding_news_tab_list->sl_description, 10) !!}</p>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $tranding_news_tab_list->created_at->format('M d, Y') }}</span></li>
                                                 <li><span><i class="far fa-comment"></i> Comment {{ $tranding_news_tab_list->comment->count() }}</span></li>
@@ -291,7 +267,7 @@
                                         <div class="post-info">
                                             <a href="{{ route('front.category', $tranding_news_item->category->sl_slug) }}" class="catagory">{{ $tranding_news_item->category->sl_name }}</a>
                                             <h3 class="post-title"><a href="{{ route('single.news', $tranding_news_item->sl_slug) }}">{{ Str::substr($tranding_news_item->sl_headline, 0, 40) }}..</a></h3>
-                                            <p>{!! Str::words($tranding_news_item->pl_description, 10) !!}</p>
+                                            <p>{!! Str::words($tranding_news_item->sl_description, 10) !!}</p>
                                             <ul class="post-meta">
                                                 <li><span><i class="far fa-clock"></i> {{ $tranding_news_item->created_at->format('M d, Y') }}</span></li>
                                                 <li><span><i class="far fa-comment"></i> Comment {{ $tranding_news_item->comment->count() }}</span></li>
@@ -391,7 +367,7 @@
                     <div class="tab-pane fade" id="w-{{ $category->pl_slug }}" role="tabpanel" aria-labelledby="w-{{ $category->pl_slug }}-tab">
                         <div class="post-list">
                             <div class="row">
-                                @foreach ($category->news->where('type_id', 2) as $wNewsByCat)
+                                @foreach ($category->news->where('type_id', 2)->reverse() as $wNewsByCat)
                                 @if ($loop->index > 0)
                                     @continue
                                 @endif
@@ -417,7 +393,7 @@
                                 @endforeach
                                 <div class="col-xl-5 col-lg-6">
                                     @foreach ($category->news->where('type_id', 2) as $wNewsByCat)
-                                    @if ($loop->first)
+                                    @if ($loop->first || $loop->iteration > 4)
                                         @continue
                                     @endif
                                     <div class="single-list-post ">
@@ -546,7 +522,7 @@
                                 @endforeach
                                 <div class="col-xl-5 col-lg-6">
                                     @foreach ($category->news->where('type_id', 2) as $wNewsByCat)
-                                    @if ($loop->first)
+                                    @if ($loop->first || $loop->iteration > 4)
                                         @continue
                                     @endif
                                     <div class="single-list-post ">
@@ -870,4 +846,98 @@
         </section>
         @endif
         <!-- Video News area end here  -->
+@endsection
+
+@section('custom_js')
+@if(ThemeSetting()->layout == 'rtl')
+<script>
+    $('.breaking-news-slide').slick({
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      dots: false,
+      arrows: false,
+      prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
+      nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
+      vertical: true,
+    });
+
+
+    $('.hero-slider1').slick({
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
+        nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
+        rtl: true,
+    });
+
+    $('.hero-slider2').slick({
+        infinite: true,
+        speed: 700,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
+        nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
+        rtl: true,
+    });
+</script>
+@else
+<script>
+    $('.breaking-news-slide').slick({
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: false,
+        arrows: false,
+        prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
+        nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
+        vertical: true,
+    });
+
+    $('.hero-slider1').slick({
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
+        nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
+        fade: true,
+    });
+
+    $('.hero-slider2').slick({
+        infinite: true,
+        speed: 700,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        dots: true,
+        arrows: false,
+        prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
+        nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
+        fade: true,
+    });
+</script>
+@endif
+
 @endsection

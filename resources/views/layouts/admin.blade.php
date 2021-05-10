@@ -112,6 +112,44 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                         <!-- PAGINATION END -->
                         <ul class="nav navbar-nav float-right">
+                            <li class="dropdown dropdown-notification nav-item">
+                                <a class="nav-link nav-link-label" href="#" data-toggle="dropdown" aria-expanded="false"><i class="ficon ft-bell"></i>
+                                  <span class="badge badge-pill badge-default badge-danger badge-default badge-up">{{ allNotifications()->count() }}</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                                  <li class="dropdown-menu-header">
+                                    <h6 class="dropdown-header m-0">
+                                      <span class="grey darken-2">Notifications</span>
+                                      <span class="notification-tag badge badge-default badge-danger float-right m-0">{{ allNotifications()->count() }} New</span>
+                                    </h6>
+                                  </li>
+                                  <li class="scrollable-container media-list">
+
+                                    @foreach (allNotifications() as $noti)
+                                    <a {{ $noti->type == 'App\Notifications\AddNews' ? 'target="_blank"' : '' }} href="{{ $noti->type == 'App\Notifications\AddNews' ? route('single.news', json_decode($noti->data)->slug) : 'javascript:void(0);' }}">
+                                      <div class="media">
+                                        <div class="media-left align-self-center">
+                                            @if ($noti->type == 'App\Notifications\AddNews')
+                                            <i class="ft-airplay icon-bg-circle bg-teal"></i>
+                                            @else
+                                            <i class="ft-user icon-bg-circle bg-teal"></i>
+                                            @endif
+                                        </div>
+                                        <div class="media-body">
+                                          <h6 class="media-heading">{{ json_decode($noti->data)->title }}</h6>
+                                          <p class="notification-text font-small-3 text-muted">{!! json_decode($noti->data)->content !!}</p>
+                                          <small>
+                                            <time class="media-meta text-muted">{{ \Carbon\Carbon::parse($noti->created_at)->diffForHumans() }}</time>
+                                          </small>
+                                        </div>
+                                      </div>
+                                    </a>
+
+                                    @endforeach
+                                  <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 255px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 162px;"></div></div></li>
+                                  <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="{{ route('notification.index') }}">Read all notifications</a></li>
+                                </ul>
+                              </li>
                             <li class="dropdown dropdown-user nav-item">
                                 <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false">
                                   <span class="avatar avatar-online">
@@ -126,6 +164,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                                   </form>
                                 </div>
                             </li>
+
                         </ul>
                     </div>
                 </div>
@@ -203,9 +242,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                     <li class="nav-item {{ Route::is('users', 'users.*', 'user.*', 'admins.index') ? 'open' : '' }}">
                         <a href="#"><i class="ft-user"></i><span class="menu-title">Users</span></a>
                         <ul class="menu-content">
-                            <li class="{{ Route::is('users') ? 'active' : '' }}"><a class="menu-item" href="{{ route('users') }}">All Authors</a></li>
+                            <li class="{{ Route::is('users') ? 'active' : '' }}"><a class="menu-item" href="{{ route('users') }}">Reporters</a></li>
                             @if (Auth::guard('owner')->user())
-                            <li class="{{ Route::is('admins.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admins.index') }}">All Admins</a></li>
+                            <li class="{{ Route::is('admins.index') ? 'active' : '' }}"><a class="menu-item" href="{{ route('admins.index') }}">Admins</a></li>
                             @endif
                         </ul>
                     </li>
@@ -223,10 +262,12 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                         </ul>
                     </li>
 
-                    <li class="nav-item {{ Route::is('theme.edit') ? 'open' : '' }}">
+                    <li class="nav-item {{ Route::is('theme.edit', 'custom.js', 'custom.css') ? 'open' : '' }}">
                         <a href="#"><i class="ft-sliders"></i><span class="menu-title">Setting</span></a>
                         <ul class="menu-content">
                             <li class="{{ Route::is('theme.edit') ? 'active' : '' }}"><a class="menu-item" href="{{ route('theme.edit') }}">Theme Setting</a></li>
+                            <li class="{{ Route::is('custom.css') ? 'active' : '' }}"><a class="menu-item" href="{{ route('custom.css') }}">Custom CSS</a></li>
+                            <li class="{{ Route::is('custom.js') ? 'active' : '' }}"><a class="menu-item" href="{{ route('custom.js') }}">Custom JS</a></li>
                         </ul>
                     </li>
                     @endif
@@ -244,8 +285,9 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
         <footer class="footer footer-static footer-light navbar-border">
             <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
                 <span class="float-md-left d-block d-md-inline-block">
-                    Copyright &copy; {{ ThemeSetting()->theme_name }} All rights reserved.
+                    Copyright {{ Carbon\Carbon::now()->year }} &copy; {{ ThemeSetting()->theme_name }} All rights reserved.
                 </span>
+                <span class="float-right">{{ ThemeSetting()->theme_name }} : V-1</span>
             </p>
         </footer>
         <!-- BEGIN VENDOR JS-->

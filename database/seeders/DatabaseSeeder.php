@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             OwnerSeeder::class,
 
+            CustomCodeSeeder::class,
             AddSeeder::class,
             AddPlaceSeeder::class,
             BreakingNewsSeeder::class,

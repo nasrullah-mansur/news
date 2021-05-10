@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('css_plugin')
 @include('components.datatable_css')
+@include('components.summernote_css')
 @endsection
 @section('content')
 <section>
@@ -116,13 +117,14 @@
 @endsection
 @section('js_plugin')
 @include('components.datatable_js')
+@include('components.summernote_js')
 @endsection
 
 @section('custom_js')
 <script>
 let table = $(".datatable");
     table.DataTable({
-        dom: "Bfrtip",
+        dom: "lBfrtip",
         processing: true,
         serverSide: true,
         ajax: "{{ route('subscriber.all') }}",
@@ -135,6 +137,7 @@ let table = $(".datatable");
         createdRow: function (row) {
             $("td", row).eq(-1).addClass("text-center");
         },
+        buttons: dataTableBtn('Subscribers '),
     });
 
     // DELETE DATA;

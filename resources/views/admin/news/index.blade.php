@@ -71,7 +71,7 @@
     // INDEX DATA;
     let table = $(".datatable");
     table.DataTable({
-        dom: "Bfrtip",
+        dom: "lBfrtip",
         processing: true,
         serverSide: true,
         ajax: "{{ route('admin.news.all') }}",
@@ -88,7 +88,13 @@
         createdRow: function (row) {
             $("td", row).eq(-1).addClass("d-flex");
         },
+
+        buttons: dataTableBtn('News '),
+
     });
+
+
+
 
 
     // DELETE DATA;
@@ -145,6 +151,7 @@
             });
         }
     });
+
 </script>
 
 

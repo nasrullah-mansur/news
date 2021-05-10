@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\UserService;
-use App\Http\Controllers\Controller;
 use App\Models\Admin\Profile;
+use App\Services\UserService;
+use App\Notifications\AddUser;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
@@ -52,6 +56,10 @@ class UserController extends Controller
         Profile::create([
             'user_id' => $user->id
         ]);
+
+        $user = Auth::guard(Session::get('role'))->user();
+
+        Notification::send($user, new AddUser($user));
     }
 
     public function destroy(Request $request)

@@ -4,13 +4,13 @@ use App\Models\Admin\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddController;
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\FooterController;
@@ -27,6 +27,8 @@ use App\Http\Controllers\Front\AddPlaceController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\TranslationController;
 use App\Http\Controllers\Admin\BreakingNewsController;
+use App\Http\Controllers\Admin\CustomCodeController;
+use App\Http\Controllers\Admin\NotificationController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -195,6 +197,17 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('/add/place/{id}/edit', [AddPlaceController::class, 'edit'])->name('add.place.edit');
         Route::post('/add/place/{id}/update', [AddPlaceController::class, 'update'])->name('add.place.update');
         Route::post('/add/place/{id}/delete', [AddPlaceController::class, 'destroy'])->name('add.place.destroy');
+
+        // Notification;
+        Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
+        Route::get('/notification/get-noti', [NotificationController::class, 'getAllNoti'])->name('notification.get_noti');
+        Route::post('/noti/delete', [NotificationController::class, 'destroy'])->name('notification.delete');
+
+        // CUSTOM CODE;
+        Route::get('/custom-css', [CustomCodeController::class, 'css'])->name('custom.css');
+        Route::post('/custom-css/update', [CustomCodeController::class, 'css_update'])->name('custom.css.update');
+        Route::get('/custom-js', [CustomCodeController::class, 'js'])->name('custom.js');
+        Route::post('/custom-js/update', [CustomCodeController::class, 'js_update'])->name('custom.js.update');
 
         Route::middleware('owner')->group(function (){
             // ADMIN;

@@ -54,8 +54,14 @@
         @if (ThemeSetting()->layout == 'rtl')
         <link rel="stylesheet" href="{{ asset('front/css/style_rtl.css') }}">
         @endif
-
         <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
+
+
+        @if (customCSS())
+            <style>
+                {!! customCSS() !!}
+            </style>
+        @endif
         <script src="{{ asset('front/js/modernizr-3.11.2.min.js') }}"></script>
     </head>
     <body>
@@ -259,7 +265,7 @@
         <!-- mobile header area htart here  -->
 
         <!-- sidebar area start here  -->
-        {{-- <aside class="sidebar-area">
+        <aside class="sidebar-area">
             <div class="dropdown language-dropdown">
                 <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" >
                     <img class="flag" src="{{ active_lang() == 'pl' ? asset(ThemeSetting()->pl_flag) : asset(ThemeSetting()->sl_flag) }}" alt="flag" /> <span>{{ active_lang() == 'pl' ? ThemeSetting()->pl_name : ThemeSetting()->sl_name }}</span>
@@ -292,15 +298,20 @@
                 <div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
                     <nav class="mobile-menu">
                         <ul>
-                            @if(active_lang() == 'sl')
                             @foreach (MainMenu() as $mainMenu)
-                            <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->sl_label }}</a></li>
+                            @foreach (Categories() as $menuCat)
+                                @if ($menuCat->id != $mainMenu->category_id)
+                                    @continue
+                                @endif
+                                <li>
+                                    <a href="{{ route('front.category', $menuCat[active_lang().'_slug']) }}">{{ $menuCat[active_lang() . '_name'] }} </a>
+                                    @if ($menuCat->subCategory->count() > 0)
+
+                                    @endif
+                                </li>
                             @endforeach
-                            @else
-                            @foreach (MainMenu() as $mainMenu)
-                            <li class="current-menu-item"><a href="{{ url($mainMenu->url) }}">{{ $mainMenu->pl_label }}</a></li>
                             @endforeach
-                            @endif
+
                         </ul>
                     </nav>
                 </div>
@@ -318,7 +329,7 @@
                     </ul>
                 </div>
             </div>
-        </aside> --}}
+        </aside>
         <!-- sidebar area end here  -->
         @yield('content')
 
@@ -557,6 +568,12 @@
         <script>
             toastr.success("{{ Session::get('error') }}", "SORRY");
         </script>
+        @endif
+
+        @if (customJS())
+            <script>
+                {!! customJS() !!}
+            </script>
         @endif
     </body>
 </html>

@@ -126,6 +126,7 @@
             <fieldset class="form-group floating-label-form-group">
                 <label for="sl_name">Category Under</label>
                 <select class="form-control select2" name="p_id">
+                    <option value="0">No Subcategory</option>
                 </select>
             </fieldset>
             <fieldset class="form-group floating-label-form-group">
@@ -153,9 +154,13 @@
 @section('custom_js')
 @section('custom_js')
 <script>
-    $(".select2").select2({
+    $(".select2, .select3").select2({
         placeholder: "Select Category",
-        allowClear: true
+        allowClear: true,
+    });
+    $(".select3").select2({
+        placeholder: "Select Category",
+        allowClear: true,
     });
 </script>
 <script>
@@ -184,7 +189,7 @@
     // INDEX DATA;
     let table = $(".datatable");
     table.DataTable({
-        dom: "Bfrtip",
+        dom: "lBfrtip",
         processing: true,
         serverSide: true,
         ajax: "{{ route('categories.get') }}",
@@ -200,6 +205,7 @@
         createdRow: function (row) {
             $("td", row).eq(-1).addClass("text-center");
         },
+        buttons: dataTableBtn('Category '),
     });
 
     // STORE DATA;

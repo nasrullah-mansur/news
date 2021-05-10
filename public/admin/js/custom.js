@@ -42,4 +42,44 @@ function readURL(input, preview) {
 }
 
 
+function dataTableBtn(title = '') {
+    return [
+            {
+                extend: 'print',
+                title: title + 'Print',
+                exportOptions: {
+                    stripHtml : false,
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                title: title + 'PDF',
+                download: 'open',
+                // exportOptions: {
+                //     stripHtml : false,
+                //     columns: ':visible'
+                // }
+
+            },
+            {
+                extend: 'csvHtml5',
+                title: title + 'CSV',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'excelHtml5',
+                title: title + 'Excel',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            { extend: 'colvis', text: 'Visibility' },
+
+        ]
+}
+
+
 

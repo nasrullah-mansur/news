@@ -14,19 +14,7 @@
     /*-------------------------------------------
     slider active
     --------------------------------------------- */
-    $('.breaking-news-slide').slick({
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      dots: false,
-      arrows: false,
-      prevArrow: '<i class="slick-prev arrow fas fa-angle-left"></i> ',
-      nextArrow: '<i class="slick-next arrow fas fa-angle-right"></i> ',
-      vertical: true,
-    });
+
 
     /*---------------------------------
     mobile header activation

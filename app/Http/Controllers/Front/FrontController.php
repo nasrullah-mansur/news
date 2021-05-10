@@ -20,14 +20,14 @@ class FrontController extends Controller
     {
         $categories = Category::with('news')->where('p_id', 0)->get();
         $breakingNews = BreakingNews::latest()->get();
-        $trendingNews = News::with('image', 'user', 'category','comment')->where('type_id', 1)->limit(newsCount()->trending_news_count)->get()->reverse();
-        $worldNews = News::with('image', 'user', 'category', 'comment')->where('type_id', 2)->limit(newsCount()->world_news_count)->get()->reverse();
-        $SportNews = News::with('image', 'user', 'category')->where('type_id', 3)->limit(newsCount()->sport_news_count)->get()->reverse();
-        $EntertainmentNews = News::with('image', 'user', 'category')->where('type_id', 4)->limit(newsCount()->entertainment_news_count)->get()->reverse();
-        $VideoNews = News::where('video', '!=', null)->limit(newsCount()->video_news_count)->get()->reverse();
+        $trendingNews = News::with('image', 'user', 'category','comment')->where('type_id', 1)->limit(newsCount()->trending_news_count)->orderBy('created_at', 'DESC')->get();
+        $worldNews = News::with('image', 'user', 'category', 'comment')->where('type_id', 2)->limit(newsCount()->world_news_count)->orderBy('created_at', 'DESC')->get();
+        $SportNews = News::with('image', 'user', 'category')->where('type_id', 3)->limit(newsCount()->sport_news_count)->orderBy('created_at', 'DESC')->get();
+        $EntertainmentNews = News::with('image', 'user', 'category')->where('type_id', 4)->limit(newsCount()->entertainment_news_count)->orderBy('created_at', 'DESC')->get();
+        $VideoNews = News::where('video', '!=', null)->limit(newsCount()->video_news_count)->orderBy('created_at', 'DESC')->get();
         $subscriber = SubscriberSection::firstOrFail();
 
-        $top_news = Visitor::with('news')->orderBy('visitor', 'DESC')->limit(2)->get();
+        $top_news = Visitor::with('news')->orderBy('visitor', 'DESC')->take(6)->get();
 
         return view('front.index', compact('categories', 'trendingNews', 'worldNews', 'SportNews', 'EntertainmentNews', 'VideoNews', 'breakingNews', 'top_news', 'subscriber'));
     }

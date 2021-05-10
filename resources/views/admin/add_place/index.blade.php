@@ -72,7 +72,7 @@
 <script>
 let table = $(".datatable");
     table.DataTable({
-        dom: "Bfrtip",
+        dom: "lBfrtip",
         processing: true,
         serverSide: true,
         ajax: "{{ route('add.place.all') }}",
@@ -90,6 +90,7 @@ let table = $(".datatable");
         createdRow: function (row) {
             $("td", row).eq(-1).addClass("d-flex");
         },
+        buttons: dataTableBtn('Adds '),
     });
 
     // DELETE DATA;

@@ -1,11 +1,15 @@
 <?php
 namespace   App\Services;
 
-use App\Models\Admin\Category;
-use App\Models\Admin\Image;
 use App\Models\Admin\News;
-use App\Models\Admin\Visitor;
+use App\Models\Admin\Image;
 use Illuminate\Support\Str;
+use App\Models\Admin\Visitor;
+use App\Models\Admin\Category;
+use App\Notifications\AddNews;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Notification;
 
 class NewsService
 {
@@ -25,7 +29,19 @@ class NewsService
                 return $news->created_at->format('d-m-Y');
             })
             ->addColumn('image', function($news) {
+
+
+                // $path = $image; //this is the image path
+                $type = pathinfo($news->image->image_four, PATHINFO_EXTENSION);
+                $data = file_get_contents($news->image->image_four);
+                $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+
+
                 return '<img style="max-width: 80px" src="'. asset($news->image->image_four) . '" alt="'. $news->image->image_alt. '">';
+                // return '<img style="max-width: 80px" src="'. $base64 .'" alt="'. $news->image->image_alt. '">';
+
+                // return base64_encode($news->image->image_four);
             })
             ->addColumn('category', function($news) {
                 return $news->category->pl_name . '<br>' . $news->category->sl_name;
@@ -40,7 +56,6 @@ class NewsService
             ->addColumn('created_by', function ($news) {
                 return $news->user->name;
             })
-            ->escapeColumns([])
 
             ->make(true);
     }
@@ -149,6 +164,13 @@ class NewsService
         $visitor->visitor = 0;
         $visitor->save();
 
+        $slug = $news->pl_slug;
+
+        $user = Auth::guard(Session::get('role'))->user();
+
+        Notification::send($user, new AddNews($user, $slug));
+
+
 
         if ($news) {
             $data['success'] = true;
@@ -156,6 +178,7 @@ class NewsService
             $data['data'] = $news;
             return $data;
         }
+
 
         return $data;
     }

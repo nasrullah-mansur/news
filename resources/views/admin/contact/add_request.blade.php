@@ -8,7 +8,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Categories</h4>
+                    <h4 class="card-title">Request for add</h4>
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -63,7 +63,7 @@
 <script>
 let table = $(".datatable");
     table.DataTable({
-        dom: "Bfrtip",
+        dom: "lBfrtip",
         processing: true,
         serverSide: true,
         ajax: "{{ route('admin.add.request.all') }}",
@@ -78,6 +78,7 @@ let table = $(".datatable");
         createdRow: function (row) {
             $("td", row).eq(-1).addClass("text-center");
         },
+        buttons: dataTableBtn('Request for add '),
     });
 
     // DELETE DATA;

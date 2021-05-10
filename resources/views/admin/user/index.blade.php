@@ -108,7 +108,7 @@
 <script>
     let table = $(".datatable");
     table.DataTable({
-        dom: "Bfrtip",
+        dom: "lBfrtip",
         processing: true,
         serverSide: true,
         ajax: "{{ route('users.GetUsers') }}",
@@ -122,6 +122,7 @@
         createdRow: function (row) {
             $("td", row).eq(-1).addClass("text-center");
         },
+        buttons: dataTableBtn('Reporters '),
     });
 
         // STORE DATA;

@@ -223,3 +223,19 @@ html {
          text-align: right!important;
     }
 }
+
+
+.hero-slider .arrow {
+    right: auto;
+    left: 30px;
+}
+
+.hero-slider .arrow.slick-prev {
+    right: auto;
+    left: 90px;
+}
+
+.slick-dots {
+    right: auto;
+    left: 30px;
+}

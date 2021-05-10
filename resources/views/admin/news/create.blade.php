@@ -206,6 +206,9 @@
                         <fieldset class="form-group">
                             <label for="image_alt">Image Alternative Text</label>
                             <input type="text" id="image_alt" class="form-control" placeholder="Image Alternative Text" name="image_alt" value="{{ old('image_alt') }}">
+                            @if ($errors->has('image_alt'))
+                                <div class="invalid-feedback d-block">{{ $errors->first('image_alt') }}</div>
+                            @endif
                         </fieldset>
                         </div>
 
